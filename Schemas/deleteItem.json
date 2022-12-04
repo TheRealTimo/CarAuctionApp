@@ -1,0 +1,11 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "createItem",
+  "description": "Deletes the item with the given id.",
+  "type": "object",
+  "properties": {
+
+  }
+
+
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "getWatchedItem",
+  "description": "Gets one or all watched items for a user.",
+  "type": "object",
+  "properties": {
+
+  }
+
+
+}

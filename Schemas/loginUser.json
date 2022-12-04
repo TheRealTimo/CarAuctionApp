@@ -1,0 +1,11 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "loginUser",
+  "description": "Logs the user in",
+  "type": "object",
+  "properties": {
+
+  }
+
+
+}
