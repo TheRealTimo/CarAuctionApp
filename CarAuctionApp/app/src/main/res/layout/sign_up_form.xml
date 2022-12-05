@@ -9,8 +9,8 @@
         android:id="@+id/signUpTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="Sign Up"
@@ -19,12 +19,14 @@
         />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/signUpFirstName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signUpTitle"
         android:gravity="center"
+        android:background="@drawable/rectangleBorderWithRoundedCorners"
+        android:padding="4dp"
         android:hint="First Name"
         android:autofillHints="name"
         android:textColorHint="#515151"
@@ -32,12 +34,14 @@
         android:inputType="text"/>
 
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/signUpLastName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/firstName"
+        android:layout_below="@id/signUpFirstName"
         android:gravity="center"
+        android:background="@drawable/rectangleBorderWithRoundedCorners"
+        android:padding="4dp"
         android:hint="Last Name"
         android:autofillHints="name"
         android:textColorHint="#515151"
@@ -45,13 +49,15 @@
         android:inputType="text"/>
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/signUpEmail"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/lastName"
+        android:layout_below="@id/signUpLastName"
         android:gravity="center"
+        android:background="@drawable/rectangleBorderWithRoundedCorners"
+        android:padding="4dp"
         android:hint="Email"
         android:autofillHints="emailAddress"
         android:textColorHint="#515151"
@@ -59,12 +65,14 @@
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:id="@+id/emailConfirmation"
+        android:id="@+id/signUpEmailConfirmation"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/email"
+        android:layout_below="@id/signUpEmail"
         android:gravity="center"
+        android:background="@drawable/rectangleBorderWithRoundedCorners"
+        android:padding="4dp"
         android:hint="Email Confirmation"
         android:autofillHints="emailAddress"
         android:textColorHint="#515151"
@@ -72,13 +80,15 @@
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/signUpPassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/emailConfirmation"
+        android:layout_below="@id/signUpEmailConfirmation"
         android:gravity="center"
+        android:background="@drawable/rectangleBorderWithRoundedCorners"
+        android:padding="4dp"
         android:hint="Password"
         android:autofillHints="password"
         android:textColorHint="#515151"
@@ -86,12 +96,14 @@
         android:inputType="textPassword"/>
 
     <EditText
-        android:id="@+id/passwordConfirmation"
+        android:id="@+id/signUpPasswordConfirmation"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/password"
+        android:layout_below="@id/signUpPassword"
         android:gravity="center"
+        android:background="@drawable/rectangleBorderWithRoundedCorners"
+        android:padding="4dp"
         android:autofillHints="password"
         android:hint="Password Confirmation"
         android:textColorHint="#515151"
@@ -103,7 +115,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/passwordConfirmation"
+        android:layout_below="@id/signUpPasswordConfirmation"
         android:background="#00e8b6"
         android:text="Sign Up"
         android:textColor="#515151"/>
