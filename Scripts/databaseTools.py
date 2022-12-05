@@ -1,3 +1,10 @@
+"""
+Author: Timo Hennig
+Date: 05.12.2022
+Description: File handles database connections
+Version: 1.0
+"""
+
 import configparser
 import os
 import mysql.connector

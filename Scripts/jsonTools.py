@@ -1,3 +1,10 @@
+"""
+Author: Timo Hennig
+Date: 05.12.2022
+Description: File handles JSON validation
+Version: 1.0
+"""
+
 import json
 import os
 

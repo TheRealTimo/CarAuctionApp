@@ -1,3 +1,11 @@
+"""
+Author: Timo Hennig
+Date: 05.12.2022
+Description: The Main API which will redirect to the different endpoints
+Version: 1.0
+"""
+
+
 #Import a few libraries that could be useful
 import os
 from flask import Flask, jsonify, request
