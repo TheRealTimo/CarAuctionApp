@@ -23,6 +23,7 @@ def connectToDatabase():
         )
         sqlCursor = db.cursor()
         return db, sqlCursor
+
     except mysql.connector.Error as err:
         print("Database connection error" + str(err))
         return False

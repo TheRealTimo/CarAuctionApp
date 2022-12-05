@@ -4,8 +4,27 @@
   "description": "Deletes a user account from the system.",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "User": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "description": "The email address of the user to delete.",
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "description": "The password of the user to delete.",
+          "type": "string",
+          "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_])[A-Za-z\\d\\W_]{8,}$"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    }
+  },
+  "required": [
+    "User"
+  ]
 }

@@ -4,8 +4,85 @@
   "description": "Creates a new item that can then be linked to an auction",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "Car": {
+      "type": "object",
+      "properties": {
+        "Make": {
+          "description": "The make of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "Model": {
+          "description": "The model of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "Year": {
+          "description": "The year of the car",
+          "type": "string",
+          "pattern": "^[0-9]{4}$"
+        },
+        "Trim": {
+          "description": "The trim of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "Mileage": {
+          "description": "The mileage of the car",
+          "type": "integer",
+          "pattern": "^[0-9]+$"
+        },
+        "Color": {
+          "description": "The color of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "Condition": {
+          "description": "The condition of the car",
+          "type": "string",
+          "enum": [
+            "New",
+            "Used",
+            "Damaged"
+          ]
+        },
+        "Engine": {
+          "description": "The engine of the car",
+          "type": "string",
+          "enum": [
+            "Gas",
+            "Diesel",
+            "Electric",
+            "Hybrid"
+          ]
+        },
+        "Description": {
+          "description": "The description of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "Images": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "The image of the car"
+          }
+        }
+      },
+      "required": [
+        "Make",
+        "Model",
+        "Year",
+        "VIN",
+        "Mileage",
+        "Color",
+        "Condition",
+        "Description",
+        "Images"
+      ]
+    }
+  },
+  "required": [
+    "Car"
+  ]
 }

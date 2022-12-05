@@ -4,8 +4,5 @@
   "description": "Updates the specified item",
   "type": "object",
   "properties": {
-
   }
-
-
 }

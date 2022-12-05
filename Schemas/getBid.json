@@ -4,8 +4,16 @@
   "description": "Gets the details for a specific bid.",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "bidId": {
+      "description": "The ID of the bid.",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "bidId"
+  ]
 }
+
+
+

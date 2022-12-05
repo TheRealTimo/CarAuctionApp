@@ -4,8 +4,5 @@
   "description": "Updates the auction with the given id",
   "type": "object",
   "properties": {
-
   }
-
-
 }

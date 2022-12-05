@@ -4,8 +4,13 @@
   "description": "Gets all the details of a specific item.",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "itemId": {
+      "description": "The ID of the item.",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "itemId"
+  ]
 }

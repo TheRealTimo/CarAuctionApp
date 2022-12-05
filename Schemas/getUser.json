@@ -4,8 +4,27 @@
   "description": "Get user by id",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "userId": {
+      "description": "User id",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    },
+    "email": {
+      "description": "User email",
+      "type": "string",
+      "format": "email"
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "userId"
+      ]
+    },
+    {
+      "required": [
+        "email"
+      ]
+    }
+  ]
 }

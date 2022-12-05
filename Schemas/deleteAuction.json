@@ -4,8 +4,16 @@
   "description": "Deletes the selected auction",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "auctionId": {
+      "description": "The auction id",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "auctionId"
+  ]
 }
+
+
+

@@ -4,8 +4,13 @@
   "description": "Removes the item from a users watchlist",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "watchID": {
+      "description": "The ID of the watchlist item to remove",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "watchID"
+  ]
 }

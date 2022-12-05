@@ -4,8 +4,10 @@
   "description": "Gets one or all watched items for a user.",
   "type": "object",
   "properties": {
-
+    "watchId": {
+      "description": "The ID of the watch item to retrieve.",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
   }
-
-
 }

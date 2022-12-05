@@ -4,8 +4,32 @@
   "description": "Gets a specific auction or all auctions",
   "type": "object",
   "properties": {
-
-  }
-
-
+    "auctionId": {
+      "description": "The auction ID",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    },
+    "numberOfItems": {
+      "description": "The number of items to return",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "auctionId"
+      ]
+    },
+    {
+      "required": [
+        "numberOfItems"
+      ]
+    }
+  ]
 }
+
+
+
+
+
