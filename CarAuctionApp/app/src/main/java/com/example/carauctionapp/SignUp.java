@@ -90,7 +90,7 @@ public class SignUp extends Activity {
             return false;
         }
 
-        if (passwordConfirmation.length() < Utilities.MIN_PASSWORD_LENGTH) {
+        if (passwordConfirmationInput.length() < Utilities.MIN_PASSWORD_LENGTH) {
             passwordConfirmationInput.setError("Password length must be at least: " + Utilities.MIN_PASSWORD_LENGTH);
             return false;
         }
@@ -116,15 +116,22 @@ public class SignUp extends Activity {
         return true;
     }
 
-    private boolean validateEmailFieldsInput(String email) {
+    private boolean validateEmailFieldsInput(String email, String emailConfirmation) {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailInput.setError("Invalid email address!");
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailConfirmation).matches()) {
+            emailConfirmationInput.setError("Invalid email address!");
             return false;
         }
 
         return true;
     }
 
-    private boolean validatePasswordFieldsInput(String password) {
+    private boolean validatePasswordFieldsInput(String password, String passwordConfirmation) {
+        //PASSWORD
         //Patterns password must contain
         Pattern upperCase = Pattern.compile("[A-Z]");
         Pattern lowerCase = Pattern.compile("[a-z]");
@@ -150,15 +157,48 @@ public class SignUp extends Activity {
             return false;
         }
 
+        //PASSWORD CONFIRMATION
+        //Patterns password must contain
+        if (!upperCase.matcher(passwordConfirmation).find()) {
+            passwordConfirmationInput.setError("Password must contain upper case characters");
+            return false;
+        }
+        if (!lowerCase.matcher(passwordConfirmation).find()) {
+            passwordConfirmationInput.setError("Password must contain lower case characters");
+            return false;
+        }
+        if (!digit.matcher(passwordConfirmation).find()) {
+            passwordConfirmationInput.setError("Password must contain digits");
+            return false;
+        }
+
+        //Patterns password must not contain
+        if(illegalCharacters.matcher(passwordConfirmation).find()) {
+            passwordConfirmationInput.setError("Illegal characters detected!");
+            return false;
+        }
+
         return true;
     }
 
     public boolean validateMatchingEmailsAndPasswords (String email, String emailConfirmation, String password, String passwordConfirmation) {
-        return email.equals(emailConfirmation) && password.equals(passwordConfirmation);
+        if (!email.equals(emailConfirmation)) {
+            emailInput.setError("Emails must match");
+            emailConfirmationInput.setError("Emails must match");
+            return false;
+        }
+
+        if (!password.equals(passwordConfirmation)) {
+            passwordInput.setError("Passwords must match");
+            passwordConfirmationInput.setError("Passwords must match");
+            return false;
+        }
+
+        return true;
     }
 
     private boolean validateAllFields(String firstName, String lastName, String email, String emailConfirmation, String password, String passwordConfirmation) {
-        return validateNameFieldsInput(firstName, lastName) && validateEmailFieldsInput(email) && validatePasswordFieldsInput(password) && validateMatchingEmailsAndPasswords(email, emailConfirmation, password, passwordConfirmation);
+        return validateNameFieldsInput(firstName, lastName) && validateEmailFieldsInput(email, emailConfirmation) && validatePasswordFieldsInput(password, passwordConfirmation) && validateMatchingEmailsAndPasswords(email, emailConfirmation, password, passwordConfirmation);
     }
 
     private void storeUserSignUpData() {
