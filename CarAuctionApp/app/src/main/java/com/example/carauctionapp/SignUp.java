@@ -188,7 +188,7 @@ public class SignUp extends Activity {
         return true;
     }
 
-    public boolean validateMatchingEmailsAndPasswords (String email, String emailConfirmation, String password, String passwordConfirmation) {
+    private boolean validateMatchingEmailsAndPasswords (String email, String emailConfirmation, String password, String passwordConfirmation) {
         if (!email.equals(emailConfirmation)) {
             emailInput.setError("Emails must match");
             emailConfirmationInput.setError("Emails must match");
