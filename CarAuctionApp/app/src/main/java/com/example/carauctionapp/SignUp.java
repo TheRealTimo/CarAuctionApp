@@ -19,6 +19,7 @@ public class SignUp extends Activity {
     private boolean isAllFieldsChecked = false;
 
     private Pattern digit = Pattern.compile("[0-9]");
+    private Pattern illegalCharacters = Pattern.compile("[<>+*@&()^!\"#$%':;=?_`{}|~]");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,9 +108,17 @@ public class SignUp extends Activity {
             firstNameInput.setError("Digits are not allowed for the First Name");
             return false;
         }
+        if (illegalCharacters.matcher(firstName).find()) {
+            firstNameInput.setError("Special characters are not allowed");
+            return false;
+        }
 
         if (digit.matcher(lastName).find()) {
             lastNameInput.setError("Digits are not allowed for the Last Name");
+            return false;
+        }
+        if (illegalCharacters.matcher(lastName).find()) {
+            lastNameInput.setError("Special characters are not allowed");
             return false;
         }
 
@@ -150,8 +159,6 @@ public class SignUp extends Activity {
         }
 
         //Patterns password must not contain
-        Pattern illegalCharacters = Pattern.compile("[<>+*@&()^!\"#$%':;=?_`{}|~]");
-
         if(illegalCharacters.matcher(password).find()) {
             passwordInput.setError("Illegal characters detected!");
             return false;
