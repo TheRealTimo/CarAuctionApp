@@ -11,6 +11,7 @@ import os
 import jsonschema
 from jsonschema import validate
 
+
 def getJsonSchema(fileToLoad):
     cd = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
     with open(cd + '/Schemas/' + fileToLoad + '.json', 'r') as file:

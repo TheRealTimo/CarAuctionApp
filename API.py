@@ -6,16 +6,15 @@ Version: 1.0
 """
 
 
-#Import a few libraries that could be useful
-import os
-from flask import Flask, jsonify, request
-import mysql.connector
-import json
-import jsonschema
-from jsonschema import validate
-import re
+
 import configparser
-from endpoints import getAuction, deleteAuction, createAuction, updateAuction, getUser, createUser, deleteUser, updateUser, getBid, createBid, loginUser, watchItem, unwatchItem, getWatchedItem, getItem, createItem, updateItem, deleteItem
+import os
+
+from flask import Flask, request
+
+from endpoints import getAuction, deleteAuction, createAuction, updateAuction, getUser, createUser, deleteUser, \
+    updateUser, getBid, createBid, loginUser, watchItem, unwatchItem, getWatchedItem, getItem, createItem, updateItem, \
+    deleteItem, publicKey, verifyIban
 
 directory = os.path.dirname(os.path.abspath(__file__))
 secretKey = configparser.ConfigParser()
@@ -83,6 +82,16 @@ def items():
         return deleteItem.deleteItem(request)
     elif request.method == 'PUT':
         return updateItem.updateItem(request)
+
+@app.route('/api/v1.0/key', methods=['GET'])
+def key():
+    if request.method == 'GET':
+        return publicKey.publicKey()
+
+@app.route('/api/v1.0/iban', methods=['GET'])
+def iban():
+    if request.method == 'GET':
+        return verifyIban.verifyIban(request)
 
 app.run(host=apiConfig['API']['host'], port=apiConfig['API']['port'], debug=apiConfig['API']['debug'])
 

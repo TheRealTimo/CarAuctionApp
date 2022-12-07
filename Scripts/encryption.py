@@ -4,12 +4,11 @@ Date: 05.12.2022
 Description: Handling of encryption and decryption as well as key generation
 Version: 1.0
 """
-
+import hashlib
 import os
-from random import Random
 
-import rsa
 import bcrypt
+import rsa
 
 cd = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
 
@@ -39,7 +38,9 @@ def generateNewKeys():
 def getPublicKey():
     with open(cd + '/RSA/public.pem', 'r') as f:
         publicKey = rsa.PublicKey.load_pkcs1(f.read().encode('utf8'))
-    return publicKey
+
+    publicKeyString = publicKey.save_pkcs1().decode('utf8')
+    return publicKeyString
 
 
 def bcryptHash(password):
@@ -48,3 +49,11 @@ def bcryptHash(password):
 
 def verifyBcryptHash(password, hash):
     return bcrypt.checkpw(password.encode('utf8'), hash)
+
+
+def generateApiKeyHash(apiKey):
+    return hashlib.sha256(apiKey.encode('utf8')).hexdigest()
+
+def validateApiKeyHash(apiKey, hash):
+    return hash == hashlib.sha256(apiKey.encode('utf8')).hexdigest()
+
