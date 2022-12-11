@@ -15,17 +15,16 @@
 
         <ImageView
             android:id="@+id/LogInLogo"
-            android:layout_width="140dp"
-            android:layout_height="84dp"
+            android:layout_width="161dp"
+            android:layout_height="116dp"
             android:contentDescription="@string/logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.281"
+            app:layout_constraintVertical_bias="0.265"
             tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@drawable/car_logo" />
+            tools:srcCompat="@drawable/roller" />
 
         <TextView
             android:id="@+id/loginText"
