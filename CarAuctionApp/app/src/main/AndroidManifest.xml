@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CarAuctionApp"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".StartingScreen"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.CarAuctionApp.NoActionBar">
@@ -27,6 +27,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity android:name=".SignUp"></activity>
     </application>
-
 </manifest>
