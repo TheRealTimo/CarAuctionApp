@@ -4,45 +4,45 @@
   "description": "Create a new auction",
   "type": "object",
   "properties": {
-    "Item": {
+    "item": {
       "description": "The itemID to be auctioned",
       "type": "integer",
       "pattern": "^[0-9]*$"
     },
-    "Auction": {
+    "auction": {
       "type": "object",
       "properties": {
-        "Title": {
+        "title": {
           "description": "The title of the auction",
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]*$"
         },
-        "Description": {
+        "description": {
           "description": "The description of the auction",
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]*$"
         },
-        "OpeningBid": {
+        "openingBid": {
           "description": "The opening bid of the auction",
           "type": "integer",
           "pattern": "^[0-9]*$"
         },
-        "Duration": {
+        "duration": {
           "description": "The duration of the auction",
           "type": "integer",
           "pattern": "^[0-9]*$"
         }
       },
       "required": [
-        "Title",
-        "Description",
-        "OpeningBid",
-        "Duration"
+        "title",
+        "description",
+        "openingBid",
+        "duration"
       ]
     }
   },
   "required": [
-    "Item",
-    "Auction"
+    "item",
+    "auction"
   ]
 }

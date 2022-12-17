@@ -6,7 +6,7 @@
   "properties": {
     "auctionId": {
       "description": "The auction id",
-      "type": "string",
+      "type": "integer",
       "pattern": "^[0-9a-fA-F]{24}$"
     },
     "bid": {

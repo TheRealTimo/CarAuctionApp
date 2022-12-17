@@ -4,40 +4,39 @@
   "description": "Creates a new item that can then be linked to an auction",
   "type": "object",
   "properties": {
-    "Car": {
+    "car": {
       "type": "object",
       "properties": {
-        "Make": {
+        "make": {
           "description": "The make of the car",
-          "type": "string",
-          "pattern": "^[a-zA-Z0-9 ]+$"
+          "type": "string"
         },
-        "Model": {
+        "model": {
           "description": "The model of the car",
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]+$"
         },
-        "Year": {
+        "year": {
           "description": "The year of the car",
-          "type": "string",
+          "type": "integer",
           "pattern": "^[0-9]{4}$"
         },
-        "Trim": {
+        "trim": {
           "description": "The trim of the car",
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]+$"
         },
-        "Mileage": {
+        "mileage": {
           "description": "The mileage of the car",
           "type": "integer",
           "pattern": "^[0-9]+$"
         },
-        "Color": {
+        "color": {
           "description": "The color of the car",
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]+$"
         },
-        "Condition": {
+        "condition": {
           "description": "The condition of the car",
           "type": "string",
           "enum": [
@@ -46,7 +45,7 @@
             "Damaged"
           ]
         },
-        "Engine": {
+        "engine": {
           "description": "The engine of the car",
           "type": "string",
           "enum": [
@@ -56,33 +55,31 @@
             "Hybrid"
           ]
         },
-        "Description": {
+        "description": {
           "description": "The description of the car",
           "type": "string",
           "pattern": "^[a-zA-Z0-9 ]+$"
         },
-        "Images": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "The image of the car"
-          }
+        "images": {
+          "description": "The images of the car",
+          "type": "string"
         }
       },
       "required": [
-        "Make",
-        "Model",
-        "Year",
-        "VIN",
-        "Mileage",
-        "Color",
-        "Condition",
-        "Description",
-        "Images"
+        "make",
+        "model",
+        "year",
+        "trim",
+        "mileage",
+        "color",
+        "condition",
+        "engine",
+        "description",
+        "images"
       ]
     }
   },
   "required": [
-    "Car"
+    "car"
   ]
 }

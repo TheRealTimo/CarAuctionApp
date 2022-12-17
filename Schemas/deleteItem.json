@@ -4,14 +4,14 @@
   "description": "Deletes the item with the given id.",
   "type": "object",
   "properties": {
-    "id": {
+    "itemId": {
       "description": "The id of the item to delete.",
       "type": "integer",
       "pattern": "^[0-9]+$"
     }
   },
   "required": [
-    "id"
+    "itemId"
   ]
 }
 

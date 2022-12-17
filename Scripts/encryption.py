@@ -48,12 +48,8 @@ def bcryptHash(password):
 
 
 def verifyBcryptHash(password, hash):
-    return bcrypt.checkpw(password.encode('utf8'), hash)
+    return bcrypt.checkpw(password.encode('utf8'), hash.encode('utf8'))
 
 
 def generateApiKeyHash(apiKey):
     return hashlib.sha256(apiKey.encode('utf8')).hexdigest()
-
-def validateApiKeyHash(apiKey, hash):
-    return hash == hashlib.sha256(apiKey.encode('utf8')).hexdigest()
-
