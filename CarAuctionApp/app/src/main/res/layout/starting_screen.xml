@@ -16,5 +16,17 @@
         android:text="@string/signUpButton"
         android:textColor="#515151"/>
 
+    <Button
+        android:id="@+id/redirectToCarInfoPageButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/redirectToSignUpButton"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/button_border_rounded_corners"
+        android:text="CarInfo Page"
+        android:textColor="#515151"/>
+
 
 </RelativeLayout>

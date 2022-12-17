@@ -9,25 +9,28 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StartingScreen extends AppCompatActivity {
-    private Button button;
+    private Button signUpButton, carInfoPageButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starting_screen);
 
-        button = (Button) findViewById(R.id.redirectToSignUpButton);
+        signUpButton = findViewById(R.id.redirectToSignUpButton);
+        carInfoPageButton = findViewById(R.id.redirectToCarInfoPageButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                redirectToSignUpPage();
-            }
-        });
+        signUpButton.setOnClickListener(view -> redirectToSignUpPage());
+
+        carInfoPageButton.setOnClickListener(view -> redirectToCarInfoPage());
     }
 
     public void redirectToSignUpPage() {
         Intent openSignUpPage = new Intent(this, SignUp.class);
         startActivity(openSignUpPage);
+    }
+
+    public void redirectToCarInfoPage() {
+        Intent openCarInfoPage = new Intent(this, CarInfo.class);
+        startActivity(openCarInfoPage);
     }
 }

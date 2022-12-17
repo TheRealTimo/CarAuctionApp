@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/pageToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Car Info Page"
+        android:textSize="30sp"
+        android:textColor="#353535"/>
+
+    <ImageView
+        android:id="@+id/mainPicture"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/pageToolBar"
+        android:src="@drawable/rolls_royce_mock_image"/>
+
+    <TextView
+        android:id="@+id/carTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@id/mainPicture"
+        android:gravity="left"
+        android:text="2023 Rolls Royce Spectre Black badge edition"
+        android:textSize="25sp"
+        android:textColor="#353535"/>
+
+    <TextView
+        android:id="@+id/auctionEndDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_below="@id/carTitle"
+        android:gravity="left"
+        android:text="Ending november 10th at 7:30 PM"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/auctionEndDate"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Make -->
+
+    <TextView
+        android:id="@+id/makeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auctionEndDate"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:gravity="left"
+        android:text="@string/carInfoMakeTitle"
+        android:textColor="#353535"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/makeData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="90dp"
+        android:layout_below="@id/auctionEndDate"
+        android:gravity="left"
+        android:text="@string/carInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="#353535"/>
+
+    <!-- Model -->
+
+    <TextView
+        android:id="@+id/modelTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auctionEndDate"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
+        android:gravity="left"
+        android:text="@string/carInfoModelTitle"
+        android:textColor="#353535"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/modelData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="90dp"
+        android:layout_below="@id/auctionEndDate"
+        android:gravity="left"
+        android:text="@string/carInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="#353535"/>
+
+    <!-- Year -->
+
+    <TextView
+        android:id="@+id/yearTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auctionEndDate"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="40dp"
+        android:gravity="left"
+        android:text="@string/carInfoYearTitle"
+        android:textColor="#353535"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/yearData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="290dp"
+        android:layout_below="@id/auctionEndDate"
+        android:gravity="left"
+        android:text="@string/carInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="#353535"/>
+
+    <!-- Mileages -->
+
+    <TextView
+        android:id="@+id/mileagesTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auctionEndDate"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="80dp"
+        android:gravity="left"
+        android:text="@string/carInfoMileagesTitle"
+        android:textColor="#353535"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/mileagesData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="320dp"
+        android:layout_below="@id/auctionEndDate"
+        android:gravity="left"
+        android:text="@string/carInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="#353535"/>
+</RelativeLayout>
