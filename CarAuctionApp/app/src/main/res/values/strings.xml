@@ -23,4 +23,5 @@
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
     <string name="login_button">Log In</string>
+    <string name="logo">logo</string>
 </resources>
