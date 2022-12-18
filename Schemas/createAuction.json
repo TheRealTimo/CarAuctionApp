@@ -15,12 +15,12 @@
         "title": {
           "description": "The title of the auction",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9 ]*$"
+          "pattern": "^[a-zA-Z0-9 !?.]*$"
         },
         "description": {
           "description": "The description of the auction",
           "type": "string",
-          "pattern": "^[a-zA-Z0-9 ]*$"
+          "pattern": "^[a-zA-Z0-9 !?.]*$"
         },
         "openingBid": {
           "description": "The opening bid of the auction",
