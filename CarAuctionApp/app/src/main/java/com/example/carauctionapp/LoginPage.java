@@ -33,7 +33,7 @@ public class LoginPage extends Activity {
         //Log In button
         logInButton = findViewById(R.id.login_button);
 
-        //Sign Up button click event handler
+        //Log In button click event handler
         logInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
