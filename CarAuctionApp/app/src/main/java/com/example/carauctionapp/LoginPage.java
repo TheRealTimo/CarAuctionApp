@@ -30,7 +30,7 @@ public class LoginPage extends Activity {
         emailInput = findViewById(R.id.LogInEmail);
         passwordInput = findViewById(R.id.loginPassword);
 
-        //Sign Up button
+        //Log In button
         logInButton = findViewById(R.id.login_button);
 
         //Sign Up button click event handler
