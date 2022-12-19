@@ -45,7 +45,7 @@ public class LogIn extends Activity {
                     isAllFieldsChecked = validateAllFields(tempEmail, tempPassword);
 
                     if (isAllFieldsChecked) {
-                        LoginPage.this.finish();
+                        LogIn.this.finish();
                     }
                 }
             }
