@@ -1,0 +1,25 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "createBid",
+  "description": "Making a bid for an auction",
+  "type": "object",
+  "properties": {
+    "auctionId": {
+      "description": "The auction id",
+      "type": "integer",
+      "pattern": "^[0-9a-fA-F]{24}$"
+    },
+    "bid": {
+      "description": "The bid amount",
+      "type": "number",
+      "pattern": "^[0-9]+(\\.[0-9]{1,2})?$"
+    }
+  },
+  "required": [
+    "auctionId",
+    "bid"
+  ]
+}
+
+
+

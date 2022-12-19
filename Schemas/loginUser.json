@@ -1,0 +1,30 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "loginUser",
+  "description": "Logs the user in",
+  "type": "object",
+  "properties": {
+    "user": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "description": "The email of the user",
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "description": "The password of the user",
+          "type": "string",
+          "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    }
+  },
+  "required": [
+    "user"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "createItem",
+  "description": "Deletes the item with the given id.",
+  "type": "object",
+  "properties": {
+    "itemId": {
+      "description": "The id of the item to delete.",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "itemId"
+  ]
+}
+
+
+

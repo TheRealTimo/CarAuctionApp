@@ -1,0 +1,16 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "watchItem",
+  "description": "Adds a specified item to a users watchlist",
+  "type": "object",
+  "properties": {
+    "itemID": {
+      "description": "The ID of the item to add to the watchlist",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
+    }
+  },
+  "required": [
+    "itemID"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "createItem",
+  "description": "Creates a new item that can then be linked to an auction",
+  "type": "object",
+  "properties": {
+    "car": {
+      "type": "object",
+      "properties": {
+        "make": {
+          "description": "The make of the car",
+          "type": "string"
+        },
+        "model": {
+          "description": "The model of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "year": {
+          "description": "The year of the car",
+          "type": "integer",
+          "pattern": "^[0-9]{4}$"
+        },
+        "trim": {
+          "description": "The trim of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "mileage": {
+          "description": "The mileage of the car",
+          "type": "integer",
+          "pattern": "^[0-9]+$"
+        },
+        "color": {
+          "description": "The color of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "condition": {
+          "description": "The condition of the car",
+          "type": "string",
+          "enum": [
+            "New",
+            "Used",
+            "Damaged"
+          ]
+        },
+        "engine": {
+          "description": "The engine of the car",
+          "type": "string",
+          "enum": [
+            "Gas",
+            "Diesel",
+            "Electric",
+            "Hybrid"
+          ]
+        },
+        "description": {
+          "description": "The description of the car",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]+$"
+        },
+        "images": {
+          "description": "The images of the car",
+          "type": "string"
+        }
+      },
+      "required": [
+        "make",
+        "model",
+        "year",
+        "trim",
+        "mileage",
+        "color",
+        "condition",
+        "engine",
+        "description",
+        "images"
+      ]
+    }
+  },
+  "required": [
+    "car"
+  ]
+}

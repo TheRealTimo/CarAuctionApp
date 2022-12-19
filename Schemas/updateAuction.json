@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "updateAuction",
+  "description": "Updates the auction's data",
+  "type": "object",
+  "properties": {
+    "auction": {
+      "type": "object",
+      "properties": {
+        "auctionId": {
+          "description": "The id of the auction",
+          "type": "integer"
+        },
+        "title": {
+          "description": "The title of the auction",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]*$"
+        },
+        "description": {
+          "description": "The description of the auction",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 ]*$"
+        },
+        "openingBid": {
+          "description": "The opening bid of the auction",
+          "type": "integer",
+          "pattern": "^[0-9]*$"
+        },
+        "duration": {
+          "description": "The duration of the auction",
+          "type": "integer",
+          "pattern": "^[0-9]*$"
+        }
+      },
+      "required": [
+        "auctionId"
+      ]
+    }
+  },
+  "required": [
+    "auction"
+  ]
+}

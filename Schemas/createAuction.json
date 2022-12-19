@@ -1,0 +1,48 @@
+{
+  "schema": "http://json-schema.org/draft-07/schema#",
+  "title": "createAuction",
+  "description": "Create a new auction",
+  "type": "object",
+  "properties": {
+    "item": {
+      "description": "The itemID to be auctioned",
+      "type": "integer",
+      "pattern": "^[0-9]*$"
+    },
+    "auction": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "The title of the auction",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 !?.]*$"
+        },
+        "description": {
+          "description": "The description of the auction",
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9 !?.]*$"
+        },
+        "openingBid": {
+          "description": "The opening bid of the auction",
+          "type": "integer",
+          "pattern": "^[0-9]*$"
+        },
+        "duration": {
+          "description": "The duration of the auction",
+          "type": "integer",
+          "pattern": "^[0-9]*$"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "openingBid",
+        "duration"
+      ]
+    }
+  },
+  "required": [
+    "item",
+    "auction"
+  ]
+}
