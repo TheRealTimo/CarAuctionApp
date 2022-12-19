@@ -31,8 +31,8 @@
         android:padding="4dp"
         android:hint="@string/firstNameHint"
         android:autofillHints="name"
-        android:textColorHint="#515151"
-        android:textColor="#515151"
+        android:textColorHint="@color/bodyTextColor"
+        android:textColor="@color/bodyTextColor"
         android:inputType="text"/>
 
     <EditText
@@ -47,8 +47,8 @@
         android:padding="4dp"
         android:hint="@string/lastNameHint"
         android:autofillHints="name"
-        android:textColorHint="#515151"
-        android:textColor="#515151"
+        android:textColorHint="@color/bodyTextColor"
+        android:textColor="@color/bodyTextColor"
         android:inputType="text"/>
 
     <EditText
@@ -64,8 +64,8 @@
         android:padding="4dp"
         android:hint="@string/emailHint"
         android:autofillHints="emailAddress"
-        android:textColorHint="#515151"
-        android:textColor="#515151"
+        android:textColorHint="@color/bodyTextColor"
+        android:textColor="@color/bodyTextColor"
         android:inputType="textEmailAddress"/>
 
     <EditText
@@ -80,8 +80,8 @@
         android:padding="4dp"
         android:hint="@string/emailConfirmationHint"
         android:autofillHints="emailAddress"
-        android:textColorHint="#515151"
-        android:textColor="#515151"
+        android:textColorHint="@color/bodyTextColor"
+        android:textColor="@color/bodyTextColor"
         android:inputType="textEmailAddress"/>
 
     <EditText
@@ -97,8 +97,8 @@
         android:padding="4dp"
         android:hint="@string/passwordHint"
         android:autofillHints="password"
-        android:textColorHint="#515151"
-        android:textColor="#515151"
+        android:textColorHint="@color/bodyTextColor"
+        android:textColor="@color/bodyTextColor"
         android:inputType="textPassword"/>
 
     <EditText
@@ -113,8 +113,8 @@
         android:padding="4dp"
         android:hint="@string/passwordConfirmationHint"
         android:autofillHints="password"
-        android:textColor="#515151"
-        android:textColorHint="#515151"
+        android:textColor="@color/bodyTextColor"
+        android:textColorHint="@color/bodyTextColor"
         android:inputType="textPassword"/>
 
     <Button
@@ -127,6 +127,6 @@
         android:gravity="center"
         android:background="@drawable/button_border_rounded_corners"
         android:text="@string/signUpButton"
-        android:textColor="#515151"/>
+        android:textColor="@color/bodyTextColor"/>
 
 </RelativeLayout>

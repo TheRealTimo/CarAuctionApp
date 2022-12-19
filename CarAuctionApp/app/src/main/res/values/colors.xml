@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="appBackgroundColor">#F5F5F5</color>
     <color name="mainColor">#00e8b6</color>
+    <color name="titleTextColor">#3A3A3D</color>
+    <color name="bodyTextColor">#515151</color>
 </resources>
