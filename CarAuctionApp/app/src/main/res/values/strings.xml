@@ -11,6 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- Titles -->
     <string name="signUpTitle">Sign Up</string>
+    <string name="logo">logo</string>
 
     <!-- Form Hints -->
     <string name="firstNameHint">First Name</string>
@@ -23,5 +24,4 @@
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
     <string name="login_button">Log In</string>
-    <string name="logo">logo</string>
 </resources>
