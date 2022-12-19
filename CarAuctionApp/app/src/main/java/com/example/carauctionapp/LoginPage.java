@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import java.util.regex.Pattern;
 
-public class LoginPage extends Activity {
+public class LogIn extends Activity {
     private Button logInButton;
 
     private String email, password;
