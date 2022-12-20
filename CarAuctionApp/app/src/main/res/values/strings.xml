@@ -9,9 +9,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-
     <!-- Titles -->
     <string name="signUpTitle">Sign Up</string>
+    <string name="logo">logo</string>
 
     <!-- Form Hints -->
     <string name="firstNameHint">First Name</string>
@@ -24,6 +24,7 @@
 
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
+
     <string name="navbarCloseButton">X</string>
 
     <!-- Navbar -->
@@ -32,4 +33,19 @@
     <string name="profileNavItem">Profile</string>
     <string name="watchlistNavItem">Watch list</string>
     <string name="recentlySoldNavItem">Recently Sold</string>
+
+
+    <string name="login_button">Log In</string>
+
+
+    <!-- Car Info Page Titles -->
+    <string name="carInfoMakeTitle">Make:</string>
+    <string name="carInfoModelTitle">Model:</string>
+    <string name="carInfoYearTitle">Year:</string>
+    <string name="carInfoMileagesTitle">Mileages:</string>
+
+    <!-- Default car data value -->
+    <string name="carInfoDataDefaultValue">Unkown</string>
+
+
 </resources>
