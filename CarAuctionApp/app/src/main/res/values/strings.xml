@@ -20,9 +20,20 @@
     <string name="emailConfirmationHint">Email Confirmation</string>
     <string name="passwordHint">Password</string>
     <string name="passwordConfirmationHint">Password Confirmation</string>
+    <string name="navbarSearchHint">Search</string>
 
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
+
+    <string name="navbarCloseButton">X</string>
+
+    <!-- Navbar -->
+    <string name="navbarTitle">Menu</string>
+    <string name="carListingsNavItem">Car listings</string>
+    <string name="profileNavItem">Profile</string>
+    <string name="watchlistNavItem">Watch list</string>
+    <string name="recentlySoldNavItem">Recently Sold</string>
+
 
     <string name="login_button">Log In</string>
 
@@ -35,5 +46,6 @@
 
     <!-- Default car data value -->
     <string name="carInfoDataDefaultValue">Unkown</string>
+
 
 </resources>
