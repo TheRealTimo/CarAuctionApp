@@ -23,5 +23,17 @@
 
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
+
     <string name="login_button">Log In</string>
+
+
+    <!-- Car Info Page Titles -->
+    <string name="carInfoMakeTitle">Make:</string>
+    <string name="carInfoModelTitle">Model:</string>
+    <string name="carInfoYearTitle">Year:</string>
+    <string name="carInfoMileagesTitle">Mileages:</string>
+
+    <!-- Default car data value -->
+    <string name="carInfoDataDefaultValue">Unkown</string>
+
 </resources>
