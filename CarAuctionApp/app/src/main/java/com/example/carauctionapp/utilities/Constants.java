@@ -1,5 +1,7 @@
 package com.example.carauctionapp.utilities;
 
+import android.util.Patterns;
+
 import java.util.regex.Pattern;
 
 public class Constants {
@@ -22,7 +24,9 @@ public class Constants {
     public static final Pattern upperCase = Pattern.compile("[A-Z]");
     public static final Pattern lowerCase = Pattern.compile("[a-z]");
     public static final Pattern digit = Pattern.compile("[0-9]");
+    public static final Pattern emailAddressPattern = Patterns.EMAIL_ADDRESS;
+    public static final Pattern legalPasswordCharacters = Pattern.compile("[@_+]");
     public static final Pattern illegalNameCharacters = Pattern.compile("[<>+*@&()^!\"#$%':;=?_`{}|~]");
-    public static final Pattern illegalPasswordCharacters = Pattern.compile("[<>+*&()^!\"#$%':;=?_`{}|~]");
+    public static final Pattern illegalPasswordCharacters = Pattern.compile("[<>*&()^!\"#$%':;=?`{}|~]");
     public static final Pattern illegalPhoneCharacters = Pattern.compile("[<>*@&()^!\"#$%':;=?_`{}|~]");
 }

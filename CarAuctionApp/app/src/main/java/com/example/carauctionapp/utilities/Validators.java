@@ -1,6 +1,5 @@
 package com.example.carauctionapp.utilities;
 
-import android.util.Patterns;
 import android.widget.EditText;
 
 public class Validators {
@@ -39,7 +38,7 @@ public class Validators {
     }
 
     public static boolean validateEmailFieldInputData(String email) {
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Constants.emailAddressPattern.matcher(email).matches()) {
             return false;
         }
 
@@ -56,6 +55,10 @@ public class Validators {
         }
 
         if (!Constants.digit.matcher(password).find()) {
+            return false;
+        }
+
+        if(!Constants.legalPasswordCharacters.matcher(password).find()) {
             return false;
         }
 
