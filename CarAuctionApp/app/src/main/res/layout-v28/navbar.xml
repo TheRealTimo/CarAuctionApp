@@ -21,7 +21,7 @@
         android:layout_toEndOf="@id/navbarMenuTitle"
         android:layout_marginStart="220dp"
         android:layout_marginEnd="20dp"
-        android:background="none"
+        android:background="@null"
         android:text="@string/navbarCloseButton"
         android:textSize="30sp"
         android:textColor="@color/titleTextColor" />
