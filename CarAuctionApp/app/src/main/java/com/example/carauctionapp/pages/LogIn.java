@@ -1,4 +1,4 @@
-package com.example.carauctionapp;
+package com.example.carauctionapp.pages;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+
+import com.example.carauctionapp.R;
+import com.example.carauctionapp.utilities.Constants;
 
 import java.util.regex.Pattern;
 
@@ -58,12 +61,12 @@ public class LogIn extends Activity {
             return false;
         }
 
-        if (passwordInput.length() < Utilities.MIN_PASSWORD_LENGTH) {
-            passwordInput.setError("Password length must be at least: " + Utilities.MIN_PASSWORD_LENGTH);
+        if (passwordInput.length() < Constants.MIN_PASSWORD_LENGTH) {
+            passwordInput.setError("Password length must be at least: " + Constants.MIN_PASSWORD_LENGTH);
             return false;
         }
-        if (passwordInput.length() > Utilities.MAX_PASSWORD_LENGTH) {
-            passwordInput.setError("Password is too long, max characters: " + Utilities.MAX_PASSWORD_LENGTH);
+        if (passwordInput.length() > Constants.MAX_PASSWORD_LENGTH) {
+            passwordInput.setError("Password is too long, max characters: " + Constants.MAX_PASSWORD_LENGTH);
             return false;
         }
 

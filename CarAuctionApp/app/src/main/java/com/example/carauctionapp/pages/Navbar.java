@@ -1,4 +1,4 @@
-package com.example.carauctionapp;
+package com.example.carauctionapp.pages;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import com.example.carauctionapp.R;
 
 public class Navbar extends Activity {
     private TextView carListingsLink, profileLink, watchListLink, recentlySoldLink;

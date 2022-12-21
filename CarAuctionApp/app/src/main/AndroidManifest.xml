@@ -30,7 +30,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".CarInfo"></activity>
+        <activity android:name=".pages.SignUp"></activity>
+        <activity android:name=".pages.CarInfo"></activity>
     </application>
 </manifest>
