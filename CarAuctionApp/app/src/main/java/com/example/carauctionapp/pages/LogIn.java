@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,6 +56,7 @@ public class LogIn extends Activity {
                     String tempPassword = passwordInput.getText().toString();
 
                     isAllFieldsChecked = validateAllFields(tempEmail, tempPassword);
+                    Log.println(Log.INFO, "VALIDATION",String.valueOf(isAllFieldsChecked));
 
                     if (isAllFieldsChecked) {
                         try {
@@ -74,23 +76,25 @@ public class LogIn extends Activity {
         if (!Validators.checkIfInputFieldIsEmpty(emailInput)) Utilities.setInputError(emailInput, Constants.RequiredFieldError);
         if (!Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput)) Utilities.setInputError(passwordInput, Constants.PasswordLengthError);
 
-        return true;
+        return Validators.checkIfInputFieldIsEmpty(emailInput) &&
+                Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput);
     }
 
     private boolean validateEmailFieldsInput(String email) {
         if (!Validators.validateEmailFieldInputData(email)) Utilities.setInputError(emailInput, Constants.InvalidEmailError);
 
-        return true;
+        return Validators.validateEmailFieldInputData(email);
     }
 
     private boolean validatePasswordFieldsInput(String password) {
         if (!Validators.validatePasswordFieldInputData(password)) Utilities.setInputError(passwordInput, Constants.InvalidPasswordError);
 
-        return true;
+        return Validators.validatePasswordFieldInputData(password);
     }
 
     private boolean validateAllFields(String email, String password) {
-        return  validateEmailFieldsInput(email) && validatePasswordFieldsInput(password);
+        return  validateEmailFieldsInput(email) &&
+                validatePasswordFieldsInput(password);
     }
 
     private void redirectToCarListingsPage() {
