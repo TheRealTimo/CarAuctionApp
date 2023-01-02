@@ -14,7 +14,7 @@
         android:layout_marginTop="60dp"
         android:layout_marginEnd="340dp"
         android:fontFamily="@font/raleway_bold"
-        android:text="Auctions"
+        android:text="@string/auctions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,73 +24,65 @@
         android:id="@+id/spinner2"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        android:contentDescription="@string/type"
+        android:prompt="@string/type"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/spinner4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Spinner
         android:id="@+id/spinner3"
         android:layout_width="98dp"
         android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        android:contentDescription="@string/transmission"
+        android:prompt="@string/transmission"
         app:layout_constraintEnd_toStartOf="@+id/spinner2"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toEndOf="@+id/spinner4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Spinner
         android:id="@+id/spinner4"
         android:layout_width="91dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="320dp"
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        android:contentDescription="@string/carInfoYearTitle"
+        android:prompt="@string/carInfoYearTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.59" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="412dp"
-        android:layout_height="569dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/spinner3">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="414dp"
+            android:layout_height="732dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            tools:listitem="@layout/list_item">
 
-            <ListView
-                android:id="@+id/listview"
-                android:layout_width="412dp"
-                android:layout_height="729dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                tools:listitem="@layout/list_item">
-
-            </ListView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
+        </ListView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

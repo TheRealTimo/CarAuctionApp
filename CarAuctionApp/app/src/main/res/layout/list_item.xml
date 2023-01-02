@@ -18,7 +18,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/topBid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -28,11 +28,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.107"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/auctionName"
                 app:layout_constraintVertical_bias="0.695" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/auctionName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -42,11 +42,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/listingImage"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/listingImage"
                 android:layout_width="410dp"
                 android:layout_height="177dp"
                 android:layout_weight="1"
@@ -56,10 +56,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/car_logo" />
+                app:srcCompat="@drawable/car_logo"
+                tools:ignore="ImageContrastCheck,InvalidId" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/bidAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"
