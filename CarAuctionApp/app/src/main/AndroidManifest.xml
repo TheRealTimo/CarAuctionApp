@@ -31,6 +31,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".pages.SignUp"></activity>
+        <activity android:name=".pages.LogIn"></activity>
         <activity android:name=".pages.CarInfo"></activity>
     </application>
 </manifest>

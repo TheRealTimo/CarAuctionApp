@@ -79,7 +79,7 @@ public class SignUp extends Activity {
         if (!Validators.checkIfInputFieldIsEmpty(billingAddressInput)) Utilities.setInputError(billingAddressInput, Constants.RequiredFieldError);
         if (!Validators.checkIfInputFieldIsEmpty(shippingAddressInput)) Utilities.setInputError(shippingAddressInput, Constants.RequiredFieldError);
 
-        if(!Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput)) Utilities.setInputError(passwordInput, Constants.PasswordLengthError);
+        if (!Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput)) Utilities.setInputError(passwordInput, Constants.PasswordLengthError);
 
         return true;
     }
@@ -151,8 +151,8 @@ public class SignUp extends Activity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Context context = getApplicationContext();
-                    Toast successfulSignUpToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
-                    successfulSignUpToast.show();
+                    Toast errorSignUpToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
+                    errorSignUpToast.show();
                 }
             });
 
