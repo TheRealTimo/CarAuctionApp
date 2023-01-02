@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainColor">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:src="@drawable/background_box_profile_info_page"/>
+
+    <TextView android:id="@+id/profilePageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:layout_marginStart="25dp"
+        android:text="@string/profileTitle"
+        android:textSize="30sp"
+        android:textColor="@color/titleTextColor"
+        />
+
+    <TextView
+        android:id="@+id/profileFirstNameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePageTitle"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginTop="40dp"
+        android:text="@string/profileFirstNameTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePageTitle"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="100dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <TextView
+        android:id="@+id/profileLastNameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePageTitle"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="200dp"
+        android:text="@string/profileLastNameTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePageTitle"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="300dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <TextView
+        android:id="@+id/profileEmailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileFirstNameTitle"
+        android:layout_alignStart="@id/profileFirstNameTitle"
+        android:layout_marginTop="40dp"
+        android:text="@string/profileEmailTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileFirstNameTitle"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="60dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <TextView
+        android:id="@+id/profilePhoneTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileLastNameTitle"
+        android:layout_alignStart="@id/profileLastNameTitle"
+        android:layout_marginTop="40dp"
+        android:text="@string/profilePhoneTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileLastNameTitle"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="260dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <TextView
+        android:id="@+id/profileBillingAddressTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileEmailTitle"
+        android:layout_alignStart="@id/profileEmailTitle"
+        android:layout_marginTop="40dp"
+        android:text="@string/profileBillingAddressTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileEmailTitle"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="135dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <TextView
+        android:id="@+id/profileShippingAddressTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileBillingAddressTitle"
+        android:layout_alignStart="@id/profileBillingAddressTitle"
+        android:layout_marginTop="40dp"
+        android:text="@string/profileShippingAddressTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileBillingAddressTitle"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="155dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+
+</RelativeLayout>
