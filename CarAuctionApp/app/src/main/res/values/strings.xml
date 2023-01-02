@@ -45,5 +45,17 @@
     <!-- Default car data value -->
     <string name="carInfoDataDefaultValue">Unkown</string>
 
+    <!-- Profile Page Titles -->
+    <string name="profileTitle">Account</string>
+    <string name="profileFirstNameTitle">First Name:</string>
+    <string name="profileLastNameTitle">Last Name:</string>
+    <string name="profileEmailTitle">Email:</string>
+    <string name="profilePhoneTitle">Phone:</string>
+    <string name="profileBillingAddressTitle">Billing Address:</string>
+    <string name="profileShippingAddressTitle">Shipping Address:</string>
+
+    <!-- Default profile data value -->
+    <string name="accountInfoDataDefaultValue">Unkown</string>
+
 
 </resources>
