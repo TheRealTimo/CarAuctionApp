@@ -44,6 +44,9 @@
 
     <!-- Default car data value -->
     <string name="carInfoDataDefaultValue">Unkown</string>
+    <string name="transmission">Transmission</string>
+    <string name="type">Type</string>
+    <string name="auctions">Auctions</string>
 
 
 </resources>
