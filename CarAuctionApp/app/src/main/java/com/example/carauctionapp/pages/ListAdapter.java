@@ -42,6 +42,6 @@ public class ListAdapter extends ArrayAdapter<Listing> {
         bidAmount.setText(listing.bidAmount);
 
 
-        return super.getView(position, convertView, parent);
+        return convertView;
     }
 }
