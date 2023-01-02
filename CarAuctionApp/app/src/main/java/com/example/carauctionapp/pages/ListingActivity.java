@@ -23,11 +23,11 @@ public class ListingActivity extends Activity {
         setContentView(binding.getRoot());
 
 
-        int[] imageId = new int[];
-        String[] name = new String[];
-        String[] color = new String[];
-        double[] currentBid = new double[];
-        int[] bidAmount = new int[];
+        int[] imageId = {};
+        String[] name = {};
+        String[] color = {};
+        double[] currentBid = {};
+        int[] bidAmount = {};
 
         ArrayList<Listing> listingArrayList = new ArrayList<>();
 
