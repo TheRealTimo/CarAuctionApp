@@ -10,7 +10,7 @@
         android:minHeight="48dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -69,7 +69,7 @@
         android:inputType="textEmailAddress"/>
 
     <EditText
-        android:id="@+id/signUpEmailConfirmation"
+        android:id="@+id/signUpPhone"
         android:minHeight="48dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -78,11 +78,11 @@
         android:gravity="center"
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
         android:padding="4dp"
-        android:hint="@string/emailConfirmationHint"
-        android:autofillHints="emailAddress"
+        android:hint="@string/phoneHint"
+        android:autofillHints="phone"
         android:textColorHint="@color/bodyTextColor"
         android:textColor="@color/bodyTextColor"
-        android:inputType="textEmailAddress"/>
+        android:inputType="phone"/>
 
     <EditText
         android:id="@+id/signUpPassword"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/signUpEmailConfirmation"
+        android:layout_below="@id/signUpPhone"
         android:gravity="center"
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
         android:padding="4dp"
@@ -102,26 +102,43 @@
         android:inputType="textPassword"/>
 
     <EditText
-        android:id="@+id/signUpPasswordConfirmation"
+        android:id="@+id/signUpBillingAddress"
         android:minHeight="48dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signUpPassword"
         android:gravity="center"
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
         android:padding="4dp"
-        android:hint="@string/passwordConfirmationHint"
-        android:autofillHints="password"
+        android:hint="@string/billingAddressHint"
+        android:autofillHints="postalAddress"
         android:textColor="@color/bodyTextColor"
         android:textColorHint="@color/bodyTextColor"
-        android:inputType="textPassword"/>
+        android:inputType="textPostalAddress"/>
+
+    <EditText
+        android:id="@+id/signUpShippingAddress"
+        android:minHeight="48dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/signUpBillingAddress"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/shippingAddressHint"
+        android:autofillHints="postalAddress"
+        android:textColor="@color/bodyTextColor"
+        android:textColorHint="@color/bodyTextColor"
+        android:inputType="textPostalAddress"/>
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_below="@id/signUpPasswordConfirmation"
+        android:layout_below="@id/signUpShippingAddress"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:backgroundTint="#03DAC5"

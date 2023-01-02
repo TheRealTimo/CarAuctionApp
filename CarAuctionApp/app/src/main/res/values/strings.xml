@@ -17,9 +17,10 @@
     <string name="firstNameHint">First Name</string>
     <string name="lastNameHint">Last Name</string>
     <string name="emailHint">Email</string>
-    <string name="emailConfirmationHint">Email Confirmation</string>
+    <string name="phoneHint">Phone</string>
     <string name="passwordHint">Password</string>
-    <string name="passwordConfirmationHint">Password Confirmation</string>
+    <string name="billingAddressHint">Billing Address</string>
+    <string name="shippingAddressHint">Shipping Address</string>
     <string name="navbarSearchHint">Search</string>
 
     <!-- Buttons -->
