@@ -10,6 +10,7 @@ public class Constants {
 
     //API URLs
     public static final String SIGN_UP_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/user";
+    public static final String LOG_IN_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/loginUser";
     public static final String CAR_API_URL = "https://carapi.app/api";
 
     //Error messages
@@ -29,4 +30,9 @@ public class Constants {
     public static final Pattern illegalNameCharacters = Pattern.compile("[<>+*@&()^!\"#$%':;=?_`{}|~]");
     public static final Pattern illegalPasswordCharacters = Pattern.compile("[<>*&()^!\"#$%':;=?`{}|~]");
     public static final Pattern illegalPhoneCharacters = Pattern.compile("[<>*@&()^!\"#$%':;=?_`{}|~]");
+
+    //Session
+    public static final String SESSION_KEY = "sessionUser";
+    public static final String USER_API_KEY = "apiKey";
+    public static final String USER_IS_LOGGED_IN_KEY = "isLoggedIn";
 }

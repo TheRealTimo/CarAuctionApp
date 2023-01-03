@@ -79,45 +79,57 @@ public class SignUp extends Activity {
         if (!Validators.checkIfInputFieldIsEmpty(billingAddressInput)) Utilities.setInputError(billingAddressInput, Constants.RequiredFieldError);
         if (!Validators.checkIfInputFieldIsEmpty(shippingAddressInput)) Utilities.setInputError(shippingAddressInput, Constants.RequiredFieldError);
 
-        if(!Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput)) Utilities.setInputError(passwordInput, Constants.PasswordLengthError);
+        if (!Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput)) Utilities.setInputError(passwordInput, Constants.PasswordLengthError);
 
-        return true;
+        return Validators.checkIfInputFieldIsEmpty(firstNameInput) &&
+                Validators.checkIfInputFieldIsEmpty(lastNameInput) &&
+                Validators.checkIfInputFieldIsEmpty(emailInput) &&
+                Validators.checkIfInputFieldIsEmpty(phoneInput) &&
+                Validators.checkIfInputFieldIsEmpty(billingAddressInput) &&
+                Validators.checkIfInputFieldIsEmpty(shippingAddressInput) &&
+                Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput);
     }
 
     private boolean validateNameFieldsInput(String firstName, String lastName) {
         if (!Validators.validateTextFieldInputData(firstName, false)) Utilities.setInputError(firstNameInput, Constants.InvalidTextInputFieldError);
         if (!Validators.validateTextFieldInputData(lastName, false)) Utilities.setInputError(lastNameInput, Constants.InvalidTextInputFieldError);
 
-        return true;
+        return Validators.validateTextFieldInputData(firstName, false) &&
+                Validators.validateTextFieldInputData(lastName, false);
     }
 
     private boolean validateEmailFieldInput(String email) {
         if (!Validators.validateEmailFieldInputData(email)) Utilities.setInputError(emailInput, Constants.InvalidEmailError);
 
-        return true;
+        return Validators.validateEmailFieldInputData(email);
     }
 
     private boolean validatePasswordFieldInput(String password) {
         if (!Validators.validatePasswordFieldInputData(password)) Utilities.setInputError(passwordInput, Constants.InvalidPasswordError);
 
-        return true;
+        return Validators.validatePasswordFieldInputData(password);
     }
 
     private boolean validatePhoneFieldInput(String phoneNumber) {
         if (!Validators.validatePhoneFieldInputData(phoneNumber)) Utilities.setInputError(phoneInput, Constants.InvalidPhoneNumberError);
 
-        return true;
+        return Validators.validatePhoneFieldInputData(phoneNumber);
     }
 
     private boolean validateBillingAndShippingAddressFieldsInput(String billingAddress, String shippingAddress) {
         if (!Validators.validateTextFieldInputData(billingAddress, true)) Utilities.setInputError(billingAddressInput, Constants.InvalidTextInputFieldError);
         if (!Validators.validateTextFieldInputData(shippingAddress, true)) Utilities.setInputError(shippingAddressInput, Constants.InvalidTextInputFieldError);
 
-        return true;
+        return Validators.validateTextFieldInputData(billingAddress, true) &&
+                Validators.validateTextFieldInputData(shippingAddress, true);
     }
 
     private boolean validateAllFields(String firstName, String lastName, String email, String password, String phoneNumber, String billingAddress, String shippingAddress) {
-        return validateNameFieldsInput(firstName, lastName) && validateEmailFieldInput(email) && validatePasswordFieldInput(password) && validatePhoneFieldInput(phoneNumber) && validateBillingAndShippingAddressFieldsInput(billingAddress, shippingAddress);
+        return validateNameFieldsInput(firstName, lastName) &&
+                validateEmailFieldInput(email) &&
+                validatePasswordFieldInput(password) &&
+                validatePhoneFieldInput(phoneNumber) &&
+                validateBillingAndShippingAddressFieldsInput(billingAddress, shippingAddress);
     }
 
     private void sendSignUpPostRequest() throws JSONException {
@@ -151,8 +163,8 @@ public class SignUp extends Activity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Context context = getApplicationContext();
-                    Toast successfulSignUpToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
-                    successfulSignUpToast.show();
+                    Toast errorSignUpToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
+                    errorSignUpToast.show();
                 }
             });
 

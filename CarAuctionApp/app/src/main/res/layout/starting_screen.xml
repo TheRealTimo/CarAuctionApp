@@ -5,19 +5,30 @@
     android:layout_height="match_parent"
     tools:context=".StartingScreen">
 
+    <ImageView
+        android:id="@+id/startingScreenLogo"
+        android:src="@drawable/roller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" />
+
     <Button
         android:id="@+id/redirectToSignUpButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_below="@id/startingScreenLogo"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:background="@drawable/button_border_rounded_corners"
+        android:backgroundTint="#03DAC5"
         android:text="@string/signUpButton"
-        android:textColor="#515151"/>
+        android:textColor="@color/bodyTextColor"/>
 
     <Button
-        android:id="@+id/redirectToCarInfoPageButton"
+        android:id="@+id/redirectToLogInButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="50dp"
@@ -25,8 +36,9 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:background="@drawable/button_border_rounded_corners"
-        android:text="CarInfo Page"
-        android:textColor="#515151"/>
+        android:backgroundTint="#03DAC5"
+        android:text="@string/logInButton"
+        android:textColor="@color/bodyTextColor"/>
 
 
 </RelativeLayout>

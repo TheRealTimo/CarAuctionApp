@@ -7,11 +7,13 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.pages.CarInfo;
+import com.example.carauctionapp.pages.LogIn;
 import com.example.carauctionapp.pages.SignUp;
 
 public class StartingScreen extends AppCompatActivity {
-    private Button signUpButton, carInfoPageButton;
+    private Button signUpButton, logInButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,11 +21,26 @@ public class StartingScreen extends AppCompatActivity {
         setContentView(R.layout.starting_screen);
 
         signUpButton = findViewById(R.id.redirectToSignUpButton);
-        carInfoPageButton = findViewById(R.id.redirectToCarInfoPageButton);
+        logInButton = findViewById(R.id.redirectToLogInButton);
 
         signUpButton.setOnClickListener(view -> redirectToSignUpPage());
+        logInButton.setOnClickListener(view -> redirectToLogInPage());
+    }
 
-        carInfoPageButton.setOnClickListener(view -> redirectToCarInfoPage());
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        checkLogInSession();
+    }
+
+    private void checkLogInSession() {
+        SessionManagement sessionManagement = new SessionManagement(this);
+        boolean isUserLoggedIn = sessionManagement.getIsUserLoggedIn();
+
+        if (isUserLoggedIn) {
+            redirectToCarListingsPage();
+        }
     }
 
     public void redirectToSignUpPage() {
@@ -31,7 +48,13 @@ public class StartingScreen extends AppCompatActivity {
         startActivity(openSignUpPage);
     }
 
-    public void redirectToCarInfoPage() {
+    public void redirectToLogInPage() {
+        Intent openCarInfoPage = new Intent(this, LogIn.class);
+        startActivity(openCarInfoPage);
+    }
+
+    private void redirectToCarListingsPage() {
+        //TO DO: CHANGE THIS CLASS TO CarListings instead of CarInfo
         Intent openCarInfoPage = new Intent(this, CarInfo.class);
         startActivity(openCarInfoPage);
     }

@@ -25,6 +25,7 @@
 
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
+    <string name="logInButton">Log In</string>
 
     <string name="navbarCloseButton">X</string>
 
@@ -34,10 +35,6 @@
     <string name="profileNavItem">Profile</string>
     <string name="watchlistNavItem">Watch list</string>
     <string name="recentlySoldNavItem">Recently Sold</string>
-
-
-    <string name="login_button">Log In</string>
-
 
     <!-- Car Info Page Titles -->
     <string name="carInfoMakeTitle">Make:</string>
