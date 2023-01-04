@@ -14,13 +14,18 @@ public class SessionManagement {
         editor = sharedPreferences.edit();
     }
 
-    public void saveSession(String userApiKey) {
+    public void saveSession(String userApiKey, String userEmail) {
         editor.putString(Constants.USER_API_KEY, userApiKey).commit();
+        editor.putString(Constants.USER_EMAIL_KEY, userEmail).commit();
         editor.putBoolean(Constants.USER_IS_LOGGED_IN_KEY, true).commit();
     }
 
     public String getCurrentUserApiKey() {
         return sharedPreferences.getString(Constants.USER_API_KEY, "");
+    }
+
+    public String getCurrentUserEmail() {
+        return sharedPreferences.getString(Constants.USER_EMAIL_KEY, "");
     }
 
     public boolean getIsUserLoggedIn() {

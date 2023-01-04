@@ -31,7 +31,8 @@
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
-    <TextView android:layout_width="wrap_content"
+    <TextView android:id="@+id/profileFirstNameData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profilePageTitle"
         android:layout_marginTop="40dp"
@@ -53,7 +54,8 @@
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
-    <TextView android:layout_width="wrap_content"
+    <TextView android:id="@+id/profileLastNameData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profilePageTitle"
         android:layout_marginTop="40dp"
@@ -74,7 +76,8 @@
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
-    <TextView android:layout_width="wrap_content"
+    <TextView android:id="@+id/profileEmailData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profileFirstNameTitle"
         android:layout_marginTop="40dp"
@@ -95,7 +98,8 @@
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
-    <TextView android:layout_width="wrap_content"
+    <TextView android:id="@+id/profilePhoneData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profileLastNameTitle"
         android:layout_marginTop="40dp"
@@ -116,7 +120,8 @@
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
-    <TextView android:layout_width="wrap_content"
+    <TextView android:id="@+id/profileBillingAddressData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profileEmailTitle"
         android:layout_marginTop="40dp"
@@ -137,7 +142,8 @@
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
-    <TextView android:layout_width="wrap_content"
+    <TextView android:id="@+id/profileShippingAddressData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profileBillingAddressTitle"
         android:layout_marginTop="40dp"
