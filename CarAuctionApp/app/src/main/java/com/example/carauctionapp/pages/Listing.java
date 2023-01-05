@@ -13,4 +13,44 @@ public class Listing {
         this.bidAmount = bidAmount;
         this.imageId = imageId;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public double getCurrentBid() {
+        return currentBid;
+    }
+
+    public void setCurrentBid(double currentBid) {
+        this.currentBid = currentBid;
+    }
+
+    public int getBidAmount() {
+        return bidAmount;
+    }
+
+    public void setBidAmount(int bidAmount) {
+        this.bidAmount = bidAmount;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
 }
