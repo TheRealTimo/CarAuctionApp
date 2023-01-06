@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/createListingPageTitle"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/create_listing_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/createListingTitle"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/create_listing_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/createListingDescription"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:textSize="18sp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/create_listing_opening_bid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/createListingOpeningBid"
+            android:inputType="numberDecimal"
+            android:textSize="18sp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/create_listing_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/createListingDuration"
+            android:inputType="number"
+            android:textSize="18sp"
+            android:autofillHints="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/createListingAboutCar"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/create_listing_s_make"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/createListingMake"
+            android:hint="@string/createListingMake" />
+
+        <Spinner
+            android:id="@+id/create_listing_s_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/createListingModel"
+            android:hint="@string/createListingModel" />
+
+        <Spinner
+            android:id="@+id/create_listing_s_trim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/createListingTrim"
+            android:hint="@string/createListingTrim" />
+
+        <Spinner
+            android:id="@+id/create_listing_s_engine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/createListingEngine"
+            android:hint="@string/createListingEngine" />
+
+        <Spinner
+            android:id="@+id/create_listing_s_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/createListingCondition"
+            android:hint="@string/createListingCondition" />
+
+        <EditText
+            android:id="@+id/create_listing_mileage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/createListingMileage"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/create_listing_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/createListingColor"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:autofillHints="" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,5 +66,22 @@
     <!-- Default profile data value -->
     <string name="accountInfoDataDefaultValue"></string>
 
+    <!--Create Lisings Page -->
+    <string name="createListingPageTitle">Create Listing</string>
+    <string name="createListingTitle">Title</string>
+    <string name="createListingDescription">Description</string>
+    <string name="createListingOpeningBid">Opening Bid</string>
+    <string name="createListingDuration">Duration</string>
+
+    <string name="createListingAboutCar">About Car</string>
+    <string name="createListingMake">Make</string>
+    <string name="createListingModel">Model</string>
+    <string name="createListingTrim">Trim</string>
+    <string name="createListingEngine">Engine</string>
+    <string name="createListingCondition">Condition</string>
+    <string name="createListingMileage">Mileage</string>
+    <string name="createListingColor">Color</string>
+
+
 
 </resources>
