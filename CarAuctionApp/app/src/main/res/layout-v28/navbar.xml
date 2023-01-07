@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    >
+
+    <TextView
+        android:id="@+id/navbarMenuTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/navbarTitle"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/titleTextColor" />
+
+    <Button  android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignBaseline="@id/navbarMenuTitle"
+        android:layout_toEndOf="@id/navbarMenuTitle"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="20dp"
+        android:background="@null"
+        android:text="@string/navbarCloseButton"
+        android:textSize="30sp"
+        android:textColor="@color/titleTextColor" />
+
+    <EditText
+        android:id="@+id/navbarSearchInput"
+        android:minHeight="48dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/navbarMenuTitle"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/navbarSearchHint"
+        android:textColor="@color/bodyTextColor"
+        android:textColorHint="@color/bodyTextColor" />
+
+    <TextView
+        android:id="@+id/navbarCarListingsLink"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/navbarMenuTitle"
+        android:layout_below="@id/navbarSearchInput"
+        android:minHeight="48dp"
+        android:text="@string/carListingsNavItem"
+        android:textSize="25sp"
+        android:textColor="@color/titleTextColor"
+        android:focusable="true"
+        android:clickable="true" />
+
+    <TextView
+        android:id="@+id/navbarProfileLink"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/navbarMenuTitle"
+        android:layout_below="@id/navbarCarListingsLink"
+        android:minHeight="48dp"
+        android:text="@string/profileNavItem"
+        android:textSize="25sp"
+        android:textColor="@color/titleTextColor"
+        android:focusable="true"
+        android:clickable="true" />
+
+    <TextView
+        android:id="@+id/navbarWatchListLink"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignStart="@id/navbarMenuTitle"
+        android:layout_below="@id/navbarProfileLink"
+        android:minHeight="48dp"
+        android:text="@string/watchlistNavItem"
+        android:textSize="25sp"
+        android:textColor="@color/titleTextColor"
+        android:focusable="true"
+        android:clickable="true" />
+
+    <TextView
+        android:id="@+id/navbarRecentlySoldLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navbarWatchListLink"
+        android:layout_alignStart="@id/navbarMenuTitle"
+        android:layout_marginTop="20dp"
+        android:minHeight="48dp"
+        android:text="@string/recentlySoldNavItem"
+        android:textColor="@color/titleTextColor"
+        android:textSize="25sp"
+        android:focusable="true"
+        android:clickable="true" />
+
+</RelativeLayout>

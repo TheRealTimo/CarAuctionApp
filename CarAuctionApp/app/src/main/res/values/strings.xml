@@ -9,4 +9,41 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Titles -->
+    <string name="signUpTitle">Sign Up</string>
+    <string name="logo">logo</string>
+
+    <!-- Form Hints -->
+    <string name="firstNameHint">First Name</string>
+    <string name="lastNameHint">Last Name</string>
+    <string name="emailHint">Email</string>
+    <string name="phoneHint">Phone</string>
+    <string name="passwordHint">Password</string>
+    <string name="billingAddressHint">Billing Address</string>
+    <string name="shippingAddressHint">Shipping Address</string>
+    <string name="navbarSearchHint">Search</string>
+
+    <!-- Buttons -->
+    <string name="signUpButton">Sign Up</string>
+    <string name="logInButton">Log In</string>
+
+    <string name="navbarCloseButton">X</string>
+
+    <!-- Navbar -->
+    <string name="navbarTitle">Menu</string>
+    <string name="carListingsNavItem">Car listings</string>
+    <string name="profileNavItem">Profile</string>
+    <string name="watchlistNavItem">Watch list</string>
+    <string name="recentlySoldNavItem">Recently Sold</string>
+
+    <!-- Car Info Page Titles -->
+    <string name="carInfoMakeTitle">Make:</string>
+    <string name="carInfoModelTitle">Model:</string>
+    <string name="carInfoYearTitle">Year:</string>
+    <string name="carInfoMileagesTitle">Mileages:</string>
+
+    <!-- Default car data value -->
+    <string name="carInfoDataDefaultValue">Unkown</string>
+
+
 </resources>
