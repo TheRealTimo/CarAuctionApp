@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "main", "development" ]
+    branches: ["main", "development" ]
   pull_request:
-    branches: [ "main", "development" ]
+    branches: ["main", "development"]
 
 jobs:
   build:
@@ -20,11 +20,15 @@ jobs:
           distribution: 'temurin'
 
       - name: Build
-        run: mvn --batch-mode -DskipTests package
+        run: gradle build
 
-  unit tests:
-    dependsOn: build
-    condition: succeeded('build')
+  Unit-Tests:
+    runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Test
-        run: mvn --batch-mode -Dmaven.test.failure.ignore=true test
+      - name: Initialize Gradle
+        run: gradle init
+      - name: List possible tests
+        run: gradle test --dry-run
+      - name: Run all unit tests
+        run: gradle test
