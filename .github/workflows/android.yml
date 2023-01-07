@@ -18,6 +18,9 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+          
+      - name: Set Up Gradle
+        run: gradle init
 
       - name: Build
         run: gradle build
