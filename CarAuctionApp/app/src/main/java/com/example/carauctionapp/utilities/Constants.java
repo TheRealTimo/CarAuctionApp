@@ -41,4 +41,8 @@ public class Constants {
     public static final String HEADER_API_KEY = "apiKey";
     public static final String HEADER_CONTENT_TYPE_KEY = "Content-Type";
     public static final String HEADER_CONTENT_TYPE_JSON = "application/json";
+
+    //RequestParams
+    public static final String EMAIL_PARAM = "?email=";
+    public static final String PASSWORD_PARAM = "&password=";
 }

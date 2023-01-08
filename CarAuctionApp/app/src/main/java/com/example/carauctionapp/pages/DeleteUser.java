@@ -1,12 +1,14 @@
 package com.example.carauctionapp.pages;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -72,7 +74,9 @@ public class DeleteUser extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user", jsonUserObject);
 
-        JsonObjectRequest deleteUserRequest = new JsonObjectRequest(Request.Method.DELETE, Constants.USER_API_URL, jsonBody,
+        String apiRequestUrl = Constants.USER_API_URL + Constants.EMAIL_PARAM + userEmail + Constants.PASSWORD_PARAM + passwordView.getText().toString();
+
+        JsonObjectRequest deleteUserRequest = new JsonObjectRequest(Request.Method.DELETE, apiRequestUrl, jsonBody,
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -83,7 +87,9 @@ public class DeleteUser extends Activity {
             new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.d("DeleteError", "Something went wrong" + error.toString());
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
                 }
             }
         ) {
@@ -91,8 +97,6 @@ public class DeleteUser extends Activity {
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
-                headers.put(Constants.HEADER_CONTENT_TYPE_KEY, Constants.HEADER_CONTENT_TYPE_JSON);
-                Log.d("Headers", headers.toString());
                 return headers;
             }
         };

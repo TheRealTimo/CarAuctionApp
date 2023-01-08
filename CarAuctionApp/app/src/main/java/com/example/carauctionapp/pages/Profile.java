@@ -64,12 +64,14 @@ public class Profile extends Activity {
     }
 
     private void displayUserData(JSONObject jsonResponse) throws JSONException {
-        firstName = (String) jsonResponse.get("firstName");
-        lastName = (String) jsonResponse.get("lastName");
-        email = (String) jsonResponse.get("email");
-        phone = (String) jsonResponse.get("phone");
-        billingAddress = (String) jsonResponse.get("billingAddress");
-        shippingAddress = (String) jsonResponse.get("shippingAddress");
+        JSONObject userResponse = (JSONObject) jsonResponse.get("user");
+
+        firstName = (String) userResponse.get("name");
+        lastName = (String) userResponse.get("surname");
+        email = (String) userResponse.get("email");
+        phone = (String) userResponse.get("phone");
+        billingAddress = (String) userResponse.get("billingAddress");
+        shippingAddress = (String) userResponse.get("shippingAddress");
 
         firstNameView.setText(firstName);
         lastNameView.setText(lastName);
@@ -91,10 +93,10 @@ public class Profile extends Activity {
 
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("email", userEmail);
+        
+        String apiRequestUrl = Constants.USER_API_URL + Constants.EMAIL_PARAM + userEmail;
 
-        Log.d("JSON BODY", jsonBody.toString());
-
-        JsonObjectRequest fetchUserDataRequest = new JsonObjectRequest(Request.Method.GET, Constants.USER_API_URL, jsonBody,
+        JsonObjectRequest fetchUserDataRequest = new JsonObjectRequest(Request.Method.GET, apiRequestUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -110,7 +112,9 @@ public class Profile extends Activity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.println(Log.INFO, "ResponseError", error.toString());
+                        Context currentContext = getApplicationContext();
+                        Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                        errorToast.show();
                     }
                 }
         ) {
@@ -118,13 +122,9 @@ public class Profile extends Activity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
-                headers.put(Constants.HEADER_CONTENT_TYPE_KEY, Constants.HEADER_CONTENT_TYPE_JSON);
-                Log.d("Headers", headers.toString());
                 return headers;
             }
         };
-
-        Log.d("THE GET REQUEST", fetchUserDataRequest.toString());
 
         requestQueue.add(fetchUserDataRequest);
     }
