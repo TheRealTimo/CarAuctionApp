@@ -26,8 +26,11 @@
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
     <string name="logInButton">Log In</string>
-
     <string name="navbarCloseButton">X</string>
+    <string name="profileDeleteButton">Delete profile</string>
+
+    <!-- Starting screen -->
+    <string name="startingScreenWelcomeText">Welcome to the Roller app!</string>
 
     <!-- Navbar -->
     <string name="navbarTitle">Menu</string>

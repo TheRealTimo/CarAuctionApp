@@ -50,8 +50,8 @@ public class StartingScreen extends AppCompatActivity {
     }
 
     public void redirectToLogInPage() {
-        Intent openCarInfoPage = new Intent(this, LogIn.class);
-        startActivity(openCarInfoPage);
+        Intent openLogInPage = new Intent(this, LogIn.class);
+        startActivity(openLogInPage);
     }
 
     private void redirectToCarListingsPage() {

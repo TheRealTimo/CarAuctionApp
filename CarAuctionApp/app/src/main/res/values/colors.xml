@@ -11,4 +11,6 @@
     <color name="mainColor">#00e8b6</color>
     <color name="titleTextColor">#3A3A3D</color>
     <color name="bodyTextColor">#515151</color>
+    <color name="buttonFillColor">#03DAC5</color>
+    <color name="inputHintColor">#757575</color>
 </resources>

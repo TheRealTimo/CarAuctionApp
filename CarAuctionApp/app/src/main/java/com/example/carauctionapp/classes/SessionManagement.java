@@ -20,6 +20,10 @@ public class SessionManagement {
         editor.putBoolean(Constants.USER_IS_LOGGED_IN_KEY, true).commit();
     }
 
+    public void endSession() {
+        editor.putBoolean(Constants.USER_IS_LOGGED_IN_KEY, false).commit();
+    }
+
     public String getCurrentUserApiKey() {
         return sharedPreferences.getString(Constants.USER_API_KEY, "");
     }

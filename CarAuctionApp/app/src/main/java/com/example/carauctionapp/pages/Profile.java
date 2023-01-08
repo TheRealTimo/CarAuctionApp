@@ -2,8 +2,11 @@ package com.example.carauctionapp.pages;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +31,9 @@ import java.util.Map;
 
 public class Profile extends Activity {
     private String firstName, lastName, email, phone, billingAddress, shippingAddress;
+
     private TextView firstNameView, lastNameView, emailView, phoneView, billingAddressView, shippingAddressView;
+    private Button profileDeleteButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +46,10 @@ public class Profile extends Activity {
         phoneView = findViewById(R.id.profilePhoneData);
         billingAddressView = findViewById(R.id.profileBillingAddressData);
         shippingAddressView = findViewById(R.id.profileShippingAddressData);
+
+        profileDeleteButton = findViewById(R.id.profileDeleteButton);
+
+        profileDeleteButton.setOnClickListener(view -> redirectToUserDeletionPage());
     }
 
     @Override
@@ -114,5 +123,10 @@ public class Profile extends Activity {
         };
 
         requestQueue.add(fetchUserDataRequest);
+    }
+
+    private void redirectToUserDeletionPage() {
+        Intent openDeleteUserPage = new Intent(this, DeleteUser.class);
+        startActivity(openDeleteUserPage);
     }
 }

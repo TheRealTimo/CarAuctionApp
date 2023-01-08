@@ -16,6 +16,7 @@
         android:layout_marginTop="240dp"
         android:layout_marginStart="25dp"
         android:text="@string/profileTitle"
+        android:fontFamily="@font/raleway_bold"
         android:textSize="30sp"
         android:textColor="@color/titleTextColor"
         />
@@ -28,6 +29,7 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginTop="40dp"
         android:text="@string/profileFirstNameTitle"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
@@ -39,6 +41,7 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginStart="100dp"
         android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
         android:textSize="18sp"
         android:textColor="@color/bodyTextColor"/>
 
@@ -51,6 +54,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginStart="200dp"
         android:text="@string/profileLastNameTitle"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
@@ -62,6 +66,7 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginStart="300dp"
         android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
         android:textSize="18sp"
         android:textColor="@color/bodyTextColor"/>
 
@@ -73,6 +78,7 @@
         android:layout_alignStart="@id/profileFirstNameTitle"
         android:layout_marginTop="40dp"
         android:text="@string/profileEmailTitle"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
@@ -84,6 +90,7 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginStart="60dp"
         android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
         android:textSize="18sp"
         android:textColor="@color/bodyTextColor"/>
 
@@ -95,6 +102,7 @@
         android:layout_alignStart="@id/profileLastNameTitle"
         android:layout_marginTop="40dp"
         android:text="@string/profilePhoneTitle"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
@@ -106,6 +114,7 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginStart="260dp"
         android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
         android:textSize="18sp"
         android:textColor="@color/bodyTextColor"/>
 
@@ -117,6 +126,7 @@
         android:layout_alignStart="@id/profileEmailTitle"
         android:layout_marginTop="40dp"
         android:text="@string/profileBillingAddressTitle"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
@@ -128,6 +138,7 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginStart="135dp"
         android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
         android:textSize="18sp"
         android:textColor="@color/bodyTextColor"/>
 
@@ -139,6 +150,7 @@
         android:layout_alignStart="@id/profileBillingAddressTitle"
         android:layout_marginTop="40dp"
         android:text="@string/profileShippingAddressTitle"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/titleTextColor"
         android:textSize="18sp" />
 
@@ -150,7 +162,19 @@
         android:layout_alignStart="@id/profilePageTitle"
         android:layout_marginStart="155dp"
         android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
         android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <Button android:id="@+id/profileDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileShippingAddressData"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/buttonFillColor"
+        android:text="@string/profileDeleteButton"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/bodyTextColor"/>
 
 
