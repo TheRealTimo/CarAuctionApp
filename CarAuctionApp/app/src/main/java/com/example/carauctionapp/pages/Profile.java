@@ -82,7 +82,7 @@ public class Profile extends Activity {
 
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("email", userEmail);
-        
+
         JsonObjectRequest fetchUserDataRequest = new JsonObjectRequest(Request.Method.GET, Constants.USER_API_URL, jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -106,7 +106,9 @@ public class Profile extends Activity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
-                headers.put("apiKey", sessionManagement.getCurrentUserApiKey());
+                headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
+                headers.put(Constants.HEADER_CONTENT_TYPE_KEY, Constants.HEADER_CONTENT_TYPE_JSON);
+                Log.d("Headers", headers.toString());
                 return headers;
             }
         };

@@ -36,4 +36,9 @@ public class Constants {
     public static final String USER_API_KEY = "apiKey";
     public static final String USER_EMAIL_KEY = "email";
     public static final String USER_IS_LOGGED_IN_KEY = "isLoggedIn";
+
+    //RequestHeaders
+    public static final String HEADER_API_KEY = "apiKey";
+    public static final String HEADER_CONTENT_TYPE_KEY = "Content-Type";
+    public static final String HEADER_CONTENT_TYPE_JSON = "application/json";
 }
