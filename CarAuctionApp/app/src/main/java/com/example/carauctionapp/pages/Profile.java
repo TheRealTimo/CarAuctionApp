@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,10 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Profile extends Activity {
-    private String firstName, lastName, email, phone, billingAddress, shippingAddress;
+    private String firstName, lastName, email, phone, billingAddress, shippingAddress, paymentMethod;
 
-    private TextView firstNameView, lastNameView, emailView, phoneView, billingAddressView, shippingAddressView;
-    private Button profileDeleteButton;
+    private TextView firstNameView, lastNameView, emailView, phoneView, billingAddressView, shippingAddressView, paymentMethodView;
+    private Button profileAddPaymentMethodButton, profileDeleteButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,9 +45,12 @@ public class Profile extends Activity {
         phoneView = findViewById(R.id.profilePhoneData);
         billingAddressView = findViewById(R.id.profileBillingAddressData);
         shippingAddressView = findViewById(R.id.profileShippingAddressData);
+        paymentMethodView = findViewById(R.id.profilePaymentMethodData);
 
+        profileAddPaymentMethodButton = findViewById(R.id.profileAddPaymentMethodButton);
         profileDeleteButton = findViewById(R.id.profileDeleteButton);
 
+        profileAddPaymentMethodButton.setOnClickListener(view -> redirectToAddPaymentPage());
         profileDeleteButton.setOnClickListener(view -> redirectToUserDeletionPage());
     }
 
@@ -72,6 +74,7 @@ public class Profile extends Activity {
         phone = (String) userResponse.get("phone");
         billingAddress = (String) userResponse.get("billingAddress");
         shippingAddress = (String) userResponse.get("shippingAddress");
+        paymentMethod = (String) userResponse.get("paymentOption");
 
         firstNameView.setText(firstName);
         lastNameView.setText(lastName);
@@ -79,6 +82,7 @@ public class Profile extends Activity {
         phoneView.setText(phone);
         billingAddressView.setText(billingAddress);
         shippingAddressView.setText(shippingAddress);
+        paymentMethodView.setText(paymentMethod);
     }
 
     private void fetchUserData() throws JSONException {
@@ -93,30 +97,30 @@ public class Profile extends Activity {
 
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("email", userEmail);
-        
+
         String apiRequestUrl = Constants.USER_API_URL + Constants.EMAIL_PARAM + userEmail;
 
         JsonObjectRequest fetchUserDataRequest = new JsonObjectRequest(Request.Method.GET, apiRequestUrl, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            displayUserData(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        displayUserData(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                        Log.println(Log.INFO, "Response", response.toString());
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Context currentContext = getApplicationContext();
-                        Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
-                        errorToast.show();
-                    }
+                    Log.println(Log.INFO, "Response", response.toString());
                 }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
+                }
+            }
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -127,6 +131,11 @@ public class Profile extends Activity {
         };
 
         requestQueue.add(fetchUserDataRequest);
+    }
+
+    private void redirectToAddPaymentPage() {
+        Intent openAddPaymentPage = new Intent(this, PaymentMethod.class);
+        startActivity(openAddPaymentPage);
     }
 
     private void redirectToUserDeletionPage() {

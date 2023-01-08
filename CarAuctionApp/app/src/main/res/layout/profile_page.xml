@@ -166,11 +166,48 @@
         android:textSize="18sp"
         android:textColor="@color/bodyTextColor"/>
 
-    <Button android:id="@+id/profileDeleteButton"
+    <TextView
+        android:id="@+id/profilePaymentMethodTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileShippingAddressData"
+        android:layout_alignStart="@id/profileBillingAddressTitle"
+        android:layout_marginTop="40dp"
+        android:text="@string/profilePaymentMethodTitle"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
+
+    <TextView android:id="@+id/profilePaymentMethodData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/profileShippingAddressData"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginStart="155dp"
+        android:text="@string/accountInfoDataDefaultValue"
+        android:fontFamily="@font/raleway"
+        android:textSize="18sp"
+        android:textColor="@color/bodyTextColor"/>
+
+    <Button android:id="@+id/profileAddPaymentMethodButton"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePaymentMethodData"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:backgroundTint="@color/buttonFillColor"
+        android:text="@string/profileAddPaymentMethodButton"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/bodyTextColor"/>
+
+    <Button android:id="@+id/profileDeleteButton"
+        android:layout_width="170dp"
+        android:layout_height="53dp"
+        android:layout_below="@id/profilePaymentMethodData"
+        android:layout_toEndOf="@id/profileAddPaymentMethodButton"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/buttonFillColor"
         android:text="@string/profileDeleteButton"

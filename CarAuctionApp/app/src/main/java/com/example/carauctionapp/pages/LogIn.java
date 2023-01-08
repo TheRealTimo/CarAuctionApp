@@ -119,29 +119,29 @@ public class LogIn extends Activity {
         jsonBody.put("user", jsonUserObject);
 
         JsonObjectRequest logInUserRequest = new JsonObjectRequest(Request.Method.POST, Constants.LOG_IN_USER_API_URL, jsonBody,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Context context = getApplicationContext();
-                        Toast successfulLogInToast = Toast.makeText(context, "Successfully logged in!", Toast.LENGTH_SHORT);
-                        successfulLogInToast.show();
-                        redirectToCarListingsPage();
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Context context = getApplicationContext();
+                    Toast successfulLogInToast = Toast.makeText(context, "Successfully logged in!", Toast.LENGTH_SHORT);
+                    successfulLogInToast.show();
+                    redirectToCarListingsPage();
 
-                        try {
-                            instantiateLogInSession(response.get("apiKey").toString(), emailInput.getText().toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        instantiateLogInSession(response.get("apiKey").toString(), emailInput.getText().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Context context = getApplicationContext();
-                        Toast errorLogInToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
-                        errorLogInToast.show();
-                    }
-                });
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context context = getApplicationContext();
+                    Toast errorLogInToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
+                    errorLogInToast.show();
+                }
+            });
 
         requestQueue.add(logInUserRequest);
     }

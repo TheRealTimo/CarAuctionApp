@@ -35,5 +35,6 @@
         <activity android:name=".pages.CarInfo"></activity>
         <activity android:name=".pages.Profile"></activity>
         <activity android:name=".pages.DeleteUser"></activity>
+        <activity android:name=".pages.PaymentMethod"></activity>
     </application>
 </manifest>

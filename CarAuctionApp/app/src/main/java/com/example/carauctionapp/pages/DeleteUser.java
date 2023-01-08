@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -23,6 +20,7 @@ import com.example.carauctionapp.R;
 import com.example.carauctionapp.StartingScreen;
 import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.utilities.Constants;
+import com.example.carauctionapp.utilities.Validators;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeleteUser extends Activity {
-    private EditText passwordView;
+    private EditText passwordInput;
+
     private Button deleteUserButton;
 
     @Override
@@ -39,16 +38,23 @@ public class DeleteUser extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.delete_user_page);
 
-        passwordView = findViewById(R.id.deleteUserPassword);
+        passwordInput = findViewById(R.id.deleteUserPassword);
         deleteUserButton = findViewById(R.id.deleteUserButton);
 
         deleteUserButton.setOnClickListener(deleteAccount -> {
             try {
-                deleteUserAccount();
+                if (validateUserPasswordInputData()) deleteUserAccount();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         });
+    }
+
+    private boolean validateUserPasswordInputData() {
+        if (!Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput)) passwordInput.setError(Constants.PasswordLengthError);
+        if (!Validators.validatePasswordFieldInputData(passwordInput.getText().toString())) passwordInput.setError(Constants.InvalidPasswordError);
+
+        return Validators.checkIfPasswordFieldMeetsLengthRequirements(passwordInput) && Validators.validatePasswordFieldInputData(passwordInput.getText().toString());
     }
 
     private void redirectToStartingPage() {
@@ -69,12 +75,12 @@ public class DeleteUser extends Activity {
 
         JSONObject jsonUserObject = new JSONObject();
         jsonUserObject.put("email", userEmail);
-        jsonUserObject.put("password", passwordView.getText().toString());
+        jsonUserObject.put("password", passwordInput.getText().toString());
 
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user", jsonUserObject);
 
-        String apiRequestUrl = Constants.USER_API_URL + Constants.EMAIL_PARAM + userEmail + Constants.PASSWORD_PARAM + passwordView.getText().toString();
+        String apiRequestUrl = Constants.USER_API_URL + Constants.EMAIL_PARAM + userEmail + Constants.PASSWORD_PARAM + passwordInput.getText().toString();
 
         JsonObjectRequest deleteUserRequest = new JsonObjectRequest(Request.Method.DELETE, apiRequestUrl, jsonBody,
             new Response.Listener<JSONObject>() {

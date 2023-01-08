@@ -11,6 +11,7 @@ public class Constants {
     //API URLs
     public static final String USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/user";
     public static final String LOG_IN_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/loginUser";
+    public static final String VERIFY_IBAN_API_URL = "https://api.unnamedproject.xyz/api/v1.0/iban";
     public static final String CAR_API_URL = "https://carapi.app/api";
 
     //Error messages
