@@ -72,7 +72,7 @@ public class DeleteUser extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user", jsonUserObject);
 
-        JsonObjectRequest deleteUserRequest = new JsonObjectRequest(Request.Method.DELETE, Constants.USER_API_URL, jsonUserObject,
+        JsonObjectRequest deleteUserRequest = new JsonObjectRequest(Request.Method.DELETE, Constants.USER_API_URL, jsonBody,
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -88,7 +88,7 @@ public class DeleteUser extends Activity {
             }
         ) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
                 headers.put(Constants.HEADER_CONTENT_TYPE_KEY, Constants.HEADER_CONTENT_TYPE_JSON);

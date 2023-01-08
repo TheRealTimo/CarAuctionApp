@@ -92,6 +92,8 @@ public class Profile extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("email", userEmail);
 
+        Log.d("JSON BODY", jsonBody.toString());
+
         JsonObjectRequest fetchUserDataRequest = new JsonObjectRequest(Request.Method.GET, Constants.USER_API_URL, jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -121,6 +123,8 @@ public class Profile extends Activity {
                 return headers;
             }
         };
+
+        Log.d("THE GET REQUEST", fetchUserDataRequest.toString());
 
         requestQueue.add(fetchUserDataRequest);
     }

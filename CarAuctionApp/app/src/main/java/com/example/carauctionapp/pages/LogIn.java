@@ -143,6 +143,8 @@ public class LogIn extends Activity {
                     }
                 });
 
+        Log.d("THE LOGIN REQUEST", logInUserRequest.toString());
+
         requestQueue.add(logInUserRequest);
     }
 }

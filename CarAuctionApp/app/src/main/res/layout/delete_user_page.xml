@@ -7,6 +7,7 @@
 
     <ImageView
         android:id="@+id/DeleteUserLogo"
+        android:src="@drawable/car_logo"
         android:layout_width="161dp"
         android:layout_height="116dp"
         android:contentDescription="@string/logo"
@@ -15,8 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.2"
-        tools:ignore="ImageContrastCheck"
-        tools:srcCompat="@drawable/car_logo" />
+        tools:ignore="ImageContrastCheck" />
 
     <EditText
         android:id="@+id/deleteUserPassword"
