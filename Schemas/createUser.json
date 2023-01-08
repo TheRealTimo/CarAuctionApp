@@ -30,7 +30,7 @@
         "phone": {
           "description": "The phone number of the user",
           "type": "string",
-          "pattern": "^[0-9]{,15}$"
+          "pattern": "^+[0-9]{,15}$"
         },
         "billingAddress": {
           "description": "The billing address of the user",

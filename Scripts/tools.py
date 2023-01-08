@@ -23,7 +23,7 @@ def verifyApiKey(request):
 
     keyHash = encryption.generateApiKeyHash(apiKey)
     db, sqlCursor = databaseTools.connectToDatabase()
-    sqlCursor.execute("SELECT userID FROM User WHERE apiKey = %s", (keyHash,))
+    sqlCursor.execute("SELECT userID FROM user WHERE apiKey = %s", (keyHash,))
     userID = sqlCursor.fetchone()
     databaseTools.closeDatabaseConnection(db, sqlCursor)
     if userID is None:

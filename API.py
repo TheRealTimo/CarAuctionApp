@@ -4,7 +4,7 @@ Date: 05.12.2022
 Description: The Main API which will redirect to the different endpoints
 Version: 1.0
 """
-
+#!/usr/local/bin/python3.9
 import configparser
 import os
 
@@ -101,5 +101,5 @@ def iban():
     if request.method == 'GET':
         return verifyIban.verifyIban(request)
 
-
-app.run(host=apiConfig['API']['host'], port=apiConfig['API']['port'])
+#if __name__ == "__main__": app.run()
+#app.run(host=apiConfig['API']['host'], port=apiConfig['API']['port'])
