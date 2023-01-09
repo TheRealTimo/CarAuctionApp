@@ -12,6 +12,7 @@
     <!-- Titles -->
     <string name="signUpTitle">Sign Up</string>
     <string name="logo">logo</string>
+    <string name="bidTitle">Enter a bid</string>
 
     <!-- Form Hints -->
     <string name="firstNameHint">First Name</string>
@@ -23,6 +24,7 @@
     <string name="shippingAddressHint">Shipping Address</string>
     <string name="navbarSearchHint">Search</string>
     <string name="paymentMethodHint">Iban</string>
+    <string name="bidAmount">Bid amount</string>
 
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
@@ -31,6 +33,7 @@
     <string name="profileDeleteButton">Delete profile</string>
     <string name="profileAddPaymentMethodButton">Add Payment Method</string>
     <string name="navbarLogOutButton">Log Out</string>
+    <string name="bidButton">Place Bid</string>
 
     <!-- Starting screen -->
     <string name="startingScreenWelcomeText">Welcome to the Roller app!</string>
@@ -89,6 +92,5 @@
 
     <!-- Listing Item -->
     <string name="listingItemDataValue"></string>
-
 
 </resources>
