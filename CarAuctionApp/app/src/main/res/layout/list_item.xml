@@ -60,7 +60,7 @@
                 tools:ignore="ImageContrastCheck,InvalidId" />
 
             <TextView
-                android:id="@+id/bidAmount"
+                android:id="@+id/currentBid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_bold"

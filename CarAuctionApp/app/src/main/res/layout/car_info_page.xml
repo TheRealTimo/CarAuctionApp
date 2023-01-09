@@ -10,8 +10,8 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Car Info Page"
-        android:textSize="30sp"
-        android:textColor="#353535"/>
+        android:textColor="#353535"
+        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/mainPicture"

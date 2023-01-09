@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    >
+
+    <ImageView
+        android:id="@+id/bidLogo"
+        android:layout_width="161dp"
+        android:layout_height="116dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="126dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/car_logo"
+        tools:ignore="ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/currentBid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bidLogo"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/raleway_bold"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="Current bid"
+        android:textColor="@color/titleTextColor"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/bidTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentBid"
+        android:layout_marginTop="-42dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/raleway_bold"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/bidTitle"
+        android:textColor="@color/titleTextColor"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/setbid"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bidTitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="-44dp"
+        android:layout_marginEnd="77dp"
+        android:autofillHints="name"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:fontFamily="@font/raleway"
+        android:gravity="center"
+        android:hint="@string/bidAmount"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:padding="4dp"
+        android:textColor="@color/bodyTextColor"
+        android:textColorHint="@color/inputHintColor" />
+
+    <Button
+        android:id="@+id/bidButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentBid"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="145dp"
+        android:backgroundTint="#03DAC5"
+        android:fontFamily="@font/raleway"
+        android:gravity="center"
+        android:text="@string/bidButton"
+        android:textColor="#424242" />
+
+</RelativeLayout>
