@@ -40,6 +40,7 @@
     <string name="profileNavItem">Profile</string>
     <string name="watchlistNavItem">Watch list</string>
     <string name="recentlySoldNavItem">Recently Sold</string>
+    <string name="createListingNavItem">Create Listing</string>
 
     <!-- Car Info Page Titles -->
     <string name="carInfoMakeTitle">Make:</string>

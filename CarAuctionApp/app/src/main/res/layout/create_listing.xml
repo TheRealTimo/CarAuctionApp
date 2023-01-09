@@ -5,6 +5,15 @@
     android:background="@color/appBackgroundColor"
 >
 
+    <ImageView android:id="@+id/createListingNavMenu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_alignBottom="@id/createListingButton"
+        android:src="@drawable/hamburger_menu_black"
+        android:focusable="true"
+        android:clickable="true" />
+
     <ImageView
         android:id="@+id/createListingLogo"
         android:src="@drawable/car_logo"

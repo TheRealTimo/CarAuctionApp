@@ -5,12 +5,14 @@ import static java.lang.Integer.parseInt;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +47,8 @@ public class CreateListing extends Activity {
 
     private String[] makesNames, modelNames, trimNames;
 
+    private ImageView navMenu;
+
     private EditText listingTitleInput, listingDescriptionInput, listingOpeningBidInput, listingDurationInput, listingMileageInput, listingColorInput;
 
     private Spinner listingMakeInput, listingModelInput, listingTrimInput, listingEngineInput, listingConditionInput;
@@ -55,6 +59,9 @@ public class CreateListing extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_listing);
+
+        //Nav menu button
+        navMenu = findViewById(R.id.createListingNavMenu);
 
         //Listing Info Inputs
         listingTitleInput = findViewById(R.id.createListingTitle);
@@ -118,6 +125,13 @@ public class CreateListing extends Activity {
                 }
             }
         });
+
+        navMenu.setOnClickListener(openNavPage -> redirectToNavPage());
+    }
+
+    private void redirectToNavPage() {
+        Intent openAddPaymentPage = new Intent(this, Navbar.class);
+        startActivity(openAddPaymentPage);
     }
 
     private void saveInputValues() {

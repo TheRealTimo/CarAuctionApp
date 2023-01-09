@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import java.util.Map;
 public class Profile extends Activity {
     private String firstName, lastName, email, phone, billingAddress, shippingAddress, paymentMethod;
 
+    private ImageView navMenu;
     private TextView firstNameView, lastNameView, emailView, phoneView, billingAddressView, shippingAddressView, paymentMethodView;
     private Button profileAddPaymentMethodButton, profileDeleteButton;
 
@@ -38,6 +40,8 @@ public class Profile extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_page);
+
+        navMenu = findViewById(R.id.profilePageNavMenu);
 
         firstNameView = findViewById(R.id.profileFirstNameData);
         lastNameView = findViewById(R.id.profileLastNameData);
@@ -63,6 +67,8 @@ public class Profile extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        navMenu.setOnClickListener(openNavPage -> redirectToNavPage());
     }
 
     private void displayUserData(JSONObject jsonResponse) throws JSONException {
@@ -131,6 +137,11 @@ public class Profile extends Activity {
         };
 
         requestQueue.add(fetchUserDataRequest);
+    }
+
+    private void redirectToNavPage() {
+        Intent openAddPaymentPage = new Intent(this, Navbar.class);
+        startActivity(openAddPaymentPage);
     }
 
     private void redirectToAddPaymentPage() {

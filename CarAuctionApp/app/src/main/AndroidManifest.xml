@@ -36,6 +36,8 @@
         <activity android:name=".pages.Profile"></activity>
         <activity android:name=".pages.DeleteUser"></activity>
         <activity android:name=".pages.PaymentMethod"></activity>
+        <activity android:name=".pages.ListingActivity"></activity>
         <activity android:name=".pages.CreateListing"></activity>
+        <activity android:name=".pages.Navbar"></activity>
     </application>
 </manifest>
