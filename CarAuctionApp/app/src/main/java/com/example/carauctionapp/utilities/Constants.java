@@ -19,7 +19,7 @@ public class Constants {
     public static final String PasswordLengthError = "Password length must be at least " + Constants.MIN_PASSWORD_LENGTH + "and max characters " + Constants.MAX_PASSWORD_LENGTH;
     public static final String InvalidTextInputFieldError = "Digits and illegal characters are not allowed";
     public static final String InvalidEmailError = "Invalid email address";
-    public static final String InvalidPasswordError = "Password must contain lower and upper case letters, digits and must NOT contain illegal characters";
+    public static final String InvalidPasswordError = "Password must contain lower and upper case letters, digits, some special characters like @ and must NOT contain illegal characters";
     public static final String InvalidPhoneNumberError = "Invalid phone number";
 
     //Patterns
