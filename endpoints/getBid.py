@@ -10,12 +10,14 @@ from Scripts import tools, databaseTools
 
 
 def getBid(request):
-    data = tools.verifyData(request, 'getBid')
-    requestData, userID = data
-    if not isinstance(requestData, dict):
-        return data
+    userID = tools.verifyApiKey(request)
+    if userID == False:
+        return jsonify({'status': 'error', 'message': 'Invalid API key'}), 401
 
-    bidID = requestData['bidId']
+    bidID = request.args.get('bidId')
+    if not bidID:
+        return jsonify({'status': 'error', 'message': 'Missing required parameter: bidId'}), 400
+
     db, sqlCursor = databaseTools.connectToDatabase()
     query = "SELECT * FROM bid WHERE bidID = %s"
     values = (bidID,)

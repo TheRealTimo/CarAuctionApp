@@ -16,7 +16,7 @@
           "description": "The password of the user",
           "type": "string",
           "minLength": 8,
-          "pattern": "^(?=.[a-z])(?=.[A-Z])(?=.[@_+])(?=.\\d)[a-zA-Z\\d@_+]{8,}$"
+          "pattern": "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@_+])[a-zA-Z0-9@_+]{8,}$"
         },
         "firstName": {
           "description": "The first name of the user",

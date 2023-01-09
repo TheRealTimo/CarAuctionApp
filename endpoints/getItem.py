@@ -10,12 +10,12 @@ from Scripts import tools, databaseTools
 
 
 def getItem(request):
-    data = tools.verifyData(request, 'getItem')
-    requestData, userID = data
-    if not isinstance(requestData, dict):
-        return data
+    userID = tools.verifyApiKey(request)
+    if userID == False:
+        return jsonify({'status': 'error', 'message': 'Invalid API key'}), 401
 
-    itemID = requestData['itemId']
+    itemID = request.args.get('itemId')
+
     db, sqlCursor = databaseTools.connectToDatabase()
     query = "SELECT * FROM item WHERE itemID = %s"
     values = (itemID,)
