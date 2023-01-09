@@ -86,7 +86,7 @@
         android:fontFamily="@font/raleway"
         android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
-        android:inputType="numberDecimal" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/createListingDuration"
@@ -179,7 +179,7 @@
         android:fontFamily="@font/raleway"
         android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
-        android:inputType="text" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/createListingColor"

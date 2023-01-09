@@ -42,8 +42,7 @@ import java.util.Map;
 
 public class CreateListing extends Activity {
     private String listingTitle, listingDescription, listingColor;
-    private float listingOpeningBid;
-    private Integer listingDuration, listingMileage;
+    private Integer listingOpeningBid, listingDuration, listingMileage;
 
     private String[] makesNames, modelNames, trimNames;
 
@@ -54,6 +53,8 @@ public class CreateListing extends Activity {
     private Spinner listingMakeInput, listingModelInput, listingTrimInput, listingEngineInput, listingConditionInput;
 
     private TextView listingCreateButton;
+
+    private Integer createdItemID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +120,8 @@ public class CreateListing extends Activity {
             @Override
             public void onClick(View view) {
                 try {
-                    createListing();
+                    saveInputValues();
+                    createItem();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -134,11 +136,16 @@ public class CreateListing extends Activity {
         startActivity(openAddPaymentPage);
     }
 
+    private void redirectToListingsPage() {
+        Intent openAddPaymentPage = new Intent(this, ListingActivity.class);
+        startActivity(openAddPaymentPage);
+    }
+
     private void saveInputValues() {
         listingTitle = listingTitleInput.getText().toString();
         listingDescription = listingDescriptionInput.getText().toString();
         listingColor = listingColorInput.getText().toString();
-        listingOpeningBid = parseFloat(listingOpeningBidInput.getText().toString());
+        listingOpeningBid = parseInt(listingOpeningBidInput.getText().toString());
         listingDuration = parseInt(listingDurationInput.getText().toString());
         listingMileage = parseInt(listingMileageInput.getText().toString());
     }
@@ -326,7 +333,12 @@ public class CreateListing extends Activity {
                 @Override
                 public void onResponse(JSONObject response) {
                     Log.d("CreateItemResponse", response.toString());
-                    finish();
+                    try {
+                        createdItemID = (Integer) response.getInt("itemID");
+                        createListing();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             },
             new Response.ErrorListener() {
@@ -350,8 +362,54 @@ public class CreateListing extends Activity {
     }
 
     private void createListing() throws JSONException {
-        createItem();
+        Log.d("item id in listing", createdItemID.toString());
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        //TO DO: IMPLEMENT LISTING CREATION POST REQUEST
+        SessionManagement sessionManagement = new SessionManagement(this);
+        String userEmail = sessionManagement.getCurrentUserEmail();
+
+        if (userEmail.isEmpty()) {
+            return;
+        }
+
+        JSONObject jsonAuctionObject = new JSONObject();
+        jsonAuctionObject.put("title", listingTitle);
+        jsonAuctionObject.put("description", listingDescription);
+        jsonAuctionObject.put("openingBid", listingOpeningBid);
+        jsonAuctionObject.put("duration", listingDuration);
+
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("item", createdItemID);
+        jsonBody.put("auction", jsonAuctionObject);
+
+        Log.d("jsonAuctionObj", jsonAuctionObject.toString());
+        Log.d("jsonBody", jsonBody.toString());
+
+        JsonObjectRequest createListingRequest = new JsonObjectRequest(Request.Method.POST, Constants.CREATE_AUCTION_API_URL, jsonBody,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d("AUCTION_CREATION_RESPONSE", response.toString());
+                    redirectToListingsPage();
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
+                }
+            }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
+                return headers;
+            }
+        };
+
+        requestQueue.add(createListingRequest);
     }
 }

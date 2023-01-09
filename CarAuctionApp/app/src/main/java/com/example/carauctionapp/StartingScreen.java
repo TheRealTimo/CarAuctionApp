@@ -2,6 +2,7 @@ package com.example.carauctionapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -39,6 +40,7 @@ public class StartingScreen extends AppCompatActivity {
     private void checkLogInSession() {
         SessionManagement sessionManagement = new SessionManagement(this);
         boolean isUserLoggedIn = sessionManagement.getIsUserLoggedIn();
+        Log.d("API_KEY_ON_START", sessionManagement.getCurrentUserApiKey());
 
         if (isUserLoggedIn) {
             redirectToCarListingsPage();

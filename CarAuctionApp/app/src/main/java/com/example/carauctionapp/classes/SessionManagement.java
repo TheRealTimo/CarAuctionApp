@@ -21,6 +21,8 @@ public class SessionManagement {
     }
 
     public void endSession() {
+        editor.putString(Constants.USER_API_KEY, "").commit();
+        editor.putString(Constants.USER_EMAIL_KEY, "").commit();
         editor.putBoolean(Constants.USER_IS_LOGGED_IN_KEY, false).commit();
     }
 
