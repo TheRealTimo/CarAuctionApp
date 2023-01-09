@@ -1,117 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/createListingLogo"
+        android:src="@drawable/car_logo"
+        android:layout_width="161dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/logo" />
+
+    <TextView
+        android:id="@+id/createListingPageTitle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingLogo"
+        android:text="@string/createListingPageTitle"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="@color/titleTextColor"
+        android:textSize="25sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/createListingPageTitle"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <EditText
+        android:id="@+id/createListingTitle"
+        android:minHeight="48dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingPageTitle"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/createListingTitle"
+        android:autofillHints="name"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
+        android:textColor="@color/bodyTextColor"
+        android:inputType="text" />
 
-        <EditText
-            android:id="@+id/create_listing_Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/createListingTitle"
-            android:inputType="text"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/createListingDescription"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingTitle"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:hint="@string/createListingDescription"
+        android:autofillHints=""
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
+        android:textColor="@color/bodyTextColor"
+        android:lines="4"
+        android:inputType="textMultiLine" />
 
-        <EditText
-            android:id="@+id/create_listing_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/createListingDescription"
-            android:inputType="textMultiLine"
-            android:lines="4"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/createListingOpeningBid"
+        android:minHeight="48dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingDescription"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/createListingOpeningBid"
+        android:autofillHints=""
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
+        android:textColor="@color/bodyTextColor"
+        android:inputType="numberDecimal" />
 
-        <EditText
-            android:id="@+id/create_listing_opening_bid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/createListingOpeningBid"
-            android:inputType="numberDecimal"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/createListingDuration"
+        android:minHeight="48dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingOpeningBid"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/createListingDuration"
+        android:autofillHints=""
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
+        android:textColor="@color/bodyTextColor"
+        android:inputType="number" />
 
-        <EditText
-            android:id="@+id/create_listing_duration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/createListingDuration"
-            android:inputType="number"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <TextView
+        android:id="@+id/createListingAboutCarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingDuration"
+        android:text="@string/createListingAboutCar"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="@color/titleTextColor"
+        android:textSize="25sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/createListingAboutCar"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/createListingMake"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingAboutCarTitle"
+        android:entries="@array/createListingMake"
+        android:hint="@string/createListingMake" />
 
-        <Spinner
-            android:id="@+id/create_listing_s_make"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/createListingMake"
-            android:hint="@string/createListingMake" />
+    <Spinner
+        android:id="@+id/createListingModel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingMake"
+        android:entries="@array/createListingModel"
+        android:hint="@string/createListingModel" />
 
-        <Spinner
-            android:id="@+id/create_listing_s_model"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/createListingModel"
-            android:hint="@string/createListingModel" />
+    <Spinner
+        android:id="@+id/createListingTrim"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingModel"
+        android:entries="@array/createListingTrim"
+        android:hint="@string/createListingTrim" />
 
-        <Spinner
-            android:id="@+id/create_listing_s_trim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/createListingTrim"
-            android:hint="@string/createListingTrim" />
+    <Spinner
+        android:id="@+id/createListingEngine"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingTrim"
+        android:entries="@array/createListingEngine"
+        android:hint="@string/createListingEngine" />
 
-        <Spinner
-            android:id="@+id/create_listing_s_engine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/createListingEngine"
-            android:hint="@string/createListingEngine" />
+    <Spinner
+        android:id="@+id/createListingCondition"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingEngine"
+        android:entries="@array/createListingCondition"
+        android:hint="@string/createListingCondition" />
 
-        <Spinner
-            android:id="@+id/create_listing_s_condition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/createListingCondition"
-            android:hint="@string/createListingCondition" />
+    <EditText
+        android:id="@+id/createListingMileage"
+        android:minHeight="48dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingCondition"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/createListingMileage"
+        android:autofillHints=""
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
+        android:textColor="@color/bodyTextColor"
+        android:inputType="text" />
 
-        <EditText
-            android:id="@+id/create_listing_mileage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/createListingMileage"
-            android:inputType="text"
-            android:textSize="18sp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/createListingColor"
+        android:minHeight="48dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/createListingMileage"
+        android:gravity="center"
+        android:background="@drawable/input_field_rectangle_border_rounded_corners"
+        android:padding="4dp"
+        android:hint="@string/createListingColor"
+        android:autofillHints=""
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
+        android:textColor="@color/bodyTextColor"
+        android:inputType="text" />
 
-        <EditText
-            android:id="@+id/create_listing_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/createListingColor"
-            android:inputType="text"
-            android:textSize="18sp"
-            android:autofillHints="" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/createListingButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="230dp"
+        android:layout_alignStart="@id/createListingLogo"
+        android:minHeight="48dp"
+        android:text="@string/createListingButton"
+        android:textSize="50sp"
+        android:textColor="@color/titleTextColor"
+        android:focusable="true"
+        android:clickable="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

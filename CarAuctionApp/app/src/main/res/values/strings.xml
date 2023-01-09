@@ -82,6 +82,8 @@
     <string name="createListingMileage">Mileage</string>
     <string name="createListingColor">Color</string>
 
+    <string name="createListingButton">+</string>
+
 
 
 </resources>

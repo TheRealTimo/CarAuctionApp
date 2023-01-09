@@ -1,14 +1,30 @@
 package com.example.carauctionapp.pages;
 
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
+
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.carauctionapp.R;
+import com.example.carauctionapp.classes.SessionManagement;
+import com.example.carauctionapp.utilities.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,145 +35,59 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateListing extends Activity {
-    public static String[] getMake() throws IOException, JSONException {
-        URL url = new URL("https://carapi.app/api/makes?year=2020");
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.setRequestProperty("accept", "application/json");
+    private String listingTitle, listingDescription, listingColor;
+    private float listingOpeningBid;
+    private Integer listingDuration, listingMileage;
 
-        int responseCode = con.getResponseCode();
-        //System.out.println("Response code: " + responseCode);
+    private String[] makesNames, modelNames, trimNames;
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
+    private EditText listingTitleInput, listingDescriptionInput, listingOpeningBidInput, listingDurationInput, listingMileageInput, listingColorInput;
 
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
+    private Spinner listingMakeInput, listingModelInput, listingTrimInput, listingEngineInput, listingConditionInput;
 
-        JSONObject json = new JSONObject(response.toString());
-        JSONArray data = json.getJSONArray("data");
-
-        String[] names = new String[data.length()];
-        for (int i = 0; i < data.length(); i++) {
-            JSONObject item = data.getJSONObject(i);
-            names[i] = item.getString("name");
-        }
-        return names;
-    }
-
-    public static String[] getModel(String make) throws IOException, JSONException {
-        // Replace spaces with %20 to encode the make parameter in the URL
-        make = make.replace(" ", "%20");
-        URL url = new URL("https://carapi.app/api/models?year=2020&make=" + make);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.setRequestProperty("accept", "application/json");
-
-        int responseCode = con.getResponseCode();
-        //System.out.println("Response code: " + responseCode);
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        JSONObject json = new JSONObject(response.toString());
-        JSONArray data = json.getJSONArray("data");
-
-        String[] names = new String[data.length()];
-        for (int i = 0; i < data.length(); i++) {
-            JSONObject item = data.getJSONObject(i);
-            names[i] = item.getString("name");
-        }
-        return names;
-    }
-
-    public static String[] getTrim(String make, String model) throws IOException, JSONException {
-        // Replace spaces with %20 to encode the year, make, and model parameters in the URL
-        make = make.replace(" ", "%20");
-        model = model.replace(" ", "%20");
-        URL url = new URL("https://carapi.app/api/trims?year=2020&make=" + make + "&model=" + model);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        con.setRequestProperty("accept", "application/json");
-
-        int responseCode = con.getResponseCode();
-        //System.out.println("Response code: " + responseCode);
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        JSONObject json = new JSONObject(response.toString());
-        JSONArray data = json.getJSONArray("data");
-
-        String[] names = new String[data.length()];
-        for (int i = 0; i < data.length(); i++) {
-            JSONObject item = data.getJSONObject(i);
-            names[i] = item.getString("name");
-        }
-        return names;
-    }
+    private TextView listingCreateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_listing);
 
-        EditText create_listing_Title = findViewById(R.id.create_listing_Title);
-        EditText create_listing_description = findViewById(R.id.create_listing_description);
-        EditText create_listing_opening_bid = findViewById(R.id.create_listing_opening_bid);
-        EditText create_listing_duration = findViewById(R.id.create_listing_duration);
+        //Listing Info Inputs
+        listingTitleInput = findViewById(R.id.createListingTitle);
+        listingDescriptionInput = findViewById(R.id.createListingDescription);
+        listingOpeningBidInput = findViewById(R.id.createListingOpeningBid);
+        listingDurationInput = findViewById(R.id.createListingDuration);
 
-        Spinner create_listing_s_make = findViewById(R.id.create_listing_s_make);
-        Spinner create_listing_s_model = findViewById(R.id.create_listing_s_model);
-        Spinner create_listing_s_trim = findViewById(R.id.create_listing_s_trim);
-        Spinner create_listing_s_engine = findViewById(R.id.create_listing_s_engine);
-        Spinner create_listing_s_condition = findViewById(R.id.create_listing_s_condition);
-        EditText create_listing_mileage = findViewById(R.id.create_listing_mileage);
-        EditText create_listing_color = findViewById(R.id.create_listing_color);
+        //Listing Car Info Inputs
+        //Spinners
+        listingMakeInput = findViewById(R.id.createListingMake);
+        listingModelInput = findViewById(R.id.createListingModel);
+        listingTrimInput = findViewById(R.id.createListingTrim);
+        listingEngineInput = findViewById(R.id.createListingEngine);
+        listingConditionInput = findViewById(R.id.createListingCondition);
 
+        //EditText
+        listingMileageInput = findViewById(R.id.createListingMileage);
+        listingColorInput = findViewById(R.id.createListingColor);
 
-        try {
-            String makes[] = getMake();
-            ArrayAdapter<String> makesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, makes);
-            makesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            create_listing_s_make.setAdapter(makesAdapter);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        create_listing_s_make.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //Create button
+        listingCreateButton = findViewById(R.id.createListingButton);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        fetchCarMakeData();
+
+        listingMakeInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                try {
-                    String[] models = getModel(create_listing_s_make.getSelectedItem().toString());
-                    ArrayAdapter<String> modelsAdapter = new ArrayAdapter<>(CreateListing.this, android.R.layout.simple_spinner_item, models);
-                    modelsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    create_listing_s_model.setAdapter(modelsAdapter);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fetchCarModelData();
             }
 
             @Override
@@ -166,28 +96,248 @@ public class CreateListing extends Activity {
             }
         });
 
-        create_listing_s_model.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        listingModelInput.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String[] trim = new String[0];
-                try {
-                    trim = getTrim(create_listing_s_make.getSelectedItem().toString(), create_listing_s_model.getSelectedItem().toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                ArrayAdapter<String> trimAdapter = new ArrayAdapter<>(CreateListing.this, android.R.layout.simple_spinner_item, trim);
-                trimAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                create_listing_s_trim.setAdapter(trimAdapter);
-
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                fetchCarTrimData();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // This method is called when no item is selected
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
+        listingCreateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    createListing();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void saveInputValues() {
+        listingTitle = listingTitleInput.getText().toString();
+        listingDescription = listingDescriptionInput.getText().toString();
+        listingColor = listingColorInput.getText().toString();
+        listingOpeningBid = parseFloat(listingOpeningBidInput.getText().toString());
+        listingDuration = parseInt(listingDurationInput.getText().toString());
+        listingMileage = parseInt(listingMileageInput.getText().toString());
+    }
+
+    private void setMakesSpinnerValues() {
+        ArrayAdapter<String> makesAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, makesNames);
+        makesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listingMakeInput.setAdapter(makesAdapter);
+    }
+
+    private void setModelSpinnerValues() {
+        ArrayAdapter<String> modelsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modelNames);
+        modelsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listingModelInput.setAdapter(modelsAdapter);
+    }
+
+    private void setTrimSpinnerValues() {
+        ArrayAdapter<String> trimAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, trimNames);
+        trimAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        listingTrimInput.setAdapter(trimAdapter);
+    }
+
+    private void fetchCarMakeData() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest fetchCarMakeDataRequest = new JsonObjectRequest(Request.Method.GET, Constants.CAR_API_MAKES_URL, null,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //Define local variable for data json array of response
+                        JSONArray data = response.getJSONArray("data");
+
+                        //Instantiate makesNames array
+                        makesNames = new String[data.length()];
+
+                        //Append data of response to string array
+                        for (int i = 0; i < data.length(); i++) {
+                            JSONObject item = data.getJSONObject(i);
+                            makesNames[i] = item.getString("name");
+                        }
+
+                        //Set received data to spinner widget
+                        setMakesSpinnerValues();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
+                }
+            }
+        );
+
+        requestQueue.add(fetchCarMakeDataRequest);
+    }
+
+    private void fetchCarModelData() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        //Preparing url
+        String make = listingMakeInput.getSelectedItem().toString();
+        make.replace(" ", "%20");
+
+        String requestUrl = Constants.CAR_API_MODELS_URL + make;
+
+        JsonObjectRequest fetchCarModelDataRequest = new JsonObjectRequest(Request.Method.GET, requestUrl, null,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //Define local variable for data json array of response
+                        JSONArray data = response.getJSONArray("data");
+
+                        //Instantiate makesNames array
+                        modelNames = new String[data.length()];
+
+                        //Append data of response to string array
+                        for (int i = 0; i < data.length(); i++) {
+                            JSONObject item = data.getJSONObject(i);
+                            modelNames[i] = item.getString("name");
+                        }
+
+                        //Set received data to spinner widget
+                        setModelSpinnerValues();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
+                }
+            }
+        );
+
+        requestQueue.add(fetchCarModelDataRequest);
+    }
+
+    private void fetchCarTrimData() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        //Preparing url
+        String make = listingMakeInput.getSelectedItem().toString();
+        make.replace(" ", "%20");
+
+        String model = listingModelInput.getSelectedItem().toString();
+        model = model.replace(" ", "%20");
+
+        String requestUrl = Constants.CAR_API_MODELS_URL + make + "&model=" + model;
+
+        JsonObjectRequest fetchCarTrimDataRequest = new JsonObjectRequest(Request.Method.GET, requestUrl, null,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //Define local variable for data json array of response
+                        JSONArray data = response.getJSONArray("data");
+
+                        //Instantiate makesNames array
+                        trimNames = new String[data.length()];
+
+                        //Append data of response to string array
+                        for (int i = 0; i < data.length(); i++) {
+                            JSONObject item = data.getJSONObject(i);
+                            trimNames[i] = item.getString("name");
+                        }
+
+                        //Set received data to spinner widget
+                        setTrimSpinnerValues();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
+                }
+            }
+        );
+
+        requestQueue.add(fetchCarTrimDataRequest);
+    }
+
+    private void createItem() throws JSONException {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        SessionManagement sessionManagement = new SessionManagement(this);
+        String userEmail = sessionManagement.getCurrentUserEmail();
+
+        if (userEmail.isEmpty()) {
+            return;
+        }
+
+        JSONObject jsonCarObj = new JSONObject();
+        jsonCarObj.put("make", listingMakeInput.getSelectedItem().toString());
+        jsonCarObj.put("model", listingModelInput.getSelectedItem().toString());
+        jsonCarObj.put("year", 2020);
+        jsonCarObj.put("trim", listingTrimInput.getSelectedItem().toString());
+        jsonCarObj.put("mileage", listingMileage);
+        jsonCarObj.put("color", listingColor);
+        jsonCarObj.put("condition", listingConditionInput.getSelectedItem().toString());
+        jsonCarObj.put("engine", listingEngineInput.getSelectedItem().toString());
+        jsonCarObj.put("description", listingDescription);
+        jsonCarObj.put("images", "Test");
+
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("car", jsonCarObj);
+
+        JsonObjectRequest createItemRequest = new JsonObjectRequest(Request.Method.POST, Constants.CREATE_ITEM_API_URL, jsonBody,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d("CreateItemResponse", response.toString());
+                    finish();
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context currentContext = getApplicationContext();
+                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                    errorToast.show();
+                }
+            }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
+                return headers;
+            }
+        };
+
+        requestQueue.add(createItemRequest);
+    }
+
+    private void createListing() throws JSONException {
+        createItem();
+
+        //TO DO: IMPLEMENT LISTING CREATION POST REQUEST
     }
 }
