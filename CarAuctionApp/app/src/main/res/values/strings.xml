@@ -22,12 +22,17 @@
     <string name="billingAddressHint">Billing Address</string>
     <string name="shippingAddressHint">Shipping Address</string>
     <string name="navbarSearchHint">Search</string>
+    <string name="paymentMethodHint">Iban</string>
 
     <!-- Buttons -->
     <string name="signUpButton">Sign Up</string>
     <string name="logInButton">Log In</string>
-
     <string name="navbarCloseButton">X</string>
+    <string name="profileDeleteButton">Delete profile</string>
+    <string name="profileAddPaymentMethodButton">Add Payment Method</string>
+
+    <!-- Starting screen -->
+    <string name="startingScreenWelcomeText">Welcome to the Roller app!</string>
 
     <!-- Navbar -->
     <string name="navbarTitle">Menu</string>
@@ -43,10 +48,23 @@
     <string name="carInfoMileagesTitle">Mileages:</string>
 
     <!-- Default car data value -->
-    <string name="carInfoDataDefaultValue">Unkown</string>
+    <string name="carInfoDataDefaultValue"></string>
     <string name="transmission">Transmission</string>
     <string name="type">Type</string>
     <string name="auctions">Auctions</string>
+
+    <!-- Profile Page Titles -->
+    <string name="profileTitle">Account</string>
+    <string name="profileFirstNameTitle">First Name:</string>
+    <string name="profileLastNameTitle">Last Name:</string>
+    <string name="profileEmailTitle">Email:</string>
+    <string name="profilePhoneTitle">Phone:</string>
+    <string name="profileBillingAddressTitle">Billing Address:</string>
+    <string name="profileShippingAddressTitle">Shipping Address:</string>
+    <string name="profilePaymentMethodTitle">Payment Method:</string>
+
+    <!-- Default profile data value -->
+    <string name="accountInfoDataDefaultValue"></string>
 
 
 </resources>

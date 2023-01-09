@@ -56,7 +56,6 @@ public class LogIn extends Activity {
                     String tempPassword = passwordInput.getText().toString();
 
                     isAllFieldsChecked = validateAllFields(tempEmail, tempPassword);
-                    Log.println(Log.INFO, "VALIDATION",String.valueOf(isAllFieldsChecked));
 
                     if (isAllFieldsChecked) {
                         try {
@@ -99,14 +98,14 @@ public class LogIn extends Activity {
 
     private void redirectToCarListingsPage() {
         //TO DO: CHANGE THIS CLASS TO CarListings instead of CarInfo
-        Intent openCarInfoPage = new Intent(this, CarInfo.class);
+        Intent openCarInfoPage = new Intent(this, Profile.class);
         startActivity(openCarInfoPage);
         LogIn.this.finish();
     }
 
-    private void instantiateLogInSession(String apiKey) {
+    private void instantiateLogInSession(String apiKey, String email) {
         SessionManagement sessionManagement = new SessionManagement(LogIn.this);
-        sessionManagement.saveSession(apiKey);
+        sessionManagement.saveSession(apiKey, email);
     }
 
     private void sendLogInPostRequest() throws JSONException {
@@ -119,32 +118,30 @@ public class LogIn extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user", jsonUserObject);
 
-        final String requestBody = jsonBody.toString();
-
         JsonObjectRequest logInUserRequest = new JsonObjectRequest(Request.Method.POST, Constants.LOG_IN_USER_API_URL, jsonBody,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Context context = getApplicationContext();
-                        Toast successfulLogInToast = Toast.makeText(context, "Successfully logged in!", Toast.LENGTH_SHORT);
-                        successfulLogInToast.show();
-                        redirectToCarListingsPage();
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Context context = getApplicationContext();
+                    Toast successfulLogInToast = Toast.makeText(context, "Successfully logged in!", Toast.LENGTH_SHORT);
+                    successfulLogInToast.show();
+                    redirectToCarListingsPage();
 
-                        try {
-                            instantiateLogInSession(response.get("apiKey").toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        instantiateLogInSession(response.get("apiKey").toString(), emailInput.getText().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Context context = getApplicationContext();
-                        Toast errorLogInToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
-                        errorLogInToast.show();
-                    }
-                });
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Context context = getApplicationContext();
+                    Toast errorLogInToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
+                    errorLogInToast.show();
+                }
+            });
 
         requestQueue.add(logInUserRequest);
     }

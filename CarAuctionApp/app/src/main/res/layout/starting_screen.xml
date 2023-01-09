@@ -7,24 +7,36 @@
 
     <ImageView
         android:id="@+id/startingScreenLogo"
-        android:src="@drawable/roller"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:src="@drawable/car_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="140dp"
         android:layout_centerHorizontal="true"
         android:gravity="center" />
+
+    <TextView
+        android:id="@+id/startingScreenWelcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/startingScreenLogo"
+        android:layout_centerHorizontal="true"
+        android:text="@string/startingScreenWelcomeText"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="@color/titleTextColor"
+        android:textSize="28sp"/>
 
     <Button
         android:id="@+id/redirectToSignUpButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_below="@id/startingScreenLogo"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/startingScreenWelcomeText"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:background="@drawable/button_border_rounded_corners"
-        android:backgroundTint="#03DAC5"
+        android:backgroundTint="@color/buttonFillColor"
         android:text="@string/signUpButton"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/bodyTextColor"/>
 
     <Button
@@ -35,9 +47,9 @@
         android:layout_below="@id/redirectToSignUpButton"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:background="@drawable/button_border_rounded_corners"
-        android:backgroundTint="#03DAC5"
+        android:backgroundTint="@color/buttonFillColor"
         android:text="@string/logInButton"
+        android:fontFamily="@font/raleway"
         android:textColor="@color/bodyTextColor"/>
 
 

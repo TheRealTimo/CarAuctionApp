@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/LogInLogo"
+        android:id="@+id/AddPaymentMethodLogo"
         android:src="@drawable/car_logo"
         android:layout_width="161dp"
         android:layout_height="116dp"
@@ -15,59 +15,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.346"
+        app:layout_constraintVertical_bias="0.33"
         tools:ignore="ImageContrastCheck" />
 
     <EditText
-        android:id="@+id/LogInEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:autofillHints="emailAddress"
-        android:background="@drawable/input_field_rectangle_border_rounded_corners"
-        android:ems="10"
-        android:hint="@string/emailHint"
-        android:gravity="center"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:fontFamily="@font/raleway"
-        android:textColorHint="@color/inputHintColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogInLogo" />
-
-    <EditText
-        android:id="@+id/loginPassword"
+        android:id="@+id/addPaymentMethodInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginTop="16dp"
-        android:autofillHints="password"
+        android:autofillHints=""
         android:background="@drawable/input_field_rectangle_border_rounded_corners"
         android:ems="10"
-        android:hint="@string/passwordHint"
-        android:inputType="textPassword"
+        android:hint="@string/paymentMethodHint"
+        android:inputType="text"
         android:minHeight="48dp"
         android:fontFamily="@font/raleway"
         android:textColorHint="@color/inputHintColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogInEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/AddPaymentMethodLogo" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/addPaymentMethodButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/buttonFillColor"
-        android:text="@string/logInButton"
+        android:text="@string/profileAddPaymentMethodButton"
         android:fontFamily="@font/raleway"
         android:textColor="@color/bodyTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword"
+        app:layout_constraintTop_toBottomOf="@+id/addPaymentMethodInput"
         app:layout_constraintVertical_bias="0.086"
         tools:ignore="DuplicateSpeakableTextCheck,UnknownId" />
 

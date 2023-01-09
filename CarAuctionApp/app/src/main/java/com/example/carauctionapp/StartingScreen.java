@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.pages.CarInfo;
 import com.example.carauctionapp.pages.LogIn;
+import com.example.carauctionapp.pages.Profile;
 import com.example.carauctionapp.pages.SignUp;
 
 public class StartingScreen extends AppCompatActivity {
@@ -49,13 +50,13 @@ public class StartingScreen extends AppCompatActivity {
     }
 
     public void redirectToLogInPage() {
-        Intent openCarInfoPage = new Intent(this, LogIn.class);
-        startActivity(openCarInfoPage);
+        Intent openLogInPage = new Intent(this, LogIn.class);
+        startActivity(openLogInPage);
     }
 
     private void redirectToCarListingsPage() {
         //TO DO: CHANGE THIS CLASS TO CarListings instead of CarInfo
-        Intent openCarInfoPage = new Intent(this, CarInfo.class);
+        Intent openCarInfoPage = new Intent(this, Profile.class);
         startActivity(openCarInfoPage);
     }
 }

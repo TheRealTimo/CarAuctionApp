@@ -147,9 +147,7 @@ public class SignUp extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user", jsonUserObject);
 
-        final String requestBody = jsonBody.toString();
-
-        JsonObjectRequest signUpUserRequest = new JsonObjectRequest(Request.Method.POST, Constants.SIGN_UP_USER_API_URL, jsonBody,
+        JsonObjectRequest signUpUserRequest = new JsonObjectRequest(Request.Method.POST, Constants.USER_API_URL, jsonBody,
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

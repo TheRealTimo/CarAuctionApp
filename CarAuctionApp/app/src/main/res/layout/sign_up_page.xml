@@ -5,18 +5,28 @@
     android:background="@color/appBackgroundColor"
 >
 
+    <ImageView
+        android:id="@+id/SignUpLogo"
+        android:src="@drawable/car_logo"
+        android:layout_width="161dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/logo" />
+
     <TextView
         android:id="@+id/signUpTitle"
         android:minHeight="48dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/SignUpLogo"
         android:layout_marginBottom="50dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="@string/signUpTitle"
+        android:fontFamily="@font/raleway_bold"
         android:textSize="30sp"
-        android:textColor="#3A3A3D"
+        android:textColor="@color/titleTextColor"
         />
 
     <EditText
@@ -24,6 +34,7 @@
         android:minHeight="48dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="-15dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signUpTitle"
         android:gravity="center"
@@ -31,7 +42,8 @@
         android:padding="4dp"
         android:hint="@string/firstNameHint"
         android:autofillHints="name"
-        android:textColorHint="@color/bodyTextColor"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
         android:inputType="text"/>
 
@@ -47,7 +59,8 @@
         android:padding="4dp"
         android:hint="@string/lastNameHint"
         android:autofillHints="name"
-        android:textColorHint="@color/bodyTextColor"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
         android:inputType="text"/>
 
@@ -56,7 +69,7 @@
         android:minHeight="48dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signUpLastName"
         android:gravity="center"
@@ -64,7 +77,8 @@
         android:padding="4dp"
         android:hint="@string/emailHint"
         android:autofillHints="emailAddress"
-        android:textColorHint="@color/bodyTextColor"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
         android:inputType="textEmailAddress"/>
 
@@ -80,7 +94,8 @@
         android:padding="4dp"
         android:hint="@string/phoneHint"
         android:autofillHints="phone"
-        android:textColorHint="@color/bodyTextColor"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
         android:inputType="phone"/>
 
@@ -89,7 +104,7 @@
         android:minHeight="48dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signUpPhone"
         android:gravity="center"
@@ -97,7 +112,8 @@
         android:padding="4dp"
         android:hint="@string/passwordHint"
         android:autofillHints="password"
-        android:textColorHint="@color/bodyTextColor"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
         android:inputType="textPassword"/>
 
@@ -106,7 +122,7 @@
         android:minHeight="48dp"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/signUpPassword"
         android:gravity="center"
@@ -114,8 +130,9 @@
         android:padding="4dp"
         android:hint="@string/billingAddressHint"
         android:autofillHints="postalAddress"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
-        android:textColorHint="@color/bodyTextColor"
         android:inputType="textPostalAddress"/>
 
     <EditText
@@ -130,8 +147,9 @@
         android:padding="4dp"
         android:hint="@string/shippingAddressHint"
         android:autofillHints="postalAddress"
+        android:fontFamily="@font/raleway"
+        android:textColorHint="@color/inputHintColor"
         android:textColor="@color/bodyTextColor"
-        android:textColorHint="@color/bodyTextColor"
         android:inputType="textPostalAddress"/>
 
     <Button
@@ -140,11 +158,11 @@
         android:layout_height="50dp"
         android:layout_below="@id/signUpShippingAddress"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#03DAC5"
         android:gravity="center"
         android:text="@string/signUpButton"
-
+        android:fontFamily="@font/raleway"
         android:textColor="@color/bodyTextColor"/>
 
 </RelativeLayout>

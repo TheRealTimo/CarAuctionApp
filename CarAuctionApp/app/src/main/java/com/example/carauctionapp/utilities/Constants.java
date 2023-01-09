@@ -9,8 +9,9 @@ public class Constants {
     public static final int MAX_PASSWORD_LENGTH = 20;
 
     //API URLs
-    public static final String SIGN_UP_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/user";
+    public static final String USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/user";
     public static final String LOG_IN_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/loginUser";
+    public static final String VERIFY_IBAN_API_URL = "https://api.unnamedproject.xyz/api/v1.0/iban";
     public static final String CAR_API_URL = "https://carapi.app/api";
 
     //Error messages
@@ -18,7 +19,7 @@ public class Constants {
     public static final String PasswordLengthError = "Password length must be at least " + Constants.MIN_PASSWORD_LENGTH + "and max characters " + Constants.MAX_PASSWORD_LENGTH;
     public static final String InvalidTextInputFieldError = "Digits and illegal characters are not allowed";
     public static final String InvalidEmailError = "Invalid email address";
-    public static final String InvalidPasswordError = "Password must contain lower and upper case letters, digits and must NOT contain illegal characters";
+    public static final String InvalidPasswordError = "Password must contain lower and upper case letters, digits, some special characters like @ and must NOT contain illegal characters";
     public static final String InvalidPhoneNumberError = "Invalid phone number";
 
     //Patterns
@@ -34,5 +35,15 @@ public class Constants {
     //Session
     public static final String SESSION_KEY = "sessionUser";
     public static final String USER_API_KEY = "apiKey";
+    public static final String USER_EMAIL_KEY = "email";
     public static final String USER_IS_LOGGED_IN_KEY = "isLoggedIn";
+
+    //RequestHeaders
+    public static final String HEADER_API_KEY = "apiKey";
+    public static final String HEADER_CONTENT_TYPE_KEY = "Content-Type";
+    public static final String HEADER_CONTENT_TYPE_JSON = "application/json";
+
+    //RequestParams
+    public static final String EMAIL_PARAM = "?email=";
+    public static final String PASSWORD_PARAM = "&password=";
 }
