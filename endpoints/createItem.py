@@ -32,8 +32,12 @@ def createItem(request):
     try:
         sqlCursor.execute(query, values)
         db.commit()
+        query = "SELECT itemID FROM item WHERE userID = %s AND make = %s AND model = %s AND r_year = %s AND trim = %s AND mileage = %s AND color = %s AND r_condition = %s AND r_engine = %s AND r_description = %s AND images = %s ORDER BY itemID DESC LIMIT 1"
+        values = (userID, make, model, year, trim, mileage, color, condition, engine, description, images)
+        sqlCursor.execute(query, values)
+        result = sqlCursor.fetchone()
         databaseTools.closeDatabaseConnection(db, sqlCursor)
-        return jsonify({'status': 'success', 'message': 'Item created'}), 200
+        return jsonify({'status': 'success', 'message': 'Item created', 'itemID': result[0]}), 200
     except:
         databaseTools.closeDatabaseConnection(db, sqlCursor)
         return jsonify({'status': 'error', 'message': 'Something went wrong'}), 500
