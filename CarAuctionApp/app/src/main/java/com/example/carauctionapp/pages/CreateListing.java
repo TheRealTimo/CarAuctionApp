@@ -1,6 +1,5 @@
 package com.example.carauctionapp.pages;
 
-import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 
 import android.app.Activity;
@@ -32,11 +31,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -332,7 +326,6 @@ public class CreateListing extends Activity {
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.d("CreateItemResponse", response.toString());
                     try {
                         createdItemID = (Integer) response.getInt("itemID");
                         createListing();
@@ -362,7 +355,6 @@ public class CreateListing extends Activity {
     }
 
     private void createListing() throws JSONException {
-        Log.d("item id in listing", createdItemID.toString());
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         SessionManagement sessionManagement = new SessionManagement(this);
@@ -385,11 +377,14 @@ public class CreateListing extends Activity {
         Log.d("jsonAuctionObj", jsonAuctionObject.toString());
         Log.d("jsonBody", jsonBody.toString());
 
-        JsonObjectRequest createListingRequest = new JsonObjectRequest(Request.Method.POST, Constants.CREATE_AUCTION_API_URL, jsonBody,
+        JsonObjectRequest createListingRequest = new JsonObjectRequest(Request.Method.POST, Constants.AUCTION_API_URL, jsonBody,
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.d("AUCTION_CREATION_RESPONSE", response.toString());
+                    Context currentContext = getApplicationContext();
+                    Toast successToast = Toast.makeText(currentContext, "You have successfully created a new listing!", Toast.LENGTH_LONG);
+                    successToast.show();
+
                     redirectToListingsPage();
                 }
             },

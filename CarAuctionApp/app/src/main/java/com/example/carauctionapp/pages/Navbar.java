@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.example.carauctionapp.R;
+import com.example.carauctionapp.StartingScreen;
+import com.example.carauctionapp.classes.SessionManagement;
 
 public class Navbar extends Activity {
-    private Button closeButton;
+    private Button closeButton, logOutButton;
 
     private TextView carListingsLink, profileLink, watchListLink, recentlySoldLink, createListingLink;
 
@@ -23,6 +25,7 @@ public class Navbar extends Activity {
 
         //Initialize button
         closeButton = findViewById(R.id.navbarCloseButton);
+        logOutButton = findViewById(R.id.navbarLogOutButton);
 
         //Initialize links
         carListingsLink = findViewById(R.id.navbarCarListingsLink);
@@ -37,6 +40,7 @@ public class Navbar extends Activity {
         super.onStart();
 
         closeButton.setOnClickListener(closeNavPage -> closeNavPage());
+        logOutButton.setOnClickListener(logOut -> logOut());
 
         carListingsLink.setOnClickListener(redirect -> redirectToCarListingsPage());
         profileLink.setOnClickListener(redirect -> redirectToProfilePage());
@@ -50,13 +54,13 @@ public class Navbar extends Activity {
     }
 
     private void redirectToCarListingsPage() {
-        Intent openCarInfoPage = new Intent(this, ListingActivity.class);
-        startActivity(openCarInfoPage);
+        Intent openListingsPage = new Intent(this, ListingActivity.class);
+        startActivity(openListingsPage);
     }
 
     private void redirectToProfilePage() {
-        Intent openCarInfoPage = new Intent(this, Profile.class);
-        startActivity(openCarInfoPage);
+        Intent openProfilePage = new Intent(this, Profile.class);
+        startActivity(openProfilePage);
     }
 
     private void redirectToWatchListPage() {
@@ -68,7 +72,20 @@ public class Navbar extends Activity {
     }
 
     private void redirectToCreateListingsPage() {
-        Intent openCarInfoPage = new Intent(this, CreateListing.class);
-        startActivity(openCarInfoPage);
+        Intent openCarListingsPage = new Intent(this, CreateListing.class);
+        startActivity(openCarListingsPage);
+    }
+
+    private void redirectToStartingPage() {
+        Intent openCreateListingPage = new Intent(this, StartingScreen.class);
+        startActivity(openCreateListingPage);
+        finish();
+    }
+
+    private void logOut() {
+        SessionManagement sessionManagement = new SessionManagement(this);
+        sessionManagement.endSession();
+
+        redirectToStartingPage();
     }
 }

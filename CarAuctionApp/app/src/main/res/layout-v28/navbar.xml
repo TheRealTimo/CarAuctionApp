@@ -122,4 +122,19 @@
         android:focusable="true"
         android:clickable="true" />
 
+    <Button  android:id="@+id/navbarLogOutButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/navbarRecentlySoldLink"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="220dp"
+        android:layout_marginEnd="20dp"
+        android:background="@null"
+        android:backgroundTint="@color/appBackgroundColor"
+        android:text="@string/navbarLogOutButton"
+        android:fontFamily="@font/raleway_bold"
+        android:textSize="25sp"
+        android:textColor="@color/titleTextColor" />
+
 </RelativeLayout>

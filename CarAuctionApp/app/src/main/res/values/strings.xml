@@ -30,6 +30,7 @@
     <string name="navbarCloseButton">X</string>
     <string name="profileDeleteButton">Delete profile</string>
     <string name="profileAddPaymentMethodButton">Add Payment Method</string>
+    <string name="navbarLogOutButton">Log Out</string>
 
     <!-- Starting screen -->
     <string name="startingScreenWelcomeText">Welcome to the Roller app!</string>

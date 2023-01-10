@@ -14,7 +14,7 @@ public class Constants {
     public static final String LOG_IN_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/loginUser";
     public static final String VERIFY_IBAN_API_URL = "https://api.unnamedproject.xyz/api/v1.0/iban";
     public static final String CREATE_ITEM_API_URL = "https://api.unnamedproject.xyz/api/v1.0/item";
-    public static final String CREATE_AUCTION_API_URL = "https://api.unnamedproject.xyz/api/v1.0/auction";
+    public static final String AUCTION_API_URL = "https://api.unnamedproject.xyz/api/v1.0/auction";
 
     //Car API
     public static final String CAR_API_URL = "https://carapi.app/api";
