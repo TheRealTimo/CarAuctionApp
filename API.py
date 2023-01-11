@@ -96,9 +96,9 @@ def key():
         return publicKey.publicKey()
 
 
-@app.route('/api/' + version + '/iban', methods=['GET'])
+@app.route('/api/' + version + '/iban', methods=['POST'])
 def iban():
-    if request.method == 'GET':
+    if request.method == 'POST':
         return verifyIban.verifyIban(request)
 
 #if __name__ == "__main__": app.run()
