@@ -322,7 +322,7 @@ public class CreateListing extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("car", jsonCarObj);
 
-        JsonObjectRequest createItemRequest = new JsonObjectRequest(Request.Method.POST, Constants.CREATE_ITEM_API_URL, jsonBody,
+        JsonObjectRequest createItemRequest = new JsonObjectRequest(Request.Method.POST, Constants.ITEM_API_URL, jsonBody,
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

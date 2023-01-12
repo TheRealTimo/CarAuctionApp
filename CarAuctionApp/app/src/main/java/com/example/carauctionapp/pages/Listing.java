@@ -6,11 +6,10 @@ public class Listing {
     double currentBid;
     int bidAmount, imageId;
 
-    public Listing(String name, String color, double currentBid, int bidAmount, int imageId) {
+    public Listing(String name, String color, double currentBid, int imageId) {
         this.name = name;
         this.color = color;
         this.currentBid = currentBid;
-        this.bidAmount = bidAmount;
         this.imageId = imageId;
     }
 
@@ -36,14 +35,6 @@ public class Listing {
 
     public void setCurrentBid(double currentBid) {
         this.currentBid = currentBid;
-    }
-
-    public int getBidAmount() {
-        return bidAmount;
-    }
-
-    public void setBidAmount(int bidAmount) {
-        this.bidAmount = bidAmount;
     }
 
     public int getImageId() {

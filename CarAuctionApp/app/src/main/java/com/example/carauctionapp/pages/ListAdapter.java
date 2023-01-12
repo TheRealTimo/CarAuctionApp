@@ -34,12 +34,12 @@ public class ListAdapter extends ArrayAdapter<Listing> {
         ImageView listingImage = convertView.findViewById(R.id.listingImage);
         TextView topBid = convertView.findViewById(R.id.topBid);
         TextView auctionName = convertView.findViewById(R.id.auctionName);
-        TextView bidAmount = convertView.findViewById(R.id.bidAmount);
+
+        Integer currentBidInt = (int) listing.currentBid;
 
         listingImage.setImageResource(listing.imageId);
-        topBid.setText((int) listing.currentBid);
+        topBid.setText(currentBidInt.toString());
         auctionName.setText(listing.name);
-        bidAmount.setText(listing.bidAmount);
 
 
         return convertView;
