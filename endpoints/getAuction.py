@@ -39,13 +39,13 @@ def getAuction(request):
 
     elif numberOfItems is not None:
         db, sqlCursor = databaseTools.connectToDatabase()
-        query = "SELECT * FROM auction WHERE auctionStatus = 'open' ORDER BY auctionID DESC LIMIT %s "
-        values = (numberOfItems,)
+        query = "SELECT * FROM auction WHERE auctionStatus = 'open' ORDER BY auctionID DESC LIMIT %s"
+        values = (int(numberOfItems),)
         try:
             sqlCursor.execute(query, values)
-        except:
+        except Exception as e:
             databaseTools.closeDatabaseConnection(db, sqlCursor)
-            return jsonify({'status': 'error', 'message': 'Invalid number of items'}), 400
+            return jsonify({'status': 'error', 'message': str(e)}), 400
         result = sqlCursor.fetchall()
         if not result:
             databaseTools.closeDatabaseConnection(db, sqlCursor)
