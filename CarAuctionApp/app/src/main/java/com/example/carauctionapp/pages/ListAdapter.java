@@ -38,8 +38,8 @@ public class ListAdapter extends ArrayAdapter<Listing> {
         TextView listingDescription = convertView.findViewById(R.id.listingDescription);
         TextView listingEndDate = convertView.findViewById(R.id.listingEndDate);
 
-        Picasso.get().load(listing.getImageSrc()).into(listingImage);
-        listingOpeningBid.setText(listing.getOpeningBid().toString());
+        Picasso.get().load(listing.getImageSrc()).placeholder(R.drawable.rolls_royce_mock_image).into(listingImage);
+        listingOpeningBid.setText(listing.getOpeningBid().toString() + " €");
         listingName.setText(listing.getName());
         listingDescription.setText(listing.getDescription());
         listingEndDate.setText(listing.getEndDate());

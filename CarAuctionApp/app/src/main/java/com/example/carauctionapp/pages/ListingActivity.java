@@ -38,7 +38,8 @@ public class ListingActivity extends Activity {
 
     private ListingPageBinding binding;
 
-    private static Listing fetchedItem = new Listing("", "Initial name", "Initial Date", "Initial Description", 0);
+    private static Listing fetchedItem = new Listing("", "Initial name", "Initial Date", "Initial Description",
+            0, "", "", 0);
 
     private static JSONArray listingsArrayResponse = new JSONArray();
 
@@ -74,10 +75,15 @@ public class ListingActivity extends Activity {
 
                 Listing listingClicked = listingsArrayList.get(position);
 
+                Log.d("listingClickedName", listingClicked.getName());
+                Log.d("listingClickedMake", listingClicked.getMake());
+
                 openCarInfoPage.putExtra("name", listingClicked.getName());
-                openCarInfoPage.putExtra("description", listingClicked.getDescription());
-                openCarInfoPage.putExtra("openingBid", listingClicked.getOpeningBid());
-                openCarInfoPage.putExtra("imageSrc", listingClicked.getImageSrc());
+                openCarInfoPage.putExtra("listingEndDate", listingClicked.getEndDate());
+                openCarInfoPage.putExtra("make", listingClicked.getMake());
+                openCarInfoPage.putExtra("model", listingClicked.getModel());
+                openCarInfoPage.putExtra("mileages", listingClicked.getMileages());
+                openCarInfoPage.putExtra("imageLink", listingClicked.getImageSrc());
 
                 startActivity(openCarInfoPage);
             }
@@ -94,15 +100,23 @@ public class ListingActivity extends Activity {
 
         JSONObject responseObject = response.getJSONObject("item");
 
+        Log.d("response_object", responseObject.toString());
+
         String listingName = responseObject.getString("make") + " " + responseObject.getString("model")
                 + " " + responseObject.getString("trim") + " " + responseObject.getInt("year");
 
+        //Set displayed listing item data
         fetchedItem.setName(listingName);
         fetchedItem.setDescription(responseObject.getString("description"));
         fetchedItem.setImageSrc(responseObject.getString("image"));
 
+        //Car data of displayed listing
+        fetchedItem.setMake(responseObject.getString("make"));
+        fetchedItem.setModel(responseObject.getString("model"));
+        fetchedItem.setMileages(responseObject.getInt("mileage"));
+
         if (listingsArrayList.size() >= listingsArrayResponse.length()) return;
-        
+
         listingsArrayList.add(fetchedItem.deepCopy());
     }
 
