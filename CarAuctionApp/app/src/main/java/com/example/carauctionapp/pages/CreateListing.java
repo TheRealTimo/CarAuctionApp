@@ -35,14 +35,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateListing extends Activity {
-    private String listingTitle, listingDescription, listingColor;
+    private String listingTitle, listingDescription, listingColor, listingImageLink;
     private Integer listingOpeningBid, listingDuration, listingMileage;
 
     private String[] makesNames, modelNames, trimNames;
 
     private ImageView navMenu;
 
-    private EditText listingTitleInput, listingDescriptionInput, listingOpeningBidInput, listingDurationInput, listingMileageInput, listingColorInput;
+    private EditText listingTitleInput, listingDescriptionInput, listingOpeningBidInput, listingDurationInput, listingMileageInput, listingColorInput, listingImageLinkInput;
 
     private Spinner listingMakeInput, listingModelInput, listingTrimInput, listingEngineInput, listingConditionInput;
 
@@ -63,6 +63,7 @@ public class CreateListing extends Activity {
         listingDescriptionInput = findViewById(R.id.createListingDescription);
         listingOpeningBidInput = findViewById(R.id.createListingOpeningBid);
         listingDurationInput = findViewById(R.id.createListingDuration);
+        listingImageLinkInput = findViewById(R.id.createListingImageLink);
 
         //Listing Car Info Inputs
         //Spinners
@@ -138,6 +139,7 @@ public class CreateListing extends Activity {
     private void saveInputValues() {
         listingTitle = listingTitleInput.getText().toString();
         listingDescription = listingDescriptionInput.getText().toString();
+        listingImageLink = listingImageLinkInput.getText().toString();
         listingColor = listingColorInput.getText().toString();
         listingOpeningBid = parseInt(listingOpeningBidInput.getText().toString());
         listingDuration = parseInt(listingDurationInput.getText().toString());
@@ -317,7 +319,7 @@ public class CreateListing extends Activity {
         jsonCarObj.put("condition", listingConditionInput.getSelectedItem().toString());
         jsonCarObj.put("engine", listingEngineInput.getSelectedItem().toString());
         jsonCarObj.put("description", listingDescription);
-        jsonCarObj.put("images", "Test");
+        jsonCarObj.put("images", listingImageLink);
 
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("car", jsonCarObj);

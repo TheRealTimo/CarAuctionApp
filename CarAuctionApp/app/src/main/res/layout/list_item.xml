@@ -1,66 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/listingImage"
+        android:layout_width="410dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/car_logo" />
+
+    <TextView
+        android:id="@+id/listingName"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginVertical="10dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listingImage"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/listingItemDataValue"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_weight="1">
+    <TextView
+        android:id="@+id/listingDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listingName"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/listingItemDataValue"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/auctionName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/raleway_bold"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.045"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/listingImage"
-                app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/listingOpeningBid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listingDescription"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/listingItemDataValue"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/topBid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/raleway_bold"
-                android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.107"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/auctionName"
-                app:layout_constraintVertical_bias="0.695" />
+    <TextView
+        android:id="@+id/listingEndDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/listingOpeningBid"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/listingItemDataValue"
+        android:fontFamily="@font/raleway"
+        android:textColor="@color/titleTextColor"
+        android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/listingImage"
-                android:layout_width="410dp"
-                android:layout_height="177dp"
-                android:layout_weight="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/car_logo"
-                tools:ignore="ImageContrastCheck,InvalidId" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

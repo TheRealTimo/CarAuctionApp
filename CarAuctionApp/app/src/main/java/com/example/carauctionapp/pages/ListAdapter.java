@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.carauctionapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,15 +33,16 @@ public class ListAdapter extends ArrayAdapter<Listing> {
         }
 
         ImageView listingImage = convertView.findViewById(R.id.listingImage);
-        TextView topBid = convertView.findViewById(R.id.topBid);
-        TextView auctionName = convertView.findViewById(R.id.auctionName);
+        TextView listingName = convertView.findViewById(R.id.listingName);
+        TextView listingOpeningBid = convertView.findViewById(R.id.listingOpeningBid);
+        TextView listingDescription = convertView.findViewById(R.id.listingDescription);
+        TextView listingEndDate = convertView.findViewById(R.id.listingEndDate);
 
-        Integer currentBidInt = (int) listing.currentBid;
-
-        listingImage.setImageResource(listing.imageId);
-        topBid.setText(currentBidInt.toString());
-        auctionName.setText(listing.name);
-
+        Picasso.get().load(listing.getImageSrc()).into(listingImage);
+        listingOpeningBid.setText(listing.getOpeningBid().toString());
+        listingName.setText(listing.getName());
+        listingDescription.setText(listing.getDescription());
+        listingEndDate.setText(listing.getEndDate());
 
         return convertView;
     }

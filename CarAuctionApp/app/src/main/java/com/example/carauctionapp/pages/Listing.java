@@ -1,16 +1,27 @@
 package com.example.carauctionapp.pages;
 
+import android.util.Log;
+
 public class Listing {
 
-    String name, color;
-    double currentBid;
-    int bidAmount, imageId;
+    private String imageSrc, name, endDate, description;
+    private Integer openingBid;
 
-    public Listing(String name, String color, double currentBid, int imageId) {
+    public Listing(String imageSrc, String name, String endDate, String description, Integer openingBid) {
+        this.imageSrc = imageSrc;
         this.name = name;
-        this.color = color;
-        this.currentBid = currentBid;
-        this.imageId = imageId;
+        this.description = description;
+        this.endDate = endDate;
+        this.openingBid = openingBid;
+    }
+
+    public String getImageSrc() {
+        return this.imageSrc;
+    }
+
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
+        Log.d("imageSrcLink", imageSrc);
     }
 
     public String getName() {
@@ -21,27 +32,31 @@ public class Listing {
         this.name = name;
     }
 
-    public String getColor() {
-        return color;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public double getCurrentBid() {
-        return currentBid;
+    public String getEndDate() {
+        return this.endDate;
     }
 
-    public void setCurrentBid(double currentBid) {
-        this.currentBid = currentBid;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public int getImageId() {
-        return imageId;
+    public Integer getOpeningBid() {
+        return this.openingBid;
     }
 
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
+    public void setOpeningBid(Integer openingBid) {
+        this.openingBid = openingBid;
+    }
+
+    public Listing deepCopy() {
+        return new Listing(this.imageSrc, this.name, this.endDate, this.description, this.openingBid);
     }
 }

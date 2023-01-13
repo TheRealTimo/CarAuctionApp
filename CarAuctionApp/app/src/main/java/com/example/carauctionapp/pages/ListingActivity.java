@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,31 +34,36 @@ import java.util.Map;
 
 public class ListingActivity extends Activity {
 
+    private ImageView navBarButton;
+
     private ListingPageBinding binding;
 
-    private static Listing fetchedItem = new Listing("Initial name", "Initial color", 15000, 0);
+    private static Listing fetchedItem = new Listing("", "Initial name", "Initial Date", "Initial Description", 0);
+
+    private static JSONArray listingsArrayResponse = new JSONArray();
+
+    private static ArrayList<Listing> listingsArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ListingPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        navBarButton = findViewById(R.id.viewListingsNavMenu);
+
+        navBarButton.setOnClickListener(openNavMenu -> redirectToNavPage());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        //Initialize variables for storing fetched data
-        ArrayList<Listing> listingArrayList = new ArrayList<>();
-
         //Fetch all listings
         fetchAllListings();
 
-        listingArrayList.add(fetchedItem);
-
         //Send clicked listing data to single listing page
-        ListAdapter listAdapter = new ListAdapter(ListingActivity.this, listingArrayList);
+        ListAdapter listAdapter = new ListAdapter(ListingActivity.this, listingsArrayList);
 
         binding.listview.setAdapter(listAdapter);
         binding.listview.setClickable(true);
@@ -66,17 +72,21 @@ public class ListingActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent openCarInfoPage = new Intent(ListingActivity.this, CarInfo.class);
 
-                Listing listingClicked = listingArrayList.get(position);
+                Listing listingClicked = listingsArrayList.get(position);
 
-                openCarInfoPage.putExtra("name", listingClicked.name);
-                openCarInfoPage.putExtra("color", listingClicked.color);
-                openCarInfoPage.putExtra("currentBid", listingClicked.currentBid);
-                openCarInfoPage.putExtra("bidAmount", listingClicked.bidAmount);
-                openCarInfoPage.putExtra("imageId", listingClicked.imageId);
+                openCarInfoPage.putExtra("name", listingClicked.getName());
+                openCarInfoPage.putExtra("description", listingClicked.getDescription());
+                openCarInfoPage.putExtra("openingBid", listingClicked.getOpeningBid());
+                openCarInfoPage.putExtra("imageSrc", listingClicked.getImageSrc());
 
                 startActivity(openCarInfoPage);
             }
         });
+    }
+
+    private void redirectToNavPage() {
+        Intent openAddPaymentPage = new Intent(this, Navbar.class);
+        startActivity(openAddPaymentPage);
     }
 
     private void handleFetchedItemData(JSONObject response) throws JSONException {
@@ -88,7 +98,12 @@ public class ListingActivity extends Activity {
                 + " " + responseObject.getString("trim") + " " + responseObject.getInt("year");
 
         fetchedItem.setName(listingName);
-        fetchedItem.setColor(responseObject.getString("color"));
+        fetchedItem.setDescription(responseObject.getString("description"));
+        fetchedItem.setImageSrc(responseObject.getString("image"));
+
+        if (listingsArrayList.size() >= listingsArrayResponse.length()) return;
+        
+        listingsArrayList.add(fetchedItem.deepCopy());
     }
 
     private void fetchListingItem(Integer itemId) {
@@ -138,6 +153,9 @@ public class ListingActivity extends Activity {
         for (int i = 0; i < responseArray.length(); i++) {
             JSONObject responseObject = responseArray.getJSONObject(i);
 
+            fetchedItem.setEndDate(responseObject.getString("lastingUntil"));
+            fetchedItem.setOpeningBid(responseObject.getInt("openingBid"));
+
             fetchListingItem(responseObject.getInt("itemId"));
         }
     }
@@ -156,10 +174,12 @@ public class ListingActivity extends Activity {
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    JSONArray listingsResponseArray = new JSONArray();
+                    JSONArray listingsResponseArray;
 
                     try {
                         listingsResponseArray = response.getJSONArray("auctions");
+
+                        listingsArrayResponse = listingsResponseArray;
 
                         handleListingsResponseData(listingsResponseArray);
                     } catch (JSONException e) {
