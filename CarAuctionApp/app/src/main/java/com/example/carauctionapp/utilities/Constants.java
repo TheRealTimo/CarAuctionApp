@@ -46,5 +46,6 @@ public class Constants {
 
     //RequestParams
     public static final String EMAIL_PARAM = "?email=";
+    public static final String BID_PARAM = "?auctionId=";
     public static final String PASSWORD_PARAM = "&password=";
 }

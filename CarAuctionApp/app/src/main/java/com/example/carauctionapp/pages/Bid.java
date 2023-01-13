@@ -3,6 +3,7 @@ package com.example.carauctionapp.pages;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,11 +20,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.carauctionapp.R;
+import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.utilities.Constants;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -53,12 +59,12 @@ public class Bid extends Activity {
             }
         }, 0, 120000);
 
-        bidButton.setOnClickListener(new View.OnClickListener(){
+        bidButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String bidAmount = bidAmountInput.getText().toString();
                 if (!bidAmount.isEmpty()) {
-                    placeBid(bidAmount);
+                    placeBid(Double.parseDouble(bidAmount));
                 } else {
                     Context context = getApplicationContext();
                     Toast bidAmountErrorToast = Toast.makeText(context, "Please enter a valid bid amount!", Toast.LENGTH_SHORT);
@@ -68,29 +74,47 @@ public class Bid extends Activity {
         });
     }
 
+    private void displayBidData(JSONObject jsonResponse) throws JSONException {
+        JSONArray bidArray = jsonResponse.getJSONArray("bid");
+        double bidAmount = bidArray.getDouble(0);
+
+        bidAmountTextView.setText("Bid Amount: " + bidAmount);
+    }
+
     private void updateBidAmount() throws JSONException {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        SessionManagement sessionManagement = new SessionManagement(this);
+        String auctionID = "5";
+
         JSONObject jsonBody = new JSONObject();
-        jsonBody.put("bidId", 122);
+        jsonBody.put("auctionId", "5");
+
+        String apiKey = sessionManagement.getCurrentUserApiKey();
+        if (apiKey == null || apiKey.isEmpty()) {
+            Context context = getApplicationContext();
+            // handle error case where apiKey is not present or invalid
+            Toast errorToast = Toast.makeText(context, "API Key is invalid, please check and try again!", Toast.LENGTH_SHORT);
+            errorToast.show();
+            return;
+        }
+
+        Log.d("APIKEY", apiKey);
 
         final String requestBody = jsonBody.toString();
 
-        JsonObjectRequest getBidRequest = new JsonObjectRequest(Request.Method.POST, Constants.BID_API_URL, jsonBody,
+        String apiRequestUrl = Constants.BID_API_URL + Constants.BID_PARAM + auctionID;
+
+        JsonObjectRequest getBidRequest = new JsonObjectRequest(Request.Method.GET, apiRequestUrl, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Parse response and update TextView with new bid amount
                         try {
-                            final int bidAmount = response.getInt("bidAmount");
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    bidAmountTextView.setText("Bid Amount: $" + bidAmount);
-                                }
-                            });
+                            displayBidData(response);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        Log.println(Log.INFO, "Response", response.toString());
                     }
                 },
                 new Response.ErrorListener() {
@@ -100,16 +124,25 @@ public class Bid extends Activity {
                         Toast errorbidToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
                         errorbidToast.show();
                     }
-                });
-
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put(Constants.HEADER_API_KEY, apiKey);
+                return headers;
+            }
+        };
         requestQueue.add(getBidRequest);
     }
-    private void placeBid(String bidAmount) {
+
+    private void placeBid(double bidAmount) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        SessionManagement sessionManagement = new SessionManagement(this);
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("bidAmount", bidAmount);
+            jsonBody.put("auctionId", 5);
+            jsonBody.put("bid", bidAmount);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -132,8 +165,15 @@ public class Bid extends Activity {
                         Toast errorbidToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
                         errorbidToast.show();
                     }
-                });
-
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put(Constants.HEADER_API_KEY, sessionManagement.getCurrentUserApiKey());
+                return headers;
+            }
+        };
         requestQueue.add(placeBidRequest);
     }
 }
+
