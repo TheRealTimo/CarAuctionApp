@@ -35,7 +35,7 @@ public class ListingActivity extends Activity {
 
     private ListingPageBinding binding;
 
-    private Listing fetchedItem;
+    private static Listing fetchedItem = new Listing("Initial name", "Initial color", 15000, 0);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,16 +49,12 @@ public class ListingActivity extends Activity {
         super.onStart();
 
         //Initialize variables for storing fetched data
-        fetchedItem = new Listing("", "", 0, 0);
-
         ArrayList<Listing> listingArrayList = new ArrayList<>();
 
         //Fetch all listings
         fetchAllListings();
 
         listingArrayList.add(fetchedItem);
-
-        Log.d("FETCHED_ITEM", fetchedItem.getName());
 
         //Send clicked listing data to single listing page
         ListAdapter listAdapter = new ListAdapter(ListingActivity.this, listingArrayList);

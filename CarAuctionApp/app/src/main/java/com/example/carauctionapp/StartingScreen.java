@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.pages.CarInfo;
 import com.example.carauctionapp.pages.CreateListing;
+import com.example.carauctionapp.pages.ListingActivity;
 import com.example.carauctionapp.pages.LogIn;
 import com.example.carauctionapp.pages.Profile;
 import com.example.carauctionapp.pages.SignUp;
@@ -58,8 +59,7 @@ public class StartingScreen extends AppCompatActivity {
     }
 
     private void redirectToCarListingsPage() {
-        //TO DO: CHANGE THIS CLASS TO CarListings instead of CarInfo
-        Intent openCarInfoPage = new Intent(this, CreateListing.class);
+        Intent openCarInfoPage = new Intent(this, ListingActivity.class);
         startActivity(openCarInfoPage);
     }
 }
