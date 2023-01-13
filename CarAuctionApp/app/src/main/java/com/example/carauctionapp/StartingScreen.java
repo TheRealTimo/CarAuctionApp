@@ -12,6 +12,7 @@ import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.pages.CarInfo;
 import com.example.carauctionapp.pages.CreateListing;
 import com.example.carauctionapp.pages.ListingActivity;
+import com.example.carauctionapp.pages.Bid;
 import com.example.carauctionapp.pages.LogIn;
 import com.example.carauctionapp.pages.Profile;
 import com.example.carauctionapp.pages.SignUp;
@@ -61,5 +62,10 @@ public class StartingScreen extends AppCompatActivity {
     private void redirectToCarListingsPage() {
         Intent openCarInfoPage = new Intent(this, ListingActivity.class);
         startActivity(openCarInfoPage);
+    }
+
+    public void redirectToBid() {
+        Intent openBidPage = new Intent(this, Bid.class);
+        startActivity(openBidPage);
     }
 }

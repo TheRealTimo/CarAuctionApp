@@ -55,7 +55,7 @@ public class Profile extends Activity {
         profileDeleteButton = findViewById(R.id.profileDeleteButton);
 
         profileAddPaymentMethodButton.setOnClickListener(view -> redirectToAddPaymentPage());
-        profileDeleteButton.setOnClickListener(view -> redirectToUserDeletionPage());
+        profileDeleteButton.setOnClickListener(view -> redirectToBid());
     }
 
     @Override
@@ -152,5 +152,10 @@ public class Profile extends Activity {
     private void redirectToUserDeletionPage() {
         Intent openDeleteUserPage = new Intent(this, DeleteUser.class);
         startActivity(openDeleteUserPage);
+    }
+
+    public void redirectToBid() {
+        Intent openBidPage = new Intent(this, Bid.class);
+        startActivity(openBidPage);
     }
 }
