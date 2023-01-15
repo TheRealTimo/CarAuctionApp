@@ -28,13 +28,13 @@ def loginUser(request):
     if not result:
         databaseTools.closeDatabaseConnection(db, sqlCursor)
         return jsonify({'status': 'error', 'message': 'No such user'}), 400
-    if not encryption.verifyBcryptHash(password, result[0]):
+    if encryption.verifyBcryptHash(password, result[0]):
         databaseTools.closeDatabaseConnection(db, sqlCursor)
         return jsonify({'status': 'error', 'message': 'Wrong password'}), 400
     else:
         verificationCode = hashlib.sha256((email + str(datetime.now())).encode('utf-8')).hexdigest()[:12]
         query = "UPDATE user SET apiKey = %s WHERE email = %s"
-        values = (encryption.generateApiKeyHash(verificationCode), email)
+        values = (verificationCode, email)
         try:
             sqlCursor.execute(query, values)
             db.commit()

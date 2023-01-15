@@ -10,18 +10,13 @@ from Scripts import tools, databaseTools
 
 
 def getUser(request):
-    userIDApi = tools.verifyApiKey(request)
-    if userIDApi == False:
-        return jsonify({'status': 'error', 'message': 'Invalid API key'}), 401
+    data = tools.verifyData(request, 'getUser')
+    requestData, userID = data
+    if not isinstance(requestData, dict):
+        return data
 
-    userId = request.args.get('userId')
-    email = request.args.get('email')
-
-    if not userId and not email:
-        return jsonify({'status': 'error', 'message': 'Missing required parameter: userId or email'}), 400
-
-
-    if userId is not None:
+    if 'userId' in requestData:
+        userId = requestData['userId']
         db, sqlCursor = databaseTools.connectToDatabase()
         query = "SELECT userID, name, surname, email, shippingAddress, billingAddress, phone, profileViews, userType, paymentOption FROM user WHERE userID = %s"
         values = (userId,)
@@ -39,7 +34,8 @@ def getUser(request):
                         'user': {'userID': result[0], 'name': result[1], 'surname': result[2], 'email': result[3],
                                  'shippingAddress': result[4], 'billingAddress': result[5], 'phone': result[6],
                                  'profileViews': result[7], 'userType': result[8], 'paymentOption': result[9]}}), 200
-    elif email is not None:
+    elif 'email' in requestData:
+        email = requestData['email']
         db, sqlCursor = databaseTools.connectToDatabase()
         query = "SELECT  userID, name, surname, email, shippingAddress, billingAddress, phone, profileViews, userType, paymentOption FROM user WHERE email = %s"
         values = (email,)

@@ -36,18 +36,14 @@ def createAuction(request):
             databaseTools.closeDatabaseConnection(db, sqlCursor)
             return jsonify({'status': 'error', 'message': 'Item already in an auction'}), 400
         else:
-            query = "INSERT INTO auction (userID, itemID, auctionStatus, lastingUntil, openingBid, title, r_description) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            query = "INSERT INTO auction (userID, itemID, auctionStatus, lastingUntil, openingBid) VALUES (%s, %s, %s, %s, %s)"
             values = (userID, item, 'open', datetime.now() + timedelta(requestData["auction"]["duration"]),
-                      requestData["auction"]['openingBid'], requestData["auction"]['title'], requestData["auction"]['description'])
+                      requestData["auction"]['openingBid'])
             try:
                 sqlCursor.execute(query, values)
                 db.commit()
-                query = "SELECT auctionID FROM auction WHERE itemID = %s"
-                values = (item,)
-                sqlCursor.execute(query, values)
-                result = sqlCursor.fetchone()
                 databaseTools.closeDatabaseConnection(db, sqlCursor)
-                return jsonify({'status': 'success', 'message': 'Auction created', 'auctionID': result[0]}), 200
-            except Exception as e:
+                return jsonify({'status': 'success', 'message': 'Auction created'}), 200
+            except:
                 databaseTools.closeDatabaseConnection(db, sqlCursor)
-                return jsonify({'status': 'error', 'message': 'Something went wrong', "error": str(e)}), 500
+                return jsonify({'status': 'error', 'message': 'Something went wrong'}), 500
