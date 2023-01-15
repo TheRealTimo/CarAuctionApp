@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class Bid extends Activity {
     private Button bidButton;
     private Timer timer;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,7 @@ public class Bid extends Activity {
                     e.printStackTrace();
                 }
             }
-        }, 0, 120000);
+        }, 0, 60000);
 
         bidButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,10 +86,9 @@ public class Bid extends Activity {
     private void updateBidAmount() throws JSONException {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         SessionManagement sessionManagement = new SessionManagement(this);
-        String auctionID = "5";
-
+        String auctionId = String.valueOf(getIntent().getIntExtra("auctionId", -1));
         JSONObject jsonBody = new JSONObject();
-        jsonBody.put("auctionId", "5");
+        jsonBody.put("auctionId", auctionId);
 
         String apiKey = sessionManagement.getCurrentUserApiKey();
         if (apiKey == null || apiKey.isEmpty()) {
@@ -102,7 +103,7 @@ public class Bid extends Activity {
 
         final String requestBody = jsonBody.toString();
 
-        String apiRequestUrl = Constants.BID_API_URL + Constants.BID_PARAM + auctionID;
+        String apiRequestUrl = Constants.BID_API_URL + Constants.BID_PARAM + auctionId;
 
         JsonObjectRequest getBidRequest = new JsonObjectRequest(Request.Method.GET, apiRequestUrl, null,
                 new Response.Listener<JSONObject>() {
@@ -138,10 +139,11 @@ public class Bid extends Activity {
     private void placeBid(double bidAmount) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         SessionManagement sessionManagement = new SessionManagement(this);
+        int auctionId = getIntent().getIntExtra("auctionId", -1);
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("auctionId", 5);
+            jsonBody.put("auctionId", auctionId);
             jsonBody.put("bid", bidAmount);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -156,6 +158,14 @@ public class Bid extends Activity {
                         Context context = getApplicationContext();
                         Toast bidPlacedToast = Toast.makeText(context, "Bid placed successfully!",Toast.LENGTH_SHORT);
                         bidPlacedToast.show();
+                        try {
+                            updateBidAmount();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        bidAmountInput.setText("");
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(bidAmountInput.getWindowToken(), 0);
                     }
                 },
                 new Response.ErrorListener() {

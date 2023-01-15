@@ -3,6 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/makeABidButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelData"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="164dp"
+        android:text="Make a bid" />
+
     <TextView
         android:id="@+id/pageToolBar"
         android:layout_width="match_parent"
@@ -153,4 +163,5 @@
         android:text="@string/carInfoDataDefaultValue"
         android:textSize="18sp"
         android:textColor="#353535"/>
+
 </RelativeLayout>

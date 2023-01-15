@@ -1,19 +1,18 @@
 package com.example.carauctionapp.pages;
 
-import android.util.Log;
-
 public class Listing {
 
     //Listing data variables
     private String imageSrc, name, endDate, description;
-    private Integer openingBid;
+    private Integer openingBid, auctionId;
 
     //Car data variables
     private String make, model;
     private Integer mileages;
 
-    public Listing(String imageSrc, String name, String endDate, String description, Integer openingBid, String make, String model, Integer mileages) {
+    public Listing(Integer auctionId, String imageSrc, String name, String endDate, String description, Integer openingBid, String make, String model, Integer mileages) {
         //Listing data
+        this.auctionId = auctionId;
         this.imageSrc = imageSrc;
         this.name = name;
         this.description = description;
@@ -24,6 +23,14 @@ public class Listing {
         this.make = make;
         this.model = model;
         this.mileages = mileages;
+    }
+
+    public Integer getAuctionId() {
+        return auctionId;
+    }
+
+    public void setAuctionId(Integer auctionId) {
+        this.auctionId = auctionId;
     }
 
     public String getImageSrc() {
@@ -91,6 +98,6 @@ public class Listing {
     }
 
     public Listing deepCopy() {
-        return new Listing(this.imageSrc, this.name, this.endDate, this.description, this.openingBid, "", "", 0);
+        return new Listing(this.auctionId, this.imageSrc, this.name, this.endDate, this.description, this.openingBid, "", "", 0);
     }
 }

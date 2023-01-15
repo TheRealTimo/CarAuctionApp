@@ -38,7 +38,7 @@ public class ListingActivity extends Activity {
 
     private ListingPageBinding binding;
 
-    private static Listing fetchedItem = new Listing("", "Initial name", "Initial Date", "Initial Description",
+    private static Listing fetchedItem = new Listing(0,"", "Initial name", "Initial Date", "Initial Description",
             0, "", "", 0);
 
     private static JSONArray listingsArrayResponse = new JSONArray();
@@ -77,7 +77,8 @@ public class ListingActivity extends Activity {
 
                 Log.d("listingClickedName", listingClicked.getName());
                 Log.d("listingClickedMake", listingClicked.getMake());
-
+                Log.d("auctionId", String.valueOf(listingClicked.getAuctionId()));
+                openCarInfoPage.putExtra("auctionId", listingClicked.getAuctionId());
                 openCarInfoPage.putExtra("name", listingClicked.getName());
                 openCarInfoPage.putExtra("listingEndDate", listingClicked.getEndDate());
                 openCarInfoPage.putExtra("make", listingClicked.getMake());
@@ -115,9 +116,6 @@ public class ListingActivity extends Activity {
         fetchedItem.setModel(responseObject.getString("model"));
         fetchedItem.setMileages(responseObject.getInt("mileage"));
 
-        if (listingsArrayList.size() >= listingsArrayResponse.length()) return;
-
-        listingsArrayList.add(fetchedItem.deepCopy());
     }
 
     private void fetchListingItem(Integer itemId) {
@@ -131,24 +129,24 @@ public class ListingActivity extends Activity {
         }
 
         JsonObjectRequest fetchItemRequest = new JsonObjectRequest(Request.Method.GET, Constants.ITEM_API_URL + "?itemId=" + itemId, null,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        handleFetchedItemData(response);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            handleFetchedItemData(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Context currentContext = getApplicationContext();
+                        Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                        errorToast.show();
                     }
                 }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Context currentContext = getApplicationContext();
-                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
-                    errorToast.show();
-                }
-            }
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -167,10 +165,15 @@ public class ListingActivity extends Activity {
         for (int i = 0; i < responseArray.length(); i++) {
             JSONObject responseObject = responseArray.getJSONObject(i);
 
+            fetchedItem.setAuctionId(responseObject.getInt("auctionId"));
             fetchedItem.setEndDate(responseObject.getString("lastingUntil"));
             fetchedItem.setOpeningBid(responseObject.getInt("openingBid"));
 
             fetchListingItem(responseObject.getInt("itemId"));
+
+            if (listingsArrayList.size() >= listingsArrayResponse.length()) return;
+
+            listingsArrayList.add(fetchedItem.deepCopy());
         }
     }
 
@@ -185,30 +188,30 @@ public class ListingActivity extends Activity {
         }
 
         JsonObjectRequest fetchListingsRequest = new JsonObjectRequest(Request.Method.GET, Constants.AUCTIONS_API_URL, null,
-            new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    JSONArray listingsResponseArray;
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        JSONArray listingsResponseArray;
 
-                    try {
-                        listingsResponseArray = response.getJSONArray("auctions");
+                        try {
+                            listingsResponseArray = response.getJSONArray("auctions");
+                            Log.d("auction", String.valueOf(response.getJSONArray("auctions")));
+                            listingsArrayResponse = listingsResponseArray;
 
-                        listingsArrayResponse = listingsResponseArray;
-
-                        handleListingsResponseData(listingsResponseArray);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                            handleListingsResponseData(listingsResponseArray);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Context currentContext = getApplicationContext();
+                        Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
+                        errorToast.show();
                     }
                 }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Context currentContext = getApplicationContext();
-                    Toast errorToast = Toast.makeText(currentContext, "There was an error, please try again!", Toast.LENGTH_LONG);
-                    errorToast.show();
-                }
-            }
         ) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {

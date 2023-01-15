@@ -3,6 +3,8 @@ package com.example.carauctionapp.pages;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -11,6 +13,8 @@ import com.example.carauctionapp.R;
 
 public class CarInfo extends Activity {
     private TextView carTitleView, auctionEndDateView, makeDataView, modelDataView, yearDataView, mileagesDataView;
+    private int auctionId;
+    private Button makeABidButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +29,11 @@ public class CarInfo extends Activity {
         yearDataView = findViewById(R.id.yearData);
         mileagesDataView = findViewById(R.id.mileagesData);
 
+
+        makeABidButton = findViewById(R.id.makeABidButton);
+
+        makeABidButton.setOnClickListener(view -> redirectToBid());
+
         //Set car info data
         renderCarInfoDataOnPage();
     }
@@ -33,6 +42,9 @@ public class CarInfo extends Activity {
         //Get parent Intent
         Intent intent = getIntent();
 
+        auctionId = intent.getIntExtra("auctionId", -1);
+        Log.d("a", String.valueOf(auctionId));
+
         //Get passed on data from parent Intent
         carTitleView.setText(intent.getStringExtra("name"));
         auctionEndDateView.setText(intent.getStringExtra("listingEndDate"));
@@ -40,5 +52,17 @@ public class CarInfo extends Activity {
         modelDataView.setText(intent.getStringExtra("model"));
         yearDataView.setText("2020");
         mileagesDataView.setText(String.valueOf(intent.getIntExtra("mileages", 0)));
+
+        Log.d("id", String.valueOf(getAuctionId()));
+    }
+
+    public int getAuctionId() {
+        return auctionId;
+    }
+
+    public void redirectToBid() {
+        Intent openBidPage = new Intent(this, Bid.class);
+        openBidPage.putExtra("auctionId", auctionId);
+        startActivity(openBidPage);
     }
 }
