@@ -10,23 +10,44 @@ from Scripts import tools, databaseTools
 
 
 def getBid(request):
-    data = tools.verifyData(request, 'getBid')
-    requestData, userID = data
-    if not isinstance(requestData, dict):
-        return data
+    userID = tools.verifyApiKey(request)
+    if userID == False:
+        return jsonify({'status': 'error', 'message': 'Invalid API key'}), 401
 
-    bidID = requestData['bidId']
-    db, sqlCursor = databaseTools.connectToDatabase()
-    query = "SELECT * FROM bid WHERE bidID = %s"
-    values = (bidID,)
-    try:
-        sqlCursor.execute(query, values)
-        result = sqlCursor.fetchone()
-    except:
+    bidID = request.args.get('bidId')
+    auctionId = request.args.get('auctionId')
+    if not bidID and not auctionId:
+        return jsonify({'status': 'error', 'message': 'Missing parameter'}), 400
+
+    if bidID is not None:
+        db, sqlCursor = databaseTools.connectToDatabase()
+        query = "SELECT * FROM bid WHERE bidID = %s"
+        values = (bidID,)
+        try:
+            sqlCursor.execute(query, values)
+            result = sqlCursor.fetchone()
+        except:
+            databaseTools.closeDatabaseConnection(db, sqlCursor)
+            return jsonify({'status': 'error', 'message': 'Problems communicating with database'}), 400
+        if not result:
+            databaseTools.closeDatabaseConnection(db, sqlCursor)
+            return jsonify({'status': 'error', 'message': 'No such bid'}), 400
         databaseTools.closeDatabaseConnection(db, sqlCursor)
-        return jsonify({'status': 'error', 'message': 'Problems communicating with database'}), 400
-    if not result:
+        return jsonify({'status': 'success', 'message': 'Bid retrieved', 'bid': result}), 200
+
+    if auctionId is not None:
+        db, sqlCursor = databaseTools.connectToDatabase()
+        query = "SELECT bidAmount FROM bid WHERE auctionID = %s ORDER BY bidAmount DESC LIMIT 1"
+        values = (auctionId,)
+        try:
+            sqlCursor.execute(query, values)
+            result = sqlCursor.fetchall()
+        except:
+            databaseTools.closeDatabaseConnection(db, sqlCursor)
+            return jsonify({'status': 'error', 'message': 'Problems communicating with database'}), 500
+        if not result:
+            databaseTools.closeDatabaseConnection(db, sqlCursor)
+            return jsonify({'status': 'error', 'message': 'No bids for this auction'}), 400
         databaseTools.closeDatabaseConnection(db, sqlCursor)
-        return jsonify({'status': 'error', 'message': 'No such bid'}), 400
-    databaseTools.closeDatabaseConnection(db, sqlCursor)
-    return jsonify({'status': 'success', 'message': 'Bid retrieved', 'bid': result}), 200
+        return jsonify({'status': 'success', 'message': 'Bid retrieved', 'bid': result[0]}), 200
+

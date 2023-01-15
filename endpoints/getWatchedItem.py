@@ -10,13 +10,13 @@ from Scripts import tools, databaseTools
 
 
 def getWatchedItem(request):
-    data = tools.verifyData(request, 'getWatchedItem')
-    requestData, userID = data
-    if not isinstance(requestData, dict):
-        return data
+    userID = tools.verifyApiKey(request)
+    if userID == False:
+        return jsonify({'status': 'error', 'message': 'Invalid API key'}), 401
 
-    if 'watchId' in requestData:
-        watchId = requestData['watchId']
+    watchId = request.args.get('watchId')
+
+    if watchId is not None:
         db, sqlCursor = databaseTools.connectToDatabase()
         query = "SELECT * FROM watch WHERE watchID = %s"
         values = (watchId,)

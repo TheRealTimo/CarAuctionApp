@@ -10,12 +10,12 @@ from Scripts import tools, databaseTools
 
 
 def getItem(request):
-    data = tools.verifyData(request, 'getItem')
-    requestData, userID = data
-    if not isinstance(requestData, dict):
-        return data
+    userID = tools.verifyApiKey(request)
+    if userID == False:
+        return jsonify({'status': 'error', 'message': 'Invalid API key'}), 401
 
-    itemID = requestData['itemId']
+    itemID = request.args.get('itemId')
+
     db, sqlCursor = databaseTools.connectToDatabase()
     query = "SELECT * FROM item WHERE itemID = %s"
     values = (itemID,)
@@ -29,4 +29,4 @@ def getItem(request):
         databaseTools.closeDatabaseConnection(db, sqlCursor)
         return jsonify({'status': 'error', 'message': 'No such item'}), 400
     databaseTools.closeDatabaseConnection(db, sqlCursor)
-    return jsonify({'status': 'success', 'message': 'Item retrieved', 'item': result}), 200
+    return jsonify({'status': 'success', 'message': 'Item retrieved', 'item':{'itemID': result[0], 'userID': result[1], 'make': result[2], 'model': result[3], 'year': result[4], 'trim': result[5], 'mileage': result[6], 'color': result[7],'condition': result[8], 'engine': result[9], 'description': result[10], 'image': result[11]}}), 200
