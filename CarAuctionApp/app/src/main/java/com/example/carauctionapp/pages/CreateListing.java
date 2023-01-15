@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.carauctionapp.R;
 import com.example.carauctionapp.classes.SessionManagement;
 import com.example.carauctionapp.utilities.Constants;
+import com.example.carauctionapp.utilities.Validators;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -114,9 +115,13 @@ public class CreateListing extends Activity {
         listingCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (validateInputsLength() && validateInputsData())
+
                 try {
-                    saveInputValues();
-                    createItem();
+                    if (validateInputsLength() && validateInputsData()) {
+                        saveInputValues();
+                        createItem();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -124,6 +129,36 @@ public class CreateListing extends Activity {
         });
 
         navMenu.setOnClickListener(openNavPage -> redirectToNavPage());
+    }
+
+    private boolean validateInputsLength() {
+        if (!Validators.checkIfInputFieldIsEmpty(listingTitleInput)) listingTitleInput.setError(Constants.RequiredFieldError);
+        if (!Validators.checkIfInputFieldIsEmpty(listingDescriptionInput)) listingDescriptionInput.setError(Constants.RequiredFieldError);
+        if (!Validators.checkIfInputFieldIsEmpty(listingOpeningBidInput)) listingOpeningBidInput.setError(Constants.RequiredFieldError);
+        if (!Validators.checkIfInputFieldIsEmpty(listingDurationInput)) listingDurationInput.setError(Constants.RequiredFieldError);
+        if (!Validators.checkIfInputFieldIsEmpty(listingMileageInput)) listingMileageInput.setError(Constants.RequiredFieldError);
+        if (!Validators.checkIfInputFieldIsEmpty(listingColorInput)) listingColorInput.setError(Constants.RequiredFieldError);
+        if (!Validators.checkIfInputFieldIsEmpty(listingImageLinkInput)) listingImageLinkInput.setError(Constants.RequiredFieldError);
+
+        return Validators.checkIfInputFieldIsEmpty(listingTitleInput) &&
+                Validators.checkIfInputFieldIsEmpty(listingDescriptionInput) &&
+                Validators.checkIfInputFieldIsEmpty(listingOpeningBidInput) &&
+                Validators.checkIfInputFieldIsEmpty(listingDurationInput) &&
+                Validators.checkIfInputFieldIsEmpty(listingMileageInput) &&
+                Validators.checkIfInputFieldIsEmpty(listingColorInput) &&
+                Validators.checkIfInputFieldIsEmpty(listingImageLinkInput);
+    }
+
+    private boolean validateInputsData() {
+        if (!Validators.validateTextFieldInputData(listingTitleInput.getText().toString(), false)) listingTitleInput.setError(Constants.InvalidTextInputFieldError);
+        if (!Validators.validateTextFieldInputData(listingDescriptionInput.getText().toString(), false)) listingDescriptionInput.setError(Constants.InvalidTextInputFieldError);
+        if (!Validators.validateTextFieldInputData(listingColorInput.getText().toString(), false)) listingColorInput.setError(Constants.InvalidTextInputFieldError);
+        if (!Validators.validateTextFieldInputData(listingImageLinkInput.getText().toString(), true)) listingImageLinkInput.setError(Constants.InvalidTextInputFieldError);
+
+        return Validators.validateTextFieldInputData(listingTitleInput.getText().toString(), false) &&
+                Validators.validateTextFieldInputData(listingDescriptionInput.getText().toString(), false) &&
+                Validators.validateTextFieldInputData(listingColorInput.getText().toString(), false) &&
+                Validators.validateTextFieldInputData(listingImageLinkInput.getText().toString(), true);
     }
 
     private void redirectToNavPage() {

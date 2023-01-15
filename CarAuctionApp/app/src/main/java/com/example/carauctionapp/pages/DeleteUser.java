@@ -80,7 +80,7 @@ public class DeleteUser extends Activity {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user", jsonUserObject);
 
-        String apiRequestUrl = Constants.USER_API_URL + Constants.EMAIL_PARAM + userEmail + Constants.PASSWORD_PARAM + passwordInput.getText().toString();
+        String apiRequestUrl = Constants.USER_API_URL;
 
         JsonObjectRequest deleteUserRequest = new JsonObjectRequest(Request.Method.DELETE, apiRequestUrl, jsonBody,
             new Response.Listener<JSONObject>() {

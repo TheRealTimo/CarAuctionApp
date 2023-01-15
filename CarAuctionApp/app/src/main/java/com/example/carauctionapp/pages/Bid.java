@@ -94,7 +94,7 @@ public class Bid extends Activity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Context context = getApplicationContext();
-                        Toast errorbidToast = Toast.makeText(context, "There was an error, please try again!", Toast.LENGTH_SHORT);
+                        Toast errorbidToast = Toast.makeText(context, "Bid has to be higher than current bid and opening bid!", Toast.LENGTH_SHORT);
                         errorbidToast.show();
                     }
                 }) {

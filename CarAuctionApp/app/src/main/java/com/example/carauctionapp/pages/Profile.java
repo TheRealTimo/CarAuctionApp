@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -115,8 +114,6 @@ public class Profile extends Activity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-                    Log.println(Log.INFO, "Response", response.toString());
                 }
             },
             new Response.ErrorListener() {
