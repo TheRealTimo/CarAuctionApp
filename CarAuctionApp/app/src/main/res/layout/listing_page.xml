@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:ignore="ExtraText">
 
+    <ImageView android:id="@+id/viewListingsNavMenu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:src="@drawable/hamburger_menu_black"
+        android:focusable="true"
+        android:clickable="true"
+        tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"

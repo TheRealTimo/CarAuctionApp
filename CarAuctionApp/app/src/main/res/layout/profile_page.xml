@@ -4,6 +4,15 @@
     android:layout_height="match_parent"
     android:background="@color/mainColor">
 
+    <ImageView android:id="@+id/profilePageNavMenu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@id/profilePageTitle"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/hamburger_menu_white"
+        android:focusable="true"
+        android:clickable="true" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

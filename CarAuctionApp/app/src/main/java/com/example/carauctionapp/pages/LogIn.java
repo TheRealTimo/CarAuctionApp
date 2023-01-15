@@ -98,7 +98,7 @@ public class LogIn extends Activity {
 
     private void redirectToCarListingsPage() {
         //TO DO: CHANGE THIS CLASS TO CarListings instead of CarInfo
-        Intent openCarInfoPage = new Intent(this, Profile.class);
+        Intent openCarInfoPage = new Intent(this, CreateListing.class);
         startActivity(openCarInfoPage);
         LogIn.this.finish();
     }

@@ -32,15 +32,16 @@ public class ListAdapter extends ArrayAdapter<Listing> {
         }
 
         ImageView listingImage = convertView.findViewById(R.id.listingImage);
-        TextView topBid = convertView.findViewById(R.id.topBid);
-        TextView auctionName = convertView.findViewById(R.id.auctionName);
-        TextView bidAmount = convertView.findViewById(R.id.bidAmount);
+        TextView listingName = convertView.findViewById(R.id.listingName);
+        TextView listingOpeningBid = convertView.findViewById(R.id.listingOpeningBid);
+        TextView listingDescription = convertView.findViewById(R.id.listingDescription);
+        TextView listingEndDate = convertView.findViewById(R.id.listingEndDate);
 
-        listingImage.setImageResource(listing.imageId);
-        topBid.setText((int) listing.currentBid);
-        auctionName.setText(listing.name);
-        bidAmount.setText(listing.bidAmount);
-
+       // Picasso.get().load(listing.getImageSrc()).placeholder(R.drawable.rolls_royce_mock_image).into(listingImage);
+        listingOpeningBid.setText(listing.getOpeningBid().toString() + " €");
+        listingName.setText(listing.getName());
+        listingDescription.setText(listing.getDescription());
+        listingEndDate.setText(listing.getEndDate());
 
         return convertView;
     }

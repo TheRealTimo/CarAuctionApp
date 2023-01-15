@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="createListingMake">
+        <!-- options go here -->
+    </string-array>
+    <string-array name="createListingModel">
+        <!-- options go here -->
+    </string-array>
+    <string-array name="createListingTrim">
+        <!-- options go here -->
+    </string-array>
+    <string-array name="createListingEngine">
+        <item>Diesel</item>
+        <item>Petrol</item>
+        <item>Hybrid</item>
+        <item>Electric</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="createListingCondition">
+        <item>New</item>
+        <item>Used</item>
+        <item>Damaged</item>
+        <item>Other</item>
+    </string-array>
+
+</resources>

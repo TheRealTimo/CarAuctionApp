@@ -9,10 +9,20 @@ public class Constants {
     public static final int MAX_PASSWORD_LENGTH = 20;
 
     //API URLs
+    //Internal API
     public static final String USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/user";
     public static final String LOG_IN_USER_API_URL = "https://api.unnamedproject.xyz/api/v1.0/loginUser";
     public static final String VERIFY_IBAN_API_URL = "https://api.unnamedproject.xyz/api/v1.0/iban";
+    public static final String ITEM_API_URL = "https://api.unnamedproject.xyz/api/v1.0/item";
+    public static final String AUCTION_API_URL = "https://api.unnamedproject.xyz/api/v1.0/auction";
+    public static final String AUCTIONS_API_URL = "https://api.unnamedproject.xyz/api/v1.0/auction?numberOfItems=20";
+
+
+    //Car API
     public static final String CAR_API_URL = "https://carapi.app/api";
+    public static final String CAR_API_MAKES_URL = "https://carapi.app/api/makes?year=2020";
+    public static final String CAR_API_MODELS_URL = "https://carapi.app/api/models?year=2020&make=";
+    public static final String BID_API_URL = "https://api.unnamedproject.xyz/api/v1.0/bid";
 
     //Error messages
     public static final String RequiredFieldError = "*Required field";
@@ -45,5 +55,6 @@ public class Constants {
 
     //RequestParams
     public static final String EMAIL_PARAM = "?email=";
+    public static final String BID_PARAM = "?auctionId=";
     public static final String PASSWORD_PARAM = "&password=";
 }
