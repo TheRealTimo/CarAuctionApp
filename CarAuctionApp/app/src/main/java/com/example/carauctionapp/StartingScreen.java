@@ -42,7 +42,6 @@ public class StartingScreen extends AppCompatActivity {
     private void checkLogInSession() {
         SessionManagement sessionManagement = new SessionManagement(this);
         boolean isUserLoggedIn = sessionManagement.getIsUserLoggedIn();
-        Log.d("API_KEY_ON_START", sessionManagement.getCurrentUserApiKey());
 
         if (isUserLoggedIn) {
             redirectToCarListingsPage();

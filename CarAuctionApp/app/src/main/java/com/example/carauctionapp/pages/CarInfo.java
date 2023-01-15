@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,7 +75,6 @@ public class CarInfo extends Activity {
         Intent intent = getIntent();
 
         auctionId = intent.getIntExtra("auctionId", -1);
-        Log.d("a", String.valueOf(auctionId));
 
         //Get passed on data from parent Intent
         carTitleView.setText(intent.getStringExtra("name"));
@@ -85,9 +83,7 @@ public class CarInfo extends Activity {
         modelDataView.setText(intent.getStringExtra("model"));
         yearDataView.setText("2020");
         mileagesDataView.setText(String.valueOf(intent.getIntExtra("mileages", 0)));
-        double bidAmount = intent.getDoubleExtra("bid_amount", 0);
-
-        Log.d("id", String.valueOf(getAuctionId()));
+        currentBidView.setText(String.valueOf(0));
     }
     private void displayBidData(JSONObject jsonResponse) throws JSONException {
         JSONArray bidArray = jsonResponse.getJSONArray("bid");
@@ -111,8 +107,6 @@ public class CarInfo extends Activity {
             return;
         }
 
-        Log.d("APIKEY", apiKey);
-
         final String requestBody = jsonBody.toString();
 
         String apiRequestUrl = Constants.BID_API_URL + Constants.BID_PARAM + String.valueOf(auctionId);
@@ -127,7 +121,6 @@ public class CarInfo extends Activity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Log.println(Log.INFO, "Response", response.toString());
                     }
                 },
                 new Response.ErrorListener() {
@@ -146,10 +139,6 @@ public class CarInfo extends Activity {
             }
         };
         requestQueue.add(getBidRequest);
-    }
-
-    public int getAuctionId() {
-        return auctionId;
     }
 
     public void redirectToBid() {
