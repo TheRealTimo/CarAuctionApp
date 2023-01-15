@@ -7,11 +7,28 @@
         android:id="@+id/makeABidButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/carInfoBidAmount"
+        android:layout_alignStart="@+id/carInfoBidAmount"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="122dp"
+        android:backgroundTint="#03DAC5"
+        android:fontFamily="@font/raleway"
+        android:text="Make a bid"
+        android:textColor="@color/bodyTextColor" />
+
+    <TextView
+        android:id="@+id/carInfoBidAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/modelData"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="164dp"
-        android:text="Make a bid" />
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="104dp"
+        android:text="Current Bid:"
+        android:textColor="#353535"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/pageToolBar"
