@@ -38,15 +38,15 @@ def verifyIban(request):
     if req.json()['valid']:
         db, sqlCursor = databaseTools.connectToDatabase()
         # Update the users table with the new IBAN
-        sql = "UPDATE User SET paymentOption = %s WHERE userID = %s"
+        sql = "UPDATE user SET paymentOption = %s WHERE userID = %s"
         val = ("verified", userID)
         try:
             sqlCursor.execute(sql, val)
             db.commit()
             databaseTools.closeDatabaseConnection(db, sqlCursor)
             return jsonify({'status': 'success', 'message': 'IBAN verified'}), 200
-        except:
+        except Exception as e:
             databaseTools.closeDatabaseConnection(db, sqlCursor)
-            return jsonify({'status': 'error', 'message': 'Error updating database'}), 500
+            return jsonify({'status': 'error', 'message': 'Something went wrong', 'error': str(e)}), 500
     else:
         return jsonify({'status': 'error', 'message': 'Invalid IBAN'}), 400

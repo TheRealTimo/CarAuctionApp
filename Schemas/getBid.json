@@ -8,10 +8,24 @@
       "description": "The ID of the bid.",
       "type": "integer",
       "pattern": "^[0-9]+$"
+    },
+    "auctionId": {
+      "description": "The ID of the auction.",
+      "type": "integer",
+      "pattern": "^[0-9]+$"
     }
   },
-  "required": [
-    "bidId"
+  "oneOf": [
+    {
+      "required": [
+        "bidId"
+      ]
+    },
+    {
+      "required": [
+        "auctionId"
+      ]
+    }
   ]
 }
 
